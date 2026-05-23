@@ -11,7 +11,7 @@
         const targets = document.querySelectorAll(
             '.hero__copy, .conoce__heading, .conoce__body, .propiedades__heading, .propiedades__item, ' +
             '.presentaciones__heading, .presentaciones__row, .showcase__heading, .showcase__item, ' +
-            '.productos__heading, .productos__card, .encuentra__heading, .encuentra__list, .encuentra__form'
+            '.encuentra__heading, .encuentra__list, .encuentra__form'
         );
 
         targets.forEach(el => el.classList.add('reveal'));
