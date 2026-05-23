@@ -150,8 +150,18 @@
 .header__burger-line {
     width: 22px;
     height: 1.5px;
-    background: currentColor;
+    background: #ffffff;
+    /* Inverts against whatever sits behind the header, so the burger/X
+       stays visible whether the page bg is light or dark. */
+    mix-blend-mode: difference;
     transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+/* When the menu is open, the burger sits over the dark cinematic menu —
+   drop blend-mode so the lines render as solid white (cleaner X). */
+.header.is-menu-open .header__burger-line {
+    background: var(--color-cream);
+    mix-blend-mode: normal;
 }
 
 .header.is-menu-open .header__burger-line:nth-child(1) {
@@ -172,6 +182,8 @@
     .header__burger {
         display: flex;
         justify-self: end;
+        position: relative;
+        z-index: 100;
     }
 
     .header__inner {
@@ -182,25 +194,172 @@
         width: 110px;
     }
 
+    /* Keep logo + burger visible above the open menu */
+    .header.is-menu-open {
+        z-index: 100;
+        /* Critical: backdrop-filter / filter on .header creates a containing
+           block for its position:fixed descendants. While the menu is open,
+           kill the blur + bg so .header__nav's `inset:0` resolves against
+           the viewport, not against the header's scrolled-down strip. */
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        padding-top: var(--space-4) !important;
+        padding-bottom: var(--space-4) !important;
+    }
+    .header.is-menu-open .header__logo {
+        position: relative;
+        z-index: 100;
+    }
+
+    /* ===== Full-screen cinematic menu ===== */
     .header.is-menu-open .header__nav {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: fixed;
-        inset: 64px 0 0 0;
-        background: var(--color-ink);
-        padding: var(--space-7) var(--gutter);
+        inset: 0;
+        z-index: 95;
+        padding: 96px var(--gutter) var(--space-6);
+        background: #060606;
+        overflow: hidden;
+        isolation: isolate;
+        animation: header-menu-fade 320ms var(--ease);
+    }
+
+    /* Animated brand blobs in the background */
+    .header.is-menu-open .header__nav::before,
+    .header.is-menu-open .header__nav::after {
+        content: "";
+        position: absolute;
+        width: 70vmax;
+        height: 70vmax;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.45;
+        z-index: -1;
+        pointer-events: none;
+    }
+    .header.is-menu-open .header__nav::before {
+        top: -25vmax;
+        left: -20vmax;
+        background: var(--color-violet);
+        animation: blob-morph 18s ease-in-out infinite alternate;
+    }
+    .header.is-menu-open .header__nav::after {
+        bottom: -28vmax;
+        right: -22vmax;
+        background: var(--color-mango);
+        animation: blob-morph 22s ease-in-out infinite alternate-reverse;
+    }
+
+    /* Giant ampersand watermark behind the links */
+    .header.is-menu-open .header__nav-list::before {
+        content: "&";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-8deg);
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: clamp(280px, 70vw, 520px);
+        line-height: 1;
+        color: var(--color-cream);
+        opacity: 0.045;
+        z-index: -1;
+        pointer-events: none;
+        user-select: none;
     }
 
     .header.is-menu-open .header__nav-list {
+        position: relative;
         flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-5);
+        align-items: center;
+        gap: clamp(var(--space-2), 2vh, var(--space-4));
+        text-align: center;
+        margin: 0;
+        padding: 0;
     }
 
     .header.is-menu-open .header__nav-link {
+        position: relative;
         font-family: var(--font-display);
         font-style: italic;
-        font-size: 44px;
+        font-size: clamp(44px, 12vw, 72px);
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        font-weight: 500;
+        color: var(--color-cream);
         text-transform: none;
-        letter-spacing: -0.02em;
+        text-decoration: none;
+        display: inline-block;
+        animation: header-menu-link-in 560ms var(--ease) both;
+        transition: color 220ms var(--ease);
     }
+
+    /* Stagger entrance */
+    .header.is-menu-open .header__nav-item:nth-child(1) .header__nav-link { animation-delay: 80ms; }
+    .header.is-menu-open .header__nav-item:nth-child(2) .header__nav-link { animation-delay: 160ms; }
+    .header.is-menu-open .header__nav-item:nth-child(3) .header__nav-link { animation-delay: 240ms; }
+    .header.is-menu-open .header__nav-item:nth-child(4) .header__nav-link { animation-delay: 320ms; }
+    .header.is-menu-open .header__nav-item:nth-child(5) .header__nav-link { animation-delay: 400ms; }
+
+    /* Per-link palette accent on hover */
+    .header.is-menu-open .header__nav-item:nth-child(1) .header__nav-link:hover { color: var(--color-mango); }
+    .header.is-menu-open .header__nav-item:nth-child(2) .header__nav-link:hover { color: var(--color-pink); }
+    .header.is-menu-open .header__nav-item:nth-child(3) .header__nav-link:hover { color: var(--color-mint); }
+    .header.is-menu-open .header__nav-item:nth-child(4) .header__nav-link:hover { color: var(--color-coral); }
+    .header.is-menu-open .header__nav-item:nth-child(5) .header__nav-link:hover { color: var(--color-skyblue); }
+
+    /* Animated underline */
+    .header.is-menu-open .header__nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0.05em;
+        height: 3px;
+        background: currentColor;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 360ms var(--ease);
+    }
+    .header.is-menu-open .header__nav-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Reveal the Cuéntanos CTA inside the open menu */
+    .header.is-menu-open .header__cta {
+        display: inline-flex;
+        position: fixed;
+        left: 50%;
+        bottom: clamp(var(--space-5), 8vh, var(--space-7));
+        transform: translateX(-50%);
+        z-index: 96;
+        opacity: 0;
+        animation: header-menu-cta-in 560ms var(--ease) 480ms forwards;
+    }
+
+    /* Preserve centering on hover (override the base CTA's translateY) */
+    .header.is-menu-open .header__cta:hover {
+        transform: translateX(-50%) translateY(-3px);
+    }
+}
+
+@keyframes header-menu-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes header-menu-link-in {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes header-menu-cta-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

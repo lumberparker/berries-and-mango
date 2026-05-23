@@ -177,7 +177,7 @@
             const m = activeMedia[0];
             const inner = m.type === 'video'
                 ? `<video src="${m.src}" autoplay muted loop playsinline ${m.poster ? `poster="${m.poster}"` : ''}></video>`
-                : `<img src="${m.src}" alt="${p.title}" loading="lazy">`;
+                : `<img src="${m.src}" alt="${p.title}" loading="eager" decoding="async">`;
             galleryEl.innerHTML = `
                 <button type="button" class="viewer__gallery-item viewer__gallery-item--single"
                         data-gallery-open="0"
@@ -191,7 +191,7 @@
                 const wide = i === 0 ? 'viewer__gallery-item--wide' : '';
                 const inner = m.type === 'video'
                     ? `<video src="${m.src}" muted loop playsinline preload="metadata" ${m.poster ? `poster="${m.poster}"` : ''}></video>`
-                    : `<img src="${m.src}" alt="${p.title} — ${i + 1}" loading="lazy">`;
+                    : `<img src="${m.src}" alt="${p.title} — ${i + 1}" loading="eager" decoding="async">`;
                 return `
                     <button type="button" class="viewer__gallery-item ${wide}"
                             data-gallery-open="${i}"

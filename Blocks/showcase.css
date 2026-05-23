@@ -220,9 +220,18 @@
 
     .showcase__eyebrow,
     .showcase__heading,
-    .showcase__all { grid-column: 1; }
+    .showcase__all {
+        grid-column: 1;
+        grid-row: auto;
+    }
 
-    .showcase__all { justify-self: start; }
+    .showcase__all {
+        justify-self: start;
+        margin-top: var(--space-2);
+        padding: 14px 24px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+    }
     .showcase__grid { grid-template-columns: 1fr; }
     .showcase__item--lg { grid-column: span 1; }
 }

@@ -643,11 +643,41 @@
 
     .viewer__gallery {
         grid-template-columns: 1fr;
-        gap: var(--space-2);
+        gap: var(--space-3);
+        max-width: none;
     }
-    .viewer__gallery-item { aspect-ratio: 4 / 5; }
-    .viewer__gallery-item--wide { grid-column: span 1; aspect-ratio: 4 / 5; }
-    .viewer__gallery--single { height: calc(100svh - 80px - 110px); }
+    /* On phones each image gets its own row at its natural aspect ratio.
+       Forcing aspect-ratio: auto on the button + height: auto on the img
+       (overriding the desktop `height: 100%` that would collapse to 0px
+       inside an auto-height parent). */
+    .viewer__gallery-item,
+    .viewer__gallery-item--wide,
+    .viewer__gallery-item--single {
+        aspect-ratio: auto;
+        grid-column: auto;
+        background: transparent;
+        height: auto;
+        min-height: 120px;
+        /* Skip the fade-in animation on mobile so items are visible
+           immediately — animation timing can race with image load. */
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    .viewer__gallery-item img,
+    .viewer__gallery-item video,
+    .viewer__gallery-item--single img,
+    .viewer__gallery-item--single video {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+    }
+    .viewer__gallery--single {
+        display: block;
+        height: auto;
+        min-height: 0;
+    }
 
     .viewer__bottom {
         position: fixed;
