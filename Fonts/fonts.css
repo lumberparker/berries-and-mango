@@ -1,0 +1,43 @@
+/* =========================================================
+   Fonts — Berries & Mango
+   Stand-ins for the site's real fonts:
+     Headings: Apple Garamond Light  → fallback EB Garamond
+     UI / H1: Inter
+     Body:    Sora
+     Mono:    Space Mono
+   Self-hosted woff2 files (when added) go in /assets/fonts/.
+   Until then we load free equivalents from Google Fonts.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+/* ---------- Apple Garamond placeholder ----------
+   Drop the licensed woff2/woff files into /assets/fonts/
+   then uncomment and adjust the @font-face declarations below.
+
+@font-face {
+    font-family: "Apple Garamond Light";
+    src: url("../assets/fonts/AppleGaramond-Light.woff2") format("woff2"),
+         url("../assets/fonts/AppleGaramond-Light.woff") format("woff");
+    font-weight: 300 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Apple Garamond";
+    src: url("../assets/fonts/AppleGaramond-Regular.woff2") format("woff2"),
+         url("../assets/fonts/AppleGaramond-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+*/
+
+/* ---------- Type tokens (custom properties) ---------- */
+:root {
+    --font-display: "Apple Garamond Light", "EB Garamond", Garamond, "Times New Roman", serif;
+    --font-heading: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-body:    "Sora", "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono:    "Space Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}

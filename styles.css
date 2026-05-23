@@ -1,0 +1,27 @@
+/* =========================================================
+   Berries & Mango — styles.css
+   Single entry point. Only this file is linked from index.html.
+   ========================================================= */
+
+/* Fonts */
+@import url("Fonts/fonts.css");
+
+/* Blocks (BEM — one file per section, imported in render order) */
+@import url("Blocks/loader.css");
+@import url("Blocks/page.css");
+@import url("Blocks/header.css");
+@import url("Blocks/menu.css");
+@import url("Blocks/hero.css");
+@import url("Blocks/marquee.css");
+@import url("Blocks/conoce.css");
+@import url("Blocks/propiedades.css");
+@import url("Blocks/presentaciones.css");
+@import url("Blocks/showcase.css");
+@import url("Blocks/productos.css");
+@import url("Blocks/encuentra.css");
+@import url("Blocks/portfolio.css");
+@import url("Blocks/viewer.css");
+@import url("Blocks/lightbox.css");
+@import url("Blocks/footer.css");
+@import url("Blocks/whatsapp.css");
+@import url("Blocks/glow.css");

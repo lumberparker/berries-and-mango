@@ -1,0 +1,87 @@
+/* =========================================================
+   Block: marquee
+   Two stacked tracks (opposite direction), multi-color italic letters.
+   ========================================================= */
+
+.marquee {
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-6) 0;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border-block: 1px solid rgba(250, 249, 245, 0.12);
+    isolation: isolate;
+    
+}
+
+.marquee::before,
+.marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+.marquee::before { left: 0; background: linear-gradient(90deg, var(--color-ink), transparent); }
+.marquee::after  { right: 0; background: linear-gradient(-90deg, var(--color-ink), transparent); }
+
+.marquee__row {
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee__row + .marquee__row {
+    margin-top: var(--space-3);
+}
+
+.marquee__track {
+    display: flex;
+    gap: var(--space-6);
+    white-space: nowrap;
+    width: max-content;
+    animation: marquee-scroll 36s linear infinite;
+    height: 100px;
+}
+
+.marquee__row--reverse .marquee__track {
+    animation-direction: reverse;
+    animation-duration: 48s;
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+.marquee__group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-right: var(--space-6);
+}
+
+.marquee__item {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 5.2vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.marquee__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-mango);
+    box-shadow: 0 0 24px var(--color-mango);
+    flex: 0 0 auto;
+}
+
+.marquee__row--reverse .marquee__dot { background: var(--color-pink); box-shadow: 0 0 24px var(--color-pink); }
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}

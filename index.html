@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Berries &amp; Mango — Estudio de diseño mexicano. Marcas hechas con mucho sabor.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Berries &amp; Mango — Visual Mixology</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon-192.png">
+</head>
+<body class="page">
+
+    <!-- ============== LOADER ============== -->
+    <div class="loader" data-loader>
+        <div class="loader__inner">
+            <div class="loader__mark" data-color-mix="violet,mint,mango">B&amp;M</div>
+            <div class="loader__bar"><div class="loader__bar-fill" data-loader-bar></div></div>
+            <span class="loader__progress" data-loader-progress>0%</span>
+        </div>
+    </div>
+
+    <div class="page__wrap">
+
+        <!-- ============== HEADER ============== -->
+        <header class="header" data-header>
+            <div class="header__inner">
+                <a class="header__logo" href="#top" aria-label="Berries &amp; Mango — Inicio">
+                    <img class="header__logo-mark" src="assets/images/logo.svg" alt="Berries &amp; Mango">
+                </a>
+
+                <nav class="header__nav" aria-label="Navegación principal">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item"><a class="header__nav-link" href="#conoce">Conoce</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="#productos">Productos</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="portfolio.html">Portfolio</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="#encuentra">Encuéntranos</a></li>
+                    </ul>
+                </nav>
+
+                <a class="header__cta glow glow--mango" href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango" target="_blank" rel="noopener noreferrer" data-magnetic="0.25">
+                    <span>Cuéntanos</span>
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <button class="header__burger glow glow--mango" type="button" aria-label="Abrir menú" data-burger>
+                    <span class="header__burger-line"></span>
+                    <span class="header__burger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="page__main" id="top">
+
+            <!-- ============== HERO ============== -->
+            <section class="hero" id="hero">
+                <div class="hero__bg" aria-hidden="true">
+                    <div class="hero__bg-blob hero__bg-blob--1"></div>
+                    <div class="hero__bg-blob hero__bg-blob--2"></div>
+                    <div class="hero__bg-blob hero__bg-blob--3"></div>
+                </div>
+
+                <div class="hero__inner">
+                    <a class="hero__eyebrow hero__eyebrow--link glow glow--violet" style="--glow-delay:.15s"
+                       href="https://wa.me/529993946353?text=Quiero%20agendar%20una%20llamada%20para%20platicar%20de%20mi%20proyecto"
+                       target="_blank" rel="noopener noreferrer">
+                        Agenda abierta para 2026
+                    </a>
+
+                    <div class="hero__art">
+                        <img class="hero__art-img" src="assets/images/hero-visual-mixology-clean.png" alt="Visual Mixology — Berries &amp; Mango" width="2724" height="1292" fetchpriority="high" decoding="async">
+                    </div>
+
+                    <div class="hero__copy">
+                        <h1 class="hero__heading" data-wave>
+                            <span class="hero__heading-line">Marcas hechas</span>
+                            <span class="hero__heading-line hero__heading-line--mix" data-color-mix>con mucho sabor</span>
+                        </h1>
+
+                        <div class="hero__body">
+                            <p class="hero__lede">
+                                Berries &amp; Mango es un estudio de diseño gráfico mexicano
+                                especializado en identidad visual, ilustración y diseño de empaque.
+                                Un coctel preparado especialmente para ti.
+                            </p>
+
+                            <div class="hero__actions">
+                                <a class="hero__cta hero__cta--primary glow glow--pink" style="--glow-delay:.4s" href="https://wa.me/525512345678?text=Hola,%20quiero%20solicitar%20un%20presupuesto%20para%20un%20proyecto%20de%20diseño." data-magnetic="0.3">
+                                    <span>Obtener una cotización</span>
+                                    <span class="hero__cta-arrow" aria-hidden="true">→</span>
+                                </a>
+                                <a class="hero__cta hero__cta--ghost glow glow--mint" style="--glow-delay:.9s" href="portfolio.html" data-magnetic="0.2">
+                                    <span>Ver portafolio</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============== MARQUEE ============== -->
+            <section class="marquee" aria-label="Servicios">
+                <!-- Top: Spanish, multi-color -->
+                <div class="marquee__row">
+                    <div class="marquee__track" data-marquee>
+                        <div class="marquee__group">
+                            <span class="marquee__item" data-color-mix>Identidad visual</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Ilustración</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de empaque</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Diseño Web</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de marca</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Diseño gráfico</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de íconos</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Marcas con sabor</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Patrones</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Estrategia</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item" data-color-mix>Manual de marca</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                        </div>
+                        <div class="marquee__group" aria-hidden="true">
+                            <span class="marquee__item" data-color-mix>Identidad visual</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Ilustración</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de empaque</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Diseño Web</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de marca</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Diseño gráfico</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Diseño de íconos</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Marcas con sabor</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Patrones</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Estrategia</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item" data-color-mix>Manual de marca</span>
+                            <span class="marquee__dot"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom: English, cream/white -->
+                <div class="marquee__row marquee__row--reverse">
+                    <div class="marquee__track">
+                        <div class="marquee__group">
+                            <span class="marquee__item">Visual identity</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Illustration</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Packaging design</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Web design</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Brand design</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Graphic design</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Icon design</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Brands with flavor</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Patterns</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Strategy</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Brand manual</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Visual Mixology</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                            <span class="marquee__item">Mexican design studio</span>
+                            <span class="marquee__dot" aria-hidden="true"></span>
+                        </div>
+                        <div class="marquee__group" aria-hidden="true">
+                            <span class="marquee__item">Visual identity</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Illustration</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Packaging design</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Web design</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Brand design</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Graphic design</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Icon design</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Brands with flavor</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Patterns</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Strategy</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Brand manual</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Visual Mixology</span>
+                            <span class="marquee__dot"></span>
+                            <span class="marquee__item">Mexican design studio</span>
+                            <span class="marquee__dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============== CONOCE ============== -->
+            <section class="conoce" id="conoce">
+                <div class="conoce__inner">
+                    <p class="conoce__eyebrow">01 — Conoce el estudio</p>
+                    <h2 class="conoce__heading">
+                        Un <em>coctel de diseño</em> preparado<br>
+                        especialmente para ti.
+                    </h2>
+                    <div class="conoce__body">
+                        <p class="conoce__text">
+                            Somos un equipo pequeño con apetito grande: estrategia, ilustración
+                            y diseño de marca servidos con el sabor justo. Cada proyecto se
+                            mezcla a mano, sin recetas pre-empacadas.
+                        </p>
+                        <p class="conoce__text">
+                            Trabajamos con marcas que quieren contar una historia con carácter
+                            y dejar buen sabor de boca.
+                        </p>
+                    </div>
+                    <div class="conoce__media">
+                        <img class="conoce__symbol" src="assets/images/logo-symbol.png" alt="Símbolo de Berries &amp; Mango">
+
+                        <div class="conoce__sticker conoce__sticker--berry" aria-hidden="true">
+                            <img src="assets/images/logo-symbol.png" alt="">
+                        </div>
+                        <div class="conoce__sticker conoce__sticker--spark" aria-hidden="true">
+                            <img src="assets/images/logo-symbol.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============== PROPIEDADES ============== -->
+            <section class="propiedades" id="propiedades">
+                <div class="propiedades__inner">
+                    <p class="propiedades__eyebrow">02 — Propiedades</p>
+                    <h2 class="propiedades__heading" data-color-mix>Nuestro perfil de sabor</h2>
+
+                    <ul class="propiedades__grid">
+                        <li class="propiedades__item propiedades__item--mango">
+                            <span class="propiedades__index">01</span>
+                            <div class="propiedades__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="propiedades__item-title">Sabor</h3>
+                            <p class="propiedades__item-text">
+                                Cada marca tiene un tono único. Lo destilamos hasta que es inconfundible.
+                            </p>
+                        </li>
+                        <li class="propiedades__item propiedades__item--coral">
+                            <span class="propiedades__index">02</span>
+                            <div class="propiedades__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="propiedades__item-title">Frescura</h3>
+                            <p class="propiedades__item-text">
+                                Ideas nuevas, no recetas. Nos resistimos a los lugares comunes.
+                            </p>
+                        </li>
+                        <li class="propiedades__item propiedades__item--violet">
+                            <span class="propiedades__index">03</span>
+                            <div class="propiedades__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="propiedades__item-title">Color</h3>
+                            <p class="propiedades__item-text">
+                                Usamos el color como ingrediente principal, no como decoración.
+                            </p>
+                        </li>
+                        <li class="propiedades__item propiedades__item--rust">
+                            <span class="propiedades__index">04</span>
+                            <div class="propiedades__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:auto;transform:translateY(8px)">
+                            </div>
+                            <h3 class="propiedades__item-title">Estructura</h3>
+                            <p class="propiedades__item-text">
+                                Buen diseño es buena ingeniería: sistemas que aguantan el uso real.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============== PRESENTACIONES ============== -->
+            <section class="presentaciones" id="presentaciones">
+                <div class="presentaciones__inner">
+                    <p class="presentaciones__eyebrow">03 — Presentaciones</p>
+                    <h2 class="presentaciones__heading">Formatos en los que servimos</h2>
+
+                    <ol class="presentaciones__list">
+                        <li class="presentaciones__row">
+                            <span class="presentaciones__num">A</span>
+                            <h3 class="presentaciones__row-title">Identidad esencial</h3>
+                            <p class="presentaciones__row-desc">
+                                Logotipo, paleta, tipografía y guía mínima. Para marcas que arrancan.
+                            </p>
+                            <span class="presentaciones__row-tag">2 — 4 semanas</span>
+                        </li>
+                        <li class="presentaciones__row">
+                            <span class="presentaciones__num">B</span>
+                            <h3 class="presentaciones__row-title">Marca completa</h3>
+                            <p class="presentaciones__row-desc">
+                                Estrategia, sistema visual, voz, aplicaciones y manual completo.
+                            </p>
+                            <span class="presentaciones__row-tag">6 — 10 semanas</span>
+                        </li>
+                        <li class="presentaciones__row">
+                            <span class="presentaciones__num">C</span>
+                            <h3 class="presentaciones__row-title">Reposicionamiento</h3>
+                            <p class="presentaciones__row-desc">
+                                Para marcas existentes que necesitan un nuevo capítulo.
+                            </p>
+                            <span class="presentaciones__row-tag">8 — 12 semanas</span>
+                        </li>
+                        <li class="presentaciones__row">
+                            <span class="presentaciones__num">D</span>
+                            <h3 class="presentaciones__row-title">Empaque + Producto</h3>
+                            <p class="presentaciones__row-desc">
+                                Diseño estructural y gráfico para línea de productos completa.
+                            </p>
+                            <span class="presentaciones__row-tag">4 — 8 semanas</span>
+                        </li>
+                        <li class="presentaciones__row">
+                            <span class="presentaciones__num">E</span>
+                            <h3 class="presentaciones__row-title">Diseño y desarrollo web</h3>
+                            <p class="presentaciones__row-desc">
+                                Sitios y landings hechos a medida — diseño, código y puesta en línea — pensados para extender la marca a la web.
+                            </p>
+                            <span class="presentaciones__row-tag">4 — 8 semanas</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- ============== SHOWCASE ============== -->
+            <section class="showcase" id="showcase">
+                <div class="showcase__inner">
+                    <header class="showcase__head">
+                        <p class="showcase__eyebrow">04 — Showcase</p>
+                        <h2 class="showcase__heading">Sugerencias de la barra</h2>
+                        <a class="showcase__all glow glow--violet" style="--glow-delay:.2s" href="portfolio.html" data-magnetic="0.2">Ver todo →</a>
+                    </header>
+
+                    <ul class="showcase__grid" data-showcase>
+                        <!-- Populated by scripts/showcase.js from assets/jsons/projects.json -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============== PRODUCTOS ============== -->
+            <section class="productos" id="productos">
+                <div class="productos__inner">
+                    <p class="productos__eyebrow">05 — Productos</p>
+                    <h2 class="productos__heading">
+                        Servicios <em>del menú</em>
+                    </h2>
+
+                    <div class="productos__grid">
+                        <article class="productos__card">
+                            <span class="productos__tag">01</span>
+                            <div class="productos__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="productos__card-title">Identidad visual</h3>
+                            <p class="productos__card-text">
+                                Logotipo, sistema visual, tipografía y guías de aplicación.
+                            </p>
+                            <ul class="productos__card-list">
+                                <li>Estrategia</li>
+                                <li>Sistema visual</li>
+                                <li>Manual de marca</li>
+                            </ul>
+                        </article>
+
+                        <article class="productos__card">
+                            <span class="productos__tag">02</span>
+                            <div class="productos__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="productos__card-title">Diseño de empaque</h3>
+                            <p class="productos__card-text">
+                                Empaques que se sienten ricos en el anaquel y en la mano.
+                            </p>
+                            <ul class="productos__card-list">
+                                <li>Estructural</li>
+                                <li>Gráfico</li>
+                                <li>Línea completa</li>
+                            </ul>
+                        </article>
+
+                        <article class="productos__card">
+                            <span class="productos__tag">03</span>
+                            <div class="productos__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
+                            </div>
+                            <h3 class="productos__card-title">Ilustración</h3>
+                            <p class="productos__card-text">
+                                Ilustración editorial, patrones, íconos y direcciones de arte.
+                            </p>
+                            <ul class="productos__card-list">
+                                <li>Editorial</li>
+                                <li>Patrones</li>
+                                <li>Íconos</li>
+                            </ul>
+                        </article>
+
+                        <article class="productos__card">
+                            <span class="productos__tag">04</span>
+                            <div class="productos__sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="" style="width:100%;height:auto;transform:translateY(10px)">
+                            </div>
+                            <h3 class="productos__card-title">Diseño Web</h3>
+                            <p class="productos__card-text">
+                                Sitios que cuentan la historia de la marca con ritmo y claridad.
+                            </p>
+                            <ul class="productos__card-list">
+                                <li>Diseño UI</li>
+                                <li>Desarrollo</li>
+                                <li>Animación</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============== ENCUENTRA ============== -->
+            <section class="encuentra" id="encuentra">
+                <div class="encuentra__inner">
+                    <p class="encuentra__eyebrow">06 — Encuéntranos</p>
+                    <h2 class="encuentra__heading">
+                        ¿Listo para <em>probar el sabor</em>?
+                    </h2>
+
+                    <div class="encuentra__grid">
+
+                        <a class="encuentra__whatsapp"
+                           href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           data-magnetic="0.12">
+                            <div class="encuentra__whatsapp-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" fill="currentColor">
+                                    <path d="M16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.74 4.93 2.14 7L3 29l6.4-2.08a13.1 13.1 0 0 0 6.62 1.78h.01c7.18 0 13.02-5.73 13.02-12.8C29.05 8.73 23.2 3 16.02 3Zm7.58 18.08c-.32.9-1.88 1.72-2.6 1.83-.67.1-1.52.14-2.46-.16-.57-.18-1.3-.42-2.24-.82-3.95-1.67-6.52-5.58-6.72-5.85-.2-.27-1.6-2.12-1.6-4.05 0-1.93 1-2.88 1.36-3.27.36-.39.8-.48 1.06-.48.27 0 .53 0 .77.01.25.01.58-.1.91.7.32.77 1.08 2.67 1.18 2.86.1.2.16.43.03.7-.13.27-.2.43-.4.66-.2.23-.42.52-.6.7-.2.2-.4.42-.17.82.23.39 1.03 1.67 2.2 2.7 1.5 1.32 2.77 1.73 3.16 1.93.4.2.63.16.87-.1.23-.27 1-1.16 1.27-1.56.27-.39.53-.33.9-.2.36.13 2.3 1.07 2.7 1.27.4.2.67.3.77.46.1.16.1.92-.22 1.82Z"/>
+                                </svg>
+                            </div>
+                            <div class="encuentra__whatsapp-body">
+                                <span class="encuentra__whatsapp-label">Hablemos por</span>
+                                <span class="encuentra__whatsapp-brand">WhatsApp</span>
+                                <span class="encuentra__whatsapp-preview">Quiero informes acerca de los servicios de Berries and Mango</span>
+                            </div>
+                            <span class="encuentra__whatsapp-cta glow" style="--glow:#39ff14; --glow-thickness:3px; --glow-delay:.5s">
+                                <span>Iniciar chat</span>
+                                <span class="encuentra__whatsapp-cta-arrow" aria-hidden="true">→</span>
+                            </span>
+                            <div class="encuentra__whatsapp-sticker" aria-hidden="true">
+                                <img src="assets/images/logo-symbol.png" alt="">
+                            </div>
+                        </a>
+
+                        <dl class="encuentra__list">
+                            <div class="encuentra__list-row">
+                                <dt class="encuentra__list-key">Estudio</dt>
+                                <dd class="encuentra__list-val">Yucatán, MEX</dd>
+                            </div>
+                            <div class="encuentra__list-row">
+                                <dt class="encuentra__list-key">Correo</dt>
+                                <dd class="encuentra__list-val">
+                                    <a href="mailto:brenda@berriesandmango.com">brenda@berriesandmango.com</a>
+                                </dd>
+                            </div>
+                            <div class="encuentra__list-row">
+                                <dt class="encuentra__list-key">Instagram</dt>
+                                <dd class="encuentra__list-val">
+                                    <a href="https://instagram.com/berriesnmango" target="_blank" rel="noopener">@berriesnmango</a>
+                                </dd>
+                            </div>
+                            <div class="encuentra__list-row">
+                                <dt class="encuentra__list-key">Horario</dt>
+                                <dd class="encuentra__list-val">Lun — Vie · 10:00 — 18:00</dd>
+                            </div>
+                        </dl>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ============== FOOTER ============== -->
+        <footer class="footer">
+            <div class="footer__hero">
+                <img class="footer__logo" src="assets/images/logo-wordmark.png" alt="Berries &amp; Mango">
+                <p class="footer__tagline">Marcas hechas con mucho sabor.</p>
+            </div>
+
+            <div class="footer__inner">
+                <div class="footer__col footer__col--brand">
+                    <h4 class="footer__col-title">Estudio</h4>
+                    <p class="footer__link">Berries &amp; Mango — estudio de diseño mexicano basado en Yucatán, México.</p>
+                    <a class="footer__cta glow glow--coral" style="--glow-delay:.3s" href="https://wa.me/529993946353?text=Hola,%20quiero%20solicitar%20un%20presupuesto%20para%20un%20proyecto%20de%20diseño." data-magnetic="0.25">Cotizar proyecto →</a>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Sitio</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="#conoce">Conoce</a></li>
+                        <li><a class="footer__link" href="#productos">Productos</a></li>
+                        <li><a class="footer__link" href="portfolio.html">Portfolio</a></li>
+                        <li><a class="footer__link" href="#encuentra">Encuéntranos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Social</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="https://instagram.com/berriesnmango" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a class="footer__link" href="#" target="_blank" rel="noopener">Behance</a></li>
+                        <li><a class="footer__link" href="#" target="_blank" rel="noopener">Dribbble</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Contacto</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="mailto:brenda@berriesandmango.com">brenda@berriesandmango.com</a></li>
+                        <li><a class="footer__link" href="#encuentra">Cotización</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <span class="footer__copy">© <span data-year>2026</span> Berries &amp; Mango. Todos los derechos reservados.</span>
+                <a class="footer__top" href="#top"><span>Ir arriba</span> <span aria-hidden="true">↑</span></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Floating WhatsApp button — always visible -->
+    <a class="whatsapp-float glow glow--green"
+       href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Hablar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.74 4.93 2.14 7L3 29l6.4-2.08a13.1 13.1 0 0 0 6.62 1.78h.01c7.18 0 13.02-5.73 13.02-12.8C29.05 8.73 23.2 3 16.02 3Zm7.58 18.08c-.32.9-1.88 1.72-2.6 1.83-.67.1-1.52.14-2.46-.16-.57-.18-1.3-.42-2.24-.82-3.95-1.67-6.52-5.58-6.72-5.85-.2-.27-1.6-2.12-1.6-4.05 0-1.93 1-2.88 1.36-3.27.36-.39.8-.48 1.06-.48.27 0 .53 0 .77.01.25.01.58-.1.91.7.32.77 1.08 2.67 1.18 2.86.1.2.16.43.03.7-.13.27-.2.43-.4.66-.2.23-.42.52-.6.7-.2.2-.4.42-.17.82.23.39 1.03 1.67 2.2 2.7 1.5 1.32 2.77 1.73 3.16 1.93.4.2.63.16.87-.1.23-.27 1-1.16 1.27-1.56.27-.39.53-.33.9-.2.36.13 2.3 1.07 2.7 1.27.4.2.67.3.77.46.1.16.1.92-.22 1.82Z"/>
+        </svg>
+    </a>
+
+    <!-- ============== SCRIPTS ============== -->
+    <script src="scripts/colorize.js" defer></script>
+    <script src="scripts/loader.js" defer></script>
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/marquee.js" defer></script>
+    <script src="scripts/showcase.js" defer></script>
+    <script src="scripts/encuentra.js" defer></script>
+    <script src="scripts/motion.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+</body>
+</html>

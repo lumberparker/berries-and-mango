@@ -1,0 +1,213 @@
+{
+    "$schema-hint": "Each project has a showcaseImage (shown on grid cards + homepage showcase) and a media[] array (photos + videos shown in the project viewer's carousel). showcase=true puts a project on the homepage. If none flagged, six random projects are picked.",
+    "projects": [
+        {
+            "id": "mellow",
+            "title": "Mellow",
+            "client": "Mellow",
+            "year": "2024",
+            "date": "08/2024",
+            "category": "Identidad visual",
+            "tag": "Branding",
+            "description": "Identidad visual para Mellow, consultora que co-crea y opera proyectos para fortalecer la salud, conectando a más de 140,000 profesionales con marcas farmacéuticas y de bienestar. Sistema flexible que equilibra rigor clínico con calidez humana.",
+            "showcaseImage": "assets/images/projects/mellow.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/216389433/Mellow",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mellow.jpg" }
+            ]
+        },
+        {
+            "id": "personal-brand",
+            "title": "Personal Brand Identity",
+            "client": "Brenda Chavez · Berries & Mango",
+            "year": "2023",
+            "date": "11/2023",
+            "category": "Identidad visual",
+            "tag": "Branding",
+            "description": "Identidad personal del estudio: logotipo, sistema visual, paleta y aplicaciones. Una mezcla de carácter editorial y espíritu lúdico.",
+            "showcaseImage": "assets/images/projects/personal-brand.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/78894813/Personal-Brand-Indentity",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/personal-brand.jpg" }
+            ]
+        },
+        {
+            "id": "mexican-lottery",
+            "title": "Mexican Lottery Concept",
+            "client": "Concept",
+            "year": "2024",
+            "date": "03/2024",
+            "category": "Ilustración",
+            "tag": "Editorial",
+            "description": "Reinterpretación ilustrada de la lotería mexicana con paleta contemporánea y dirección de arte propia.",
+            "showcaseImage": "assets/images/projects/mexican-lottery.png",
+            "behanceUrl": "https://www.behance.net/gallery/210133625/Mexican-Lottery-Concept",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mexican-lottery.png" }
+            ]
+        },
+        {
+            "id": "nantli",
+            "title": "Nantli Cacao Chocolate",
+            "client": "Nantli",
+            "year": "2023",
+            "date": "05/2023",
+            "category": "Empaque",
+            "tag": "Packaging",
+            "description": "Empaque y branding para una marca de chocolate de cacao mexicano. Una propuesta que celebra el origen y el ritual.",
+            "showcaseImage": "assets/images/projects/nantli.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/77290741/Nantli-Cacao-Chocolate",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/nantli.jpg" }
+            ]
+        },
+        {
+            "id": "demetria",
+            "title": "Demetria",
+            "client": "Demetria",
+            "year": "2024",
+            "date": "06/2024",
+            "category": "Identidad visual",
+            "tag": "Branding",
+            "description": "Sistema visual e ilustración editorial para una marca con espíritu botánico. Mezcla naturaleza, ritual y carácter editorial.",
+            "showcaseImage": "assets/images/projects/demetria.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/164122463/Demetria",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/demetria.jpg" }
+            ]
+        },
+        {
+            "id": "toloks",
+            "title": "Toloks Mérida",
+            "client": "Toloks",
+            "year": "2024",
+            "date": "09/2024",
+            "category": "Identidad visual",
+            "tag": "Branding",
+            "description": "Identidad lúdica para un espacio creativo en Mérida. Una marca que celebra el color y la artesanía local.",
+            "showcaseImage": "assets/images/projects/toloks.png",
+            "behanceUrl": "https://www.behance.net/gallery/182810567/Toloks-Mrida",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/toloks.png" }
+            ]
+        },
+        {
+            "id": "tres-loros",
+            "title": "Tres Loros",
+            "client": "Tres Loros",
+            "year": "2023",
+            "date": "10/2023",
+            "category": "Ilustración",
+            "tag": "Branding",
+            "description": "Sistema visual e ilustración con espíritu tropical mexicano. Una marca que vuela con carácter.",
+            "showcaseImage": "assets/images/projects/tres-loros.png",
+            "behanceUrl": "https://www.behance.net/gallery/173463225/Tres-Loros",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tres-loros.png" }
+            ]
+        },
+        {
+            "id": "tiny-yogurt",
+            "title": "El yogurt de Tiny",
+            "client": "Tiny",
+            "year": "2023",
+            "date": "07/2023",
+            "category": "Empaque",
+            "tag": "Packaging",
+            "description": "Línea visual y empaque para una marca de yogurt artesanal con tono cercano y mucho color.",
+            "showcaseImage": "assets/images/projects/tiny-yogurt.png",
+            "behanceUrl": "https://www.behance.net/gallery/160537077/El-yogurt-de-Tiny",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tiny-yogurt.png" }
+            ]
+        },
+        {
+            "id": "hesou",
+            "title": "Hesou Clinic",
+            "client": "Hesou Clinic",
+            "year": "2023",
+            "date": "02/2023",
+            "category": "Identidad visual",
+            "tag": "Branding",
+            "description": "Identidad clínica con sensibilidad y calidez humana. Un sistema visual que cuida los detalles.",
+            "showcaseImage": "assets/images/projects/hesou.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/128853651/Hesou-Clinic",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hesou.jpg" }
+            ]
+        },
+        {
+            "id": "logos-marks",
+            "title": "Logos & Marks No.1",
+            "client": "Varios",
+            "year": "2023",
+            "date": "01/2023",
+            "category": "Diseño de íconos",
+            "tag": "Logos",
+            "description": "Colección de logotipos y marcas exploratorias. Un catálogo de formas, símbolos y gestos.",
+            "showcaseImage": "assets/images/projects/logos-marks.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/96596645/Logos-and-marks-No1",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/logos-marks.jpg" }
+            ]
+        },
+        {
+            "id": "alarm-juice",
+            "title": "Alarm Juice & Co.",
+            "client": "Alarm Juice",
+            "year": "2023",
+            "date": "04/2023",
+            "category": "Empaque",
+            "tag": "Packaging",
+            "description": "Empaque y sistema visual para una marca de bebidas funcionales. Color vibrante y mucha frescura.",
+            "showcaseImage": "assets/images/projects/alarm-juice.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/72608573/Alarm-Juice-Co",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/alarm-juice.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-lineup.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-citric-riot.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-berry-punch.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-red-pom.jpg" }
+            ]
+        },
+        {
+            "id": "hera",
+            "title": "Hera — Eau de Toilette",
+            "client": "Hera",
+            "year": "2023",
+            "date": "08/2023",
+            "category": "Empaque",
+            "tag": "Packaging",
+            "description": "Empaque y branding para una fragancia con carácter floral. Una propuesta editorial y sensorial.",
+            "showcaseImage": "assets/images/projects/hera.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/70888885/Hera-Eau-de-Toilette",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hera.jpg" }
+            ]
+        }
+    ]
+}

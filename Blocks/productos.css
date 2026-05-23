@@ -1,0 +1,180 @@
+/* =========================================================
+   Block: productos — services as cards on mango with reveal stickers.
+   ========================================================= */
+
+.productos {
+    position: relative;
+    padding: var(--section-y) var(--gutter);
+    background: var(--color-mango);
+    color: var(--color-ink);
+    overflow: hidden;
+}
+
+.productos::before {
+    content: "";
+    position: absolute;
+    top: -10vmax;
+    left: -10vmax;
+    width: 40vmax;
+    height: 40vmax;
+    background: var(--color-coral);
+    opacity: 0.6;
+    filter: blur(70px);
+    border-radius: 50%;
+    animation: blob-morph 18s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.productos__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.productos__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    margin-bottom: var(--space-4);
+}
+
+.productos__eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-ink);
+}
+
+.productos__heading {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    margin-bottom: var(--space-8);
+}
+
+.productos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+.productos__card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--color-cream);
+    border-radius: var(--radius);
+    padding: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: transform var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease);
+}
+
+.productos__card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #6776ff 50%, #91afff 100%);
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease);
+}
+
+.productos__card:hover {
+    transform: translateY(-8px) rotate(-0.5deg);
+    box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.25);
+    color: var(--color-ink);
+}
+
+.productos__card:hover::before { opacity: 1; }
+
+.productos__sticker {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    width: 64px;
+    height: 64px;
+    color: var(--color-ink);
+    opacity: 0.6;
+    transition: transform var(--dur) var(--ease),
+                color var(--dur) var(--ease),
+                opacity var(--dur) var(--ease);
+}
+
+.productos__card:hover .productos__sticker {
+    transform: rotate(25deg) scale(1.2);
+    color: var(--color-mango);
+    opacity: 1;
+}
+
+.productos__tag {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.productos__card:hover .productos__tag {
+    background: var(--color-mango);
+    color: var(--color-ink);
+}
+
+.productos__card-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.productos__card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 42ch;
+    transition: color var(--dur) var(--ease);
+}
+
+.productos__card:hover .productos__card-text { color: rgba(10, 10, 10, 0.78); }
+
+.productos__card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+}
+
+.productos__card-list li {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px currentColor;
+    transition: background var(--dur) var(--ease);
+}
+
+@media (max-width: 900px) {
+    .productos__grid { grid-template-columns: 1fr; }
+    .productos__card { padding: var(--space-6); }
+}

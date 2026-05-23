@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio Berries &amp; Mango — proyectos de identidad visual, ilustración, empaque y diseño web.">
+    <meta name="theme-color" content="#0e0e0e">
+    <title>Portafolio — Berries &amp; Mango</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon-192.png">
+</head>
+<body class="page page--dark">
+
+    <div class="page__wrap">
+
+        <!-- ============== FLOATING MENU ============== -->
+        <nav class="menu" data-menu aria-label="Navegación principal">
+            <a class="menu__brand" href="index.html" aria-label="Berries &amp; Mango — Inicio">
+                Berries <em>&amp;</em> Mango
+            </a>
+            <button class="menu__toggle glow glow--mango" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false">
+                <span class="menu__toggle-icon" aria-hidden="true"></span>
+            </button>
+        </nav>
+
+        <div class="menu__overlay" data-menu-overlay aria-hidden="true">
+            <ul class="menu__list">
+                <li><a class="menu__link" href="index.html">Inicio</a></li>
+                <li><a class="menu__link" href="index.html#conoce">Conoce</a></li>
+                <li><a class="menu__link" href="index.html#productos">Productos</a></li>
+                <li><a class="menu__link" href="portfolio.html" aria-current="page">Portfolio</a></li>
+                <li><a class="menu__link" href="index.html#encuentra">Encuéntranos</a></li>
+            </ul>
+            <div class="menu__social">
+                <a href="https://instagram.com/berriesnmango" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.behance.net/berriesnmango" target="_blank" rel="noopener">Behance</a>
+            </div>
+        </div>
+
+        <main class="page__main">
+
+            <!-- ============== PORTFOLIO GRID ============== -->
+            <section class="portfolio">
+                <div class="portfolio__inner">
+
+                    <div class="portfolio__filters" data-filters>
+                        <!-- Populated by scripts/portfolio.js -->
+                    </div>
+
+                    <ul class="portfolio__grid" data-portfolio>
+                        <!-- Populated by scripts/portfolio.js from assets/jsons/projects.json -->
+                    </ul>
+
+                    <div class="portfolio__credit">
+                        <span class="portfolio__credit-mark" data-color-mix>Visual Mixology</span>
+                        <span class="portfolio__credit-by">by Berries &amp; Mango · 2023 — 2026</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ============== FOOTER ============== -->
+        <footer class="footer">
+            <div class="footer__hero">
+                <img class="footer__logo" src="assets/images/logo-wordmark.png" alt="Berries &amp; Mango">
+                <p class="footer__tagline">Marcas hechas con mucho sabor.</p>
+            </div>
+
+            <div class="footer__inner">
+                <div class="footer__col footer__col--brand">
+                    <h4 class="footer__col-title">Estudio</h4>
+                    <p class="footer__link">Berries &amp; Mango — estudio de diseño mexicano basado en Yucatán, México.</p>
+                    <a class="footer__cta glow glow--coral" style="--glow-delay:.3s" href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango" target="_blank" rel="noopener noreferrer" data-magnetic="0.25">Cotizar proyecto →</a>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Sitio</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="index.html#conoce">Conoce</a></li>
+                        <li><a class="footer__link" href="index.html#productos">Productos</a></li>
+                        <li><a class="footer__link" href="portfolio.html">Showcase</a></li>
+                        <li><a class="footer__link" href="index.html#encuentra">Encuéntranos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Social</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="https://instagram.com/berriesnmango" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a class="footer__link" href="https://www.behance.net/berriesnmango" target="_blank" rel="noopener">Behance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Contacto</h4>
+                    <ul class="footer__list">
+                        <li><a class="footer__link" href="mailto:brenda@berriesandmango.com">brenda@berriesandmango.com</a></li>
+                        <li><a class="footer__link" href="index.html#encuentra">Cotización</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <span class="footer__copy">© <span data-year>2026</span> Berries &amp; Mango. Todos los derechos reservados.</span>
+                <a class="footer__top" href="#top"><span>Ir arriba</span> <span aria-hidden="true">↑</span></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ============== PROJECT VIEWER (full-screen overlay) ============== -->
+    <div class="viewer" data-viewer aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+
+        <div class="viewer__stage">
+
+            <!-- Prev project teaser -->
+            <button class="viewer__bleed viewer__bleed--prev" type="button" data-prev-project aria-label="Proyecto anterior">
+                <img data-prev-thumb alt="" loading="lazy">
+            </button>
+
+            <!-- Centerpiece -->
+            <div class="viewer__main">
+
+                <!-- Brand pill (top center) -->
+                <div class="viewer__top">
+                    <img class="viewer__top-logo" src="assets/images/logo.svg" alt="Berries &amp; Mango">
+                    <button class="viewer__top-menu glow glow--coral" style="--glow-delay:.1s" type="button" data-close aria-label="Cerrar y volver al grid">×</button>
+                </div>
+
+                <!-- Mini portfolio: grid of all project media -->
+                <div class="viewer__gallery" data-gallery>
+                    <!-- gallery cells injected by portfolio.js -->
+                </div>
+
+                <!-- Bottom row -->
+                <div class="viewer__bottom">
+
+                    <!-- Creator pill + hover card -->
+                    <div class="viewer__creator" data-creator>
+                        <button class="viewer__creator-pill glow glow--violet" style="--glow-delay:.25s" type="button" data-creator-toggle aria-expanded="false">
+                            <img class="viewer__creator-avatar" src="assets/images/logo-symbol.png" alt="">
+                            <span class="viewer__creator-meta">
+                                <span class="viewer__creator-name">Berries &amp; Mango</span>
+                                <span class="viewer__creator-role">Estudio de diseño</span>
+                            </span>
+                        </button>
+                        <div class="viewer__creator-card" role="dialog" aria-label="Acerca de Berries &amp; Mango">
+                            <div class="viewer__creator-head">
+                                <img class="viewer__creator-avatar viewer__creator-avatar--lg" src="assets/images/logo-symbol.png" alt="">
+                                <span class="viewer__creator-head-text">
+                                    <span class="viewer__creator-head-name">Berries &amp; Mango</span>
+                                    <span class="viewer__creator-head-role">Estudio de diseño</span>
+                                </span>
+                            </div>
+                            <div class="viewer__creator-body">
+                                <p class="viewer__creator-bio">
+                                    Estudio de diseño mexicano. Creamos identidad visual,
+                                    ilustración y empaque con mucho sabor.
+                                </p>
+                                <a class="viewer__creator-cta glow glow--yolk"
+                                   style="--glow-delay:.5s"
+                                   href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango"
+                                   target="_blank" rel="noopener noreferrer">
+                                    Trabaja conmigo
+                                </a>
+                                <div class="viewer__creator-social">
+                                    <a href="https://instagram.com/berriesnmango" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                                    <a href="https://www.behance.net/berriesnmango" target="_blank" rel="noopener" aria-label="Behance">Be</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details + grid actions -->
+                    <div class="viewer__actions">
+                        <button class="viewer__details-btn glow glow--pink" style="--glow-delay:.4s" type="button" data-details-toggle>
+                            <span>Details</span>
+                            <span class="viewer__details-caret" aria-hidden="true">▾</span>
+                        </button>
+                        <button class="viewer__grid-btn glow glow--mint" style="--glow-delay:.55s" type="button" data-close aria-label="Volver al grid">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="3" y="3" width="8" height="8" rx="1"/>
+                                <rect x="13" y="3" width="8" height="8" rx="1"/>
+                                <rect x="3" y="13" width="8" height="8" rx="1"/>
+                                <rect x="13" y="13" width="8" height="8" rx="1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Next project preview -->
+                    <button class="viewer__next glow glow--yolk" style="--glow-delay:.8s" type="button" data-next-project>
+                        <span>Next</span>
+                        <img class="viewer__next-thumb" data-next-thumb alt="" loading="lazy">
+                    </button>
+
+                </div>
+
+                <!-- Details panel -->
+                <div class="viewer__details-panel" data-details-panel>
+                    <div class="viewer__details-inner">
+                        <h2 class="viewer__title" id="viewer-title" data-title></h2>
+                        <p class="viewer__desc" data-desc></p>
+                        <dl class="viewer__meta">
+                            <div class="viewer__meta-row">
+                                <dt class="viewer__meta-key">Cliente</dt>
+                                <dd class="viewer__meta-val" data-client></dd>
+                            </div>
+                            <div class="viewer__meta-row">
+                                <dt class="viewer__meta-key">Categoría</dt>
+                                <dd class="viewer__meta-val" data-category></dd>
+                            </div>
+                            <div class="viewer__meta-row">
+                                <dt class="viewer__meta-key">Fecha</dt>
+                                <dd class="viewer__meta-val" data-date></dd>
+                            </div>
+                        </dl>
+                        <a class="viewer__behance glow glow--skyblue" style="--glow-delay:.7s" data-behance target="_blank" rel="noopener noreferrer">
+                            Ver en Behance
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Next project teaser -->
+            <button class="viewer__bleed viewer__bleed--next" type="button" data-next-project aria-label="Siguiente proyecto">
+                <img data-next-thumb-bleed alt="" loading="lazy">
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ============== LIGHTBOX (single-image zoom) ============== -->
+    <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+        <button class="lightbox__close glow glow--coral" style="--glow-delay:.1s" type="button" data-lightbox-close aria-label="Cerrar imagen">×</button>
+        <button class="lightbox__nav lightbox__nav--prev glow glow--mint" style="--glow-delay:.35s" type="button" data-lightbox-prev aria-label="Anterior">‹</button>
+        <button class="lightbox__nav lightbox__nav--next glow glow--skyblue" style="--glow-delay:.6s" type="button" data-lightbox-next aria-label="Siguiente">›</button>
+        <div class="lightbox__stage" data-lightbox-stage>
+            <!-- media injected by portfolio.js -->
+        </div>
+        <div class="lightbox__counter" data-lightbox-counter></div>
+    </div>
+
+    <!-- Floating WhatsApp button — always visible -->
+    <a class="whatsapp-float glow glow--green"
+       href="https://wa.me/529993946353?text=quiero%20informes%20acerca%20de%20los%20servicios%20de%20berries%20and%20mango"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Hablar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.74 4.93 2.14 7L3 29l6.4-2.08a13.1 13.1 0 0 0 6.62 1.78h.01c7.18 0 13.02-5.73 13.02-12.8C29.05 8.73 23.2 3 16.02 3Zm7.58 18.08c-.32.9-1.88 1.72-2.6 1.83-.67.1-1.52.14-2.46-.16-.57-.18-1.3-.42-2.24-.82-3.95-1.67-6.52-5.58-6.72-5.85-.2-.27-1.6-2.12-1.6-4.05 0-1.93 1-2.88 1.36-3.27.36-.39.8-.48 1.06-.48.27 0 .53 0 .77.01.25.01.58-.1.91.7.32.77 1.08 2.67 1.18 2.86.1.2.16.43.03.7-.13.27-.2.43-.4.66-.2.23-.42.52-.6.7-.2.2-.4.42-.17.82.23.39 1.03 1.67 2.2 2.7 1.5 1.32 2.77 1.73 3.16 1.93.4.2.63.16.87-.1.23-.27 1-1.16 1.27-1.56.27-.39.53-.33.9-.2.36.13 2.3 1.07 2.7 1.27.4.2.67.3.77.46.1.16.1.92-.22 1.82Z"/>
+        </svg>
+    </a>
+
+    <!-- ============== SCRIPTS ============== -->
+    <script src="scripts/colorize.js" defer></script>
+    <script src="scripts/menu.js" defer></script>
+    <script src="scripts/portfolio.js" defer></script>
+    <script src="scripts/motion.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+</body>
+</html>

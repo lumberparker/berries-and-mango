@@ -1,0 +1,168 @@
+/* =========================================================
+   Block: propiedades — flavour-profile cards on black.
+   ========================================================= */
+
+.propiedades {
+    position: relative;
+    isolation: isolate;
+    padding: var(--section-y) var(--gutter);
+    background: var(--color-ink);
+    color: var(--color-cream);
+    overflow: hidden;
+}
+
+.propiedades::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: -20vmax;
+    width: 50vmax;
+    height: 50vmax;
+    background: var(--color-violet);
+    opacity: 0.28;
+    filter: blur(80px);
+    border-radius: 50%;
+    animation: blob-morph 20s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.propiedades::after {
+    content: "";
+    position: absolute;
+    bottom: -10vmax;
+    right: -10vmax;
+    width: 40vmax;
+    height: 40vmax;
+    background: var(--color-pink);
+    opacity: 0.2;
+    filter: blur(70px);
+    border-radius: 50%;
+    animation: blob-morph 16s ease-in-out infinite alternate-reverse;
+    z-index: 0;
+}
+
+.propiedades__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.propiedades__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-mango);
+    margin-bottom: var(--space-4);
+}
+
+.propiedades__eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-mango);
+}
+
+.propiedades__heading {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    color: var(--color-cream);
+    margin-bottom: var(--space-8);
+    max-width: 16ch;
+}
+
+.propiedades__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+.propiedades__item {
+    position: relative;
+    padding: var(--space-6);
+    border-radius: var(--radius);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-ink);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform var(--dur-slow) var(--ease);
+}
+
+.propiedades__item:hover {
+    transform: translateY(-10px) rotate(-1deg);
+}
+
+.propiedades__item::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.propiedades__item--mango  { background: var(--color-mango); }
+.propiedades__item--coral  { background: var(--color-coral); }
+.propiedades__item--violet { background: var(--color-violet); color: var(--color-cream); }
+.propiedades__item--rust   { background: var(--color-rust); color: var(--color-cream); }
+
+.propiedades__index {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+}
+
+.propiedades__sticker {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: var(--space-5);
+    right: var(--space-5);
+    opacity: 0.85;
+    color: currentColor;
+    transition: transform var(--dur) var(--ease);
+}
+
+.propiedades__item:hover .propiedades__sticker {
+    transform: rotate(15deg) scale(1.15);
+}
+
+.propiedades__item-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(28px, 3.2vw, 48px);
+    line-height: 1;
+    font-weight: 500;
+    margin-top: auto;
+    letter-spacing: -0.02em;
+}
+
+.propiedades__item-text {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: var(--space-3);
+    max-width: 24ch;
+    opacity: 0.88;
+}
+
+@media (max-width: 900px) {
+    .propiedades__grid { grid-template-columns: repeat(2, 1fr); }
+    .propiedades__item { aspect-ratio: 4 / 5; }
+}
+
+@media (max-width: 540px) {
+    .propiedades__grid { grid-template-columns: 1fr; }
+    .propiedades__item { aspect-ratio: 16 / 10; }
+}

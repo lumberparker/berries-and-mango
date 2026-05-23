@@ -1,0 +1,196 @@
+/* =========================================================
+   Block: menu
+   Floating navigation pill — fixed top-center on every page.
+   Click the toggle to open a full-screen overlay nav.
+   ========================================================= */
+
+.menu {
+    position: fixed;
+    top: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 6px 6px 18px;
+    border-radius: 999px;
+    background: var(--color-violet);
+    box-shadow: 0 14px 34px -10px rgba(103, 118, 255, 0.45);
+    color: var(--color-cream);
+    transition: transform var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease);
+}
+
+.menu:hover {
+    box-shadow: 0 20px 40px -12px rgba(103, 118, 255, 0.6);
+}
+
+/* Brand */
+.menu__brand {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-cream);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    padding: 4px 6px;
+}
+
+.menu__brand em {
+    font-style: italic;
+    color: var(--color-mango);
+    margin: 0 2px;
+}
+
+.menu__brand:hover { opacity: 0.85; }
+
+/* Toggle (hamburger) */
+.menu__toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--color-cream);
+    display: grid;
+    place-items: center;
+    border: 0;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease),
+                transform var(--dur-fast) var(--ease);
+}
+
+.menu__toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.menu__toggle-icon {
+    position: relative;
+    width: 14px;
+    height: 10px;
+}
+
+.menu__toggle-icon::before,
+.menu__toggle-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: var(--color-cream);
+    border-radius: 2px;
+    transition: transform var(--dur) var(--ease),
+                top var(--dur) var(--ease),
+                bottom var(--dur) var(--ease);
+}
+
+.menu__toggle-icon::before { top: 2px; }
+.menu__toggle-icon::after  { bottom: 2px; }
+
+.menu.is-open .menu__toggle-icon::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.menu.is-open .menu__toggle-icon::after {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+/* Overlay drawer */
+.menu__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-6);
+    padding: 120px var(--gutter) var(--space-7);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 320ms var(--ease),
+                visibility 0s linear 320ms;
+}
+
+.menu.is-open ~ .menu__overlay,
+.menu__overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 320ms var(--ease);
+}
+
+.menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: center;
+}
+
+.menu__link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--color-cream);
+    text-decoration: none;
+    display: inline-block;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 480ms var(--ease),
+                opacity 480ms var(--ease),
+                color var(--dur-fast) var(--ease);
+}
+
+.menu__overlay.is-open .menu__link {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.menu__overlay.is-open .menu__list li:nth-child(1) .menu__link { transition-delay: 80ms; }
+.menu__overlay.is-open .menu__list li:nth-child(2) .menu__link { transition-delay: 140ms; }
+.menu__overlay.is-open .menu__list li:nth-child(3) .menu__link { transition-delay: 200ms; }
+.menu__overlay.is-open .menu__list li:nth-child(4) .menu__link { transition-delay: 260ms; }
+
+.menu__link:hover { color: var(--color-mango); }
+
+.menu__social {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+}
+
+.menu__social a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 249, 245, 0.65);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease);
+}
+
+.menu__social a:hover { color: var(--color-mango); }
+
+/* Hide on mobile keep pill smaller */
+@media (max-width: 600px) {
+    .menu {
+        padding: 5px 5px 5px 14px;
+    }
+    .menu__brand { font-size: 16px; }
+    .menu__toggle { width: 30px; height: 30px; }
+}

@@ -1,0 +1,347 @@
+/* =========================================================
+   Block: page
+   Base reset, layout container, color & spacing tokens.
+   ========================================================= */
+
+:root {
+    /* Palette — Visual Mixology */
+    --color-cream:  #faf9f5;
+    --color-soft:   #efebe8;
+    --color-ink:    #0a0a0a;
+    --color-mango:  #fcad22;
+    --color-mango-2:#f49b1c;
+    --color-yolk:   #fcc247;
+    --color-coral:  #ffafa9;
+    --color-peach:  #fce5d6;
+    --color-pink:   #ec2e7c;
+    --color-violet: #6776ff;
+    --color-skyblue:#7bb8f0;
+    --color-rust:   #e26248;
+    --color-mint:   #6ed6a8;
+    --color-green:  #4b9b21;
+    --color-blue:   #2652f2;
+
+    /* Semantic */
+    --bg:        var(--color-cream);
+    --fg:        var(--color-ink);
+    --accent:    var(--color-mango);
+    --muted:     #6b6b6b;
+    --rule:      rgba(0, 0, 0, 0.12);
+
+    /* Spacing */
+    --space-1:  4px;
+    --space-2:  8px;
+    --space-3:  12px;
+    --space-4:  16px;
+    --space-5:  24px;
+    --space-6:  32px;
+    --space-7:  48px;
+    --space-8:  64px;
+    --space-9:  96px;
+    --space-10: 128px;
+
+    /* Layout */
+    --container:  1280px;
+    --gutter:     clamp(20px, 4vw, 48px);
+    --section-y:  clamp(80px, 10vw, 160px);
+    --radius:     14px;
+    --radius-lg:  28px;
+
+    /* Motion */
+    --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast:  160ms;
+    --dur:       320ms;
+    --dur-slow:  640ms;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body,
+.page {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark-themed pages (portfolio) */
+body.page--dark {
+    background: #0e0e0e;
+    color: var(--color-cream);
+}
+
+.page__wrap {
+    overflow-x: clip;
+}
+
+.page__main {
+    display: block;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: var(--font-display);
+    color: var(--fg);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h3 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+img,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+::selection {
+    background: var(--color-mango);
+    color: var(--color-ink);
+}
+
+/* =========================================================
+   Shared visual primitives — used by multiple blocks.
+   ========================================================= */
+
+/* Multi-color letter spans (Visual Mixology effect).
+   Wrap each WORD in .color-mix__w (inline-block, nowrap) so letters
+   never break mid-word. Put plain text whitespace between words. */
+/* Don't force display on the host — let the element keep its natural box
+   (block for h2/div, inline for spans). Forcing `inline` here used to
+   collapse block headings onto the same line as their eyebrow and broke
+   their vertical margins. */
+.color-mix {
+    line-height: inherit;
+    word-spacing: 0.08em;
+}
+
+.color-mix__w {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.color-mix__l {
+    display: inline-block;
+    transition: transform var(--dur) var(--ease);
+}
+
+.color-mix__l--mango  { color: var(--color-mango); }
+.color-mix__l--yolk   { color: var(--color-yolk); }
+.color-mix__l--coral  { color: var(--color-coral); }
+.color-mix__l--peach  { color: var(--color-peach); }
+.color-mix__l--pink   { color: var(--color-pink); }
+.color-mix__l--violet { color: var(--color-violet); }
+.color-mix__l--sky    { color: var(--color-skyblue); }
+.color-mix__l--blue   { color: var(--color-blue); }
+.color-mix__l--mint   { color: var(--color-mint); }
+.color-mix__l--green  { color: var(--color-green); }
+.color-mix__l--rust   { color: var(--color-rust); }
+.color-mix__l--cream  { color: var(--color-cream); }
+
+/* Optional bounce hover wave (data-wave on parent triggers JS) */
+.color-mix__l.is-wave {
+    animation: letter-wave 600ms var(--ease);
+}
+
+@keyframes letter-wave {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50%      { transform: translateY(-14px) rotate(-4deg); }
+}
+
+/* Decoration anchors — absolutely-positioned floating stickers */
+.deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.deco__sticker {
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: deco-float 7s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.deco__sticker--slow  { animation-duration: 11s; }
+.deco__sticker--fast  { animation-duration: 5s; }
+.deco__sticker--spin  { animation: deco-spin 18s linear infinite; }
+
+@keyframes deco-float {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+    50%      { transform: translate3d(0, -18px, 0) rotate(4deg); }
+}
+
+@keyframes deco-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Animated blob shapes */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.65;
+    pointer-events: none;
+    animation: blob-morph 12s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes blob-morph {
+    0%   { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: translate(0, 0) scale(1); }
+    33%  { border-radius: 70% 30% 60% 40% / 40% 60% 30% 70%; transform: translate(20px, -30px) scale(1.08); }
+    66%  { border-radius: 40% 60% 30% 70% / 70% 30% 60% 40%; transform: translate(-20px, 20px) scale(0.96); }
+    100% { border-radius: 60% 40% 70% 30% / 30% 70% 40% 60%; transform: translate(10px, 10px) scale(1.04); }
+}
+
+/* =========================================================
+   Custom native cursors — change color per section.
+   SVG data URIs so the *actual* OS cursor swaps as you move
+   between sections instead of drawing a follower element.
+   ========================================================= */
+
+:root {
+    --cur-mango: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M4 3 L4 22 L9 18 L13 25 L16 24 L12 17 L20 17 Z' fill='%23fcad22' stroke='black' stroke-width='1.5' stroke-linejoin='round'/></svg>") 4 3, auto;
+
+    --cur-cream: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M4 3 L4 22 L9 18 L13 25 L16 24 L12 17 L20 17 Z' fill='%23faf9f5' stroke='%23fcad22' stroke-width='2' stroke-linejoin='round'/></svg>") 4 3, auto;
+
+    --cur-ink: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M4 3 L4 22 L9 18 L13 25 L16 24 L12 17 L20 17 Z' fill='%230a0a0a' stroke='%23faf9f5' stroke-width='1.5' stroke-linejoin='round'/></svg>") 4 3, auto;
+
+    --cur-violet: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M4 3 L4 22 L9 18 L13 25 L16 24 L12 17 L20 17 Z' fill='%236776ff' stroke='black' stroke-width='1.5' stroke-linejoin='round'/></svg>") 4 3, auto;
+
+    --cur-mint: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M4 3 L4 22 L9 18 L13 25 L16 24 L12 17 L20 17 Z' fill='%236ed6a8' stroke='black' stroke-width='1.5' stroke-linejoin='round'/></svg>") 4 3, auto;
+
+    --cur-pink: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M4 3 L4 25 L10 21 L15 28 L18 27 L13 19 L22 19 Z' fill='%23ec2e7c' stroke='black' stroke-width='1.8' stroke-linejoin='round'/></svg>") 4 3, pointer;
+
+    --cur-coral: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M4 3 L4 25 L10 21 L15 28 L18 27 L13 19 L22 19 Z' fill='%23ffafa9' stroke='black' stroke-width='1.8' stroke-linejoin='round'/></svg>") 4 3, pointer;
+}
+
+/* Base — light sections inherit this */
+body { cursor: var(--cur-mango); }
+
+/* Dark-background sections — light cream cursor with mango outline */
+.hero,
+.marquee,
+.propiedades,
+.loader,
+.footer { cursor: var(--cur-cream); }
+
+/* Light sections get section-specific accents */
+.conoce          { cursor: var(--cur-mango); }
+.presentaciones  { cursor: var(--cur-violet); }
+.showcase        { cursor: var(--cur-mint); }
+.productos       { cursor: var(--cur-ink); }      /* on mango bg */
+.encuentra       { cursor: var(--cur-violet); }   /* on coral bg */
+.portfolio       { cursor: var(--cur-cream); }    /* dark grid */
+.viewer          { cursor: var(--cur-cream); }    /* dark overlay */
+
+/* Interactive elements — pink across the board, except on mango bg use coral */
+a,
+button,
+[data-magnetic],
+.header__nav-link,
+.header__cta,
+.hero__cta,
+.encuentra__submit,
+.showcase__link,
+.propiedades__item,
+.productos__card,
+.presentaciones__row,
+.footer__link,
+.footer__cta,
+.footer__top { cursor: var(--cur-pink); }
+
+.productos a,
+.productos button,
+.productos [data-magnetic],
+.productos__card { cursor: var(--cur-coral); }
+
+/* Disable custom cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+    body, .hero, .marquee, .propiedades, .loader, .footer,
+    .conoce, .presentaciones, .showcase, .productos, .encuentra,
+    a, button, [data-magnetic] { cursor: auto; }
+    a, button, [data-magnetic] { cursor: pointer; }
+}
+
+/* Reveal-on-scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+}
+
+.reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}

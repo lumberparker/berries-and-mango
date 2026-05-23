@@ -1,0 +1,133 @@
+/* =========================================================
+   Block: conoce — about-us with floating sticker + warm blob.
+   ========================================================= */
+
+.conoce {
+    position: relative;
+    isolation: isolate;
+    padding: var(--section-y) var(--gutter);
+    background: var(--color-cream);
+    overflow: hidden;
+}
+
+.conoce::before {
+    content: "";
+    position: absolute;
+    top: -10vmax;
+    right: -20vmax;
+    width: 50vmax;
+    height: 50vmax;
+    background: var(--color-mango);
+    opacity: 0.18;
+    filter: blur(60px);
+    border-radius: 50%;
+    animation: blob-morph 18s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.conoce__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "eyebrow eyebrow"
+        "heading media"
+        "body    media";
+    column-gap: var(--space-8);
+    row-gap: var(--space-6);
+    align-items: start;
+}
+
+.conoce__eyebrow {
+    grid-area: eyebrow;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-rust);
+}
+
+.conoce__eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-rust);
+}
+
+.conoce__heading {
+    grid-area: heading;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(36px, 4.6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+}
+
+.conoce__body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 52ch;
+}
+
+.conoce__text {
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.conoce__media {
+    grid-area: media;
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background:
+        radial-gradient(120% 100% at 0% 0%, var(--color-coral), transparent 60%),
+        radial-gradient(120% 100% at 100% 100%, var(--color-mango), transparent 60%),
+        var(--color-pink);
+    align-self: stretch;
+}
+
+.conoce__symbol {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12%;
+    mix-blend-mode: multiply;
+}
+
+.conoce__sticker {
+    position: absolute;
+    width: 84px;
+    aspect-ratio: 1;
+    z-index: 3;
+    display: none;
+}
+
+.conoce__sticker--berry { top: 6%; right: -28px; color: var(--color-rust); }
+.conoce__sticker--spark { bottom: 18%; left: -22px; color: var(--color-violet); width: 64px; }
+
+@media (max-width: 900px) {
+    .conoce__inner {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "eyebrow"
+            "heading"
+            "media"
+            "body";
+    }
+
+    .conoce__media { aspect-ratio: 16 / 12; }
+}
