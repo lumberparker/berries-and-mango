@@ -79,6 +79,56 @@
                 </button>
             </li>
         `).join('');
+
+        // After render, decide per-cell whether to cover or contain the
+        // image. Tall / portrait / square-ish images fill the cell.
+        // Significantly wider images shrink to contain + the cell takes on
+        // the image's edge color as a seamless mask.
+        grid.querySelectorAll('.portfolio__cell img').forEach(adaptCellImage);
+    }
+
+    /* Cell-fit + edge-color mask for wide source images */
+    const CELL_RATIO = 3 / 4;  // matches .portfolio__cell aspect-ratio
+    const WIDE_THRESHOLD = CELL_RATIO * 1.25;  // ~0.94+ aspect → "wide"
+
+    function adaptCellImage(img) {
+        const apply = () => {
+            const cell = img.closest('.portfolio__cell');
+            if (!cell || !img.naturalWidth || !img.naturalHeight) return;
+            const ratio = img.naturalWidth / img.naturalHeight;
+            if (ratio > WIDE_THRESHOLD) {
+                cell.classList.add('portfolio__cell--contain');
+                const bg = sampleEdgeColor(img);
+                if (bg) cell.style.setProperty('--portfolio-bg', bg);
+            }
+        };
+        if (img.complete && img.naturalWidth) apply();
+        else img.addEventListener('load', apply, { once: true });
+    }
+
+    function sampleEdgeColor(img) {
+        try {
+            const canvas = document.createElement('canvas');
+            const w = canvas.width  = Math.min(img.naturalWidth, 32);
+            const h = canvas.height = Math.min(img.naturalHeight, 32);
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            ctx.drawImage(img, 0, 0, w, h);
+            // Sample a thin border ring and average it — gives the image's
+            // background color even when the subject isn't centered.
+            const pts = [];
+            for (let x = 0; x < w; x++) { pts.push([x, 0], [x, h - 1]); }
+            for (let y = 1; y < h - 1; y++) { pts.push([0, y], [w - 1, y]); }
+            let r = 0, g = 0, b = 0;
+            pts.forEach(([x, y]) => {
+                const d = ctx.getImageData(x, y, 1, 1).data;
+                r += d[0]; g += d[1]; b += d[2];
+            });
+            const n = pts.length;
+            return `rgb(${Math.round(r / n)}, ${Math.round(g / n)}, ${Math.round(b / n)})`;
+        } catch (e) {
+            // Canvas tainted (cross-origin image) — fall back to default cell bg.
+            return null;
+        }
     }
 
     function cellMedia(p) {

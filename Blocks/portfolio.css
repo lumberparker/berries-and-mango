@@ -102,7 +102,7 @@
 .portfolio__cell {
     position: relative;
     width: 100%;
-    background: #1a1a1a;
+    background: var(--portfolio-bg, #1a1a1a);
     border: 0;
     padding: 0;
     text-align: left;
@@ -112,15 +112,25 @@
     border-radius: 6px;
     aspect-ratio: 3 / 4;
     isolation: isolate;
+    transition: background 320ms var(--ease);
 }
 
+/* Default: image fills the cell — looks "full and vertical" */
 .portfolio__cell img,
 .portfolio__cell video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
     transition: transform 700ms var(--ease), filter 400ms var(--ease);
+}
+
+/* Wide / landscape sources: shrink to contain. The cell's bg has been
+   set to the image's edge color via JS, so the letterbox blends in
+   seamlessly and the embedded text/logo stays readable. */
+.portfolio__cell--contain img,
+.portfolio__cell--contain video {
+    object-fit: contain;
 }
 
 /* Hover state — dim the image, reveal the title + date */
