@@ -68,17 +68,20 @@
 
     /* ---------- Grid render ---------- */
     function renderGrid(list) {
-        grid.innerHTML = list.map((p, i) => `
-            <li class="portfolio__item" data-id="${p.id}" style="--delay:${i * 50}ms">
-                <button class="portfolio__cell" type="button" data-open="${p.id}" aria-label="Abrir ${p.title}">
-                    ${cellMedia(p)}
-                    <div class="portfolio__overlay">
-                        <span class="portfolio__overlay-title">${p.title}</span>
-                        <span class="portfolio__overlay-date">${p.date || p.year || ''}</span>
-                    </div>
-                </button>
-            </li>
-        `).join('');
+        grid.innerHTML = list.map((p, i) => {
+            const fitAttr = p.fit ? ` data-fit="${p.fit}"` : '';
+            return `
+                <li class="portfolio__item" data-id="${p.id}" style="--delay:${i * 50}ms">
+                    <button class="portfolio__cell" type="button" data-open="${p.id}"${fitAttr} aria-label="Abrir ${p.title}">
+                        ${cellMedia(p)}
+                        <div class="portfolio__overlay">
+                            <span class="portfolio__overlay-title">${p.title}</span>
+                            <span class="portfolio__overlay-date">${p.date || p.year || ''}</span>
+                        </div>
+                    </button>
+                </li>
+            `;
+        }).join('');
 
         // After render, decide per-cell whether to cover or contain the
         // image. Tall / portrait / square-ish images fill the cell.
@@ -99,18 +102,30 @@
         const apply = () => {
             const cell = img.closest('.portfolio__cell');
             if (!cell || !img.naturalWidth || !img.naturalHeight) return;
-            const ratio = img.naturalWidth / img.naturalHeight;
-            if (ratio <= WIDE_THRESHOLD) return; // tall/square — full bleed
-            const edge = sampleEdge(img);
-            if (!edge) return;
-            if (edge.stddev <= SOLID_BG_STDDEV) {
-                // Solid background — almost certainly a logo/design with
-                // embedded text. Contain + paint cell with edge color.
+
+            // Per-project override via data-fit attribute on the cell:
+            //   data-fit="cover"   → always crop to fill
+            //   data-fit="contain" → always contain + edge-color mask
+            //   (unset / "auto")   → heuristic below
+            const fitMode = cell.dataset.fit || 'auto';
+
+            const setContain = () => {
                 cell.classList.add('portfolio__cell--contain');
-                cell.style.setProperty('--portfolio-bg',
-                    `rgb(${edge.r}, ${edge.g}, ${edge.b})`);
-            }
-            // else: a photo (varied edge pixels) → keep cover, crop as-is.
+                const edge = sampleEdge(img);
+                if (edge) {
+                    cell.style.setProperty('--portfolio-bg',
+                        `rgb(${edge.r}, ${edge.g}, ${edge.b})`);
+                }
+            };
+
+            if (fitMode === 'cover') return;
+            if (fitMode === 'contain') { setContain(); return; }
+
+            // Auto: contain only if wide AND uniform edge (solid-bg logo).
+            const ratio = img.naturalWidth / img.naturalHeight;
+            if (ratio <= WIDE_THRESHOLD) return;
+            const edge = sampleEdge(img);
+            if (edge && edge.stddev <= SOLID_BG_STDDEV) setContain();
         };
         if (img.complete && img.naturalWidth) apply();
         else img.addEventListener('load', apply, { once: true });
