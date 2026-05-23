@@ -125,12 +125,36 @@
     transition: transform 700ms var(--ease), filter 400ms var(--ease);
 }
 
-/* Wide / landscape sources: shrink to contain. The cell's bg has been
-   set to the image's edge color via JS, so the letterbox blends in
-   seamlessly and the embedded text/logo stays readable. */
+/* Wide / landscape sources: shrink to contain. Behind the contained
+   image, a blurred copy of the same image fills the cell as a
+   cinematic backdrop — the letterbox feels like ambient depth instead
+   of a flat mask. */
 .portfolio__cell--contain img,
 .portfolio__cell--contain video {
     object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio__cell--contain::before {
+    content: "";
+    position: absolute;
+    /* Inset negative so blurred edges fall outside the cell bounds. */
+    inset: -8%;
+    z-index: 0;
+    background-image: var(--cell-bg-image);
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) saturate(1.15) brightness(0.85);
+    /* Slight scale prevents transparent fringes at the corners of the
+       blur, and gives the bg a touch of presence. */
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+.portfolio__cell--contain:hover::before {
+    filter: blur(28px) saturate(1.25) brightness(0.6);
+    transition: filter 400ms var(--ease);
 }
 
 /* Hover state — dim the image, reveal the title + date */

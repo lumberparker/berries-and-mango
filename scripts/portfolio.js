@@ -111,6 +111,10 @@
 
             const setContain = () => {
                 cell.classList.add('portfolio__cell--contain');
+                // Use the same image as a blurred cinematic backdrop.
+                cell.style.setProperty('--cell-bg-image', `url("${img.currentSrc || img.src}")`);
+                // Edge color is kept as a fallback in case the bg image
+                // hasn't loaded yet — peeks through behind the blur.
                 const edge = sampleEdge(img);
                 if (edge) {
                     cell.style.setProperty('--portfolio-bg',
