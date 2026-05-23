@@ -87,46 +87,72 @@
         grid.querySelectorAll('.portfolio__cell img').forEach(adaptCellImage);
     }
 
-    /* Cell-fit + edge-color mask for wide source images */
-    const CELL_RATIO = 3 / 4;  // matches .portfolio__cell aspect-ratio
-    const WIDE_THRESHOLD = CELL_RATIO * 1.25;  // ~0.94+ aspect → "wide"
+    /* Cell-fit + edge-color mask. Only letterbox an image when it's BOTH
+       significantly wider than the cell AND has a uniform edge color
+       (i.e. a logo / flat-bg design). Photos with varied edges always
+       fill the cell. */
+    const CELL_RATIO = 3 / 4;                  // .portfolio__cell aspect-ratio
+    const WIDE_THRESHOLD = CELL_RATIO * 1.25;  // ratio > ~0.94 is "wide"
+    const SOLID_BG_STDDEV = 22;                // edge variance below this = solid bg
 
     function adaptCellImage(img) {
         const apply = () => {
             const cell = img.closest('.portfolio__cell');
             if (!cell || !img.naturalWidth || !img.naturalHeight) return;
             const ratio = img.naturalWidth / img.naturalHeight;
-            if (ratio > WIDE_THRESHOLD) {
+            if (ratio <= WIDE_THRESHOLD) return; // tall/square — full bleed
+            const edge = sampleEdge(img);
+            if (!edge) return;
+            if (edge.stddev <= SOLID_BG_STDDEV) {
+                // Solid background — almost certainly a logo/design with
+                // embedded text. Contain + paint cell with edge color.
                 cell.classList.add('portfolio__cell--contain');
-                const bg = sampleEdgeColor(img);
-                if (bg) cell.style.setProperty('--portfolio-bg', bg);
+                cell.style.setProperty('--portfolio-bg',
+                    `rgb(${edge.r}, ${edge.g}, ${edge.b})`);
             }
+            // else: a photo (varied edge pixels) → keep cover, crop as-is.
         };
         if (img.complete && img.naturalWidth) apply();
         else img.addEventListener('load', apply, { once: true });
     }
 
-    function sampleEdgeColor(img) {
+    function sampleEdge(img) {
         try {
             const canvas = document.createElement('canvas');
             const w = canvas.width  = Math.min(img.naturalWidth, 32);
             const h = canvas.height = Math.min(img.naturalHeight, 32);
             const ctx = canvas.getContext('2d', { willReadFrequently: true });
             ctx.drawImage(img, 0, 0, w, h);
-            // Sample a thin border ring and average it — gives the image's
-            // background color even when the subject isn't centered.
+
+            // Collect a thin border ring of pixels.
             const pts = [];
             for (let x = 0; x < w; x++) { pts.push([x, 0], [x, h - 1]); }
             for (let y = 1; y < h - 1; y++) { pts.push([0, y], [w - 1, y]); }
+            const samples = pts.map(([x, y]) => ctx.getImageData(x, y, 1, 1).data);
+
+            // Mean RGB.
             let r = 0, g = 0, b = 0;
-            pts.forEach(([x, y]) => {
-                const d = ctx.getImageData(x, y, 1, 1).data;
-                r += d[0]; g += d[1]; b += d[2];
+            samples.forEach(s => { r += s[0]; g += s[1]; b += s[2]; });
+            const n = samples.length;
+            r /= n; g /= n; b /= n;
+
+            // Standard deviation across channels — proxy for "is the edge
+            // uniform?". Solid logo bg ≈ 0–15, photo edge ≈ 40–80+.
+            let varSum = 0;
+            samples.forEach(s => {
+                const dr = s[0] - r, dg = s[1] - g, db = s[2] - b;
+                varSum += dr * dr + dg * dg + db * db;
             });
-            const n = pts.length;
-            return `rgb(${Math.round(r / n)}, ${Math.round(g / n)}, ${Math.round(b / n)})`;
+            const stddev = Math.sqrt(varSum / (n * 3));
+
+            return {
+                r: Math.round(r),
+                g: Math.round(g),
+                b: Math.round(b),
+                stddev,
+            };
         } catch (e) {
-            // Canvas tainted (cross-origin image) — fall back to default cell bg.
+            // Canvas tainted (cross-origin image) — fall back to defaults.
             return null;
         }
     }
