@@ -29,6 +29,7 @@
     inset: 0;
     display: grid;
     grid-template-columns: minmax(80px, 1fr) minmax(0, 4fr) minmax(80px, 1fr);
+    grid-template-rows: 1fr;
     align-items: stretch;
 }
 
@@ -61,6 +62,8 @@
 /* ---------- Central media area ---------- */
 .viewer__main {
     position: relative;
+    height: 100%;
+    min-height: 0;
     padding: 88px var(--space-5) 140px;
     overflow-y: auto;
     overflow-x: hidden;
