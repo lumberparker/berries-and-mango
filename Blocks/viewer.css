@@ -640,46 +640,59 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-    .viewer__stage { grid-template-columns: 0 1fr 0; }
-    .viewer__bleed { display: none; }
-    .viewer__main { padding: 80px var(--space-3) 110px; }
+    .viewer__stage {
+        display: flex !important;
+        flex-direction: column;
+        grid-template-columns: none !important;
+    }
+    .viewer__bleed { display: none !important; }
+    .viewer__main {
+        flex: 1 1 auto;
+        height: 100% !important;
+        min-height: 0;
+        padding: 80px var(--space-3) 120px !important;
+    }
 
     .viewer__gallery {
-        grid-template-columns: 1fr;
-        gap: var(--space-3);
-        max-width: none;
+        display: flex !important;
+        flex-direction: column;
+        gap: var(--space-3) !important;
+        max-width: none !important;
+        grid-template-columns: none !important;
     }
     /* On phones each image gets its own row at its natural aspect ratio.
-       Forcing aspect-ratio: auto on the button + height: auto on the img
-       (overriding the desktop `height: 100%` that would collapse to 0px
-       inside an auto-height parent). */
+       Forcing aspect-ratio:auto on the button + height:auto on the img
+       (the desktop `height:100%` would collapse to 0px inside an auto
+       parent). */
     .viewer__gallery-item,
     .viewer__gallery-item--wide,
     .viewer__gallery-item--single {
-        aspect-ratio: auto;
-        grid-column: auto;
-        background: transparent;
-        height: auto;
-        min-height: 120px;
+        aspect-ratio: auto !important;
+        grid-column: auto !important;
+        height: auto !important;
+        min-height: 200px !important;
+        background: #1a1a1a !important;
         /* Skip the fade-in animation on mobile so items are visible
            immediately — animation timing can race with image load. */
-        opacity: 1;
-        transform: none;
-        animation: none;
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
     }
     .viewer__gallery-item img,
     .viewer__gallery-item video,
     .viewer__gallery-item--single img,
     .viewer__gallery-item--single video {
-        width: 100%;
-        height: auto;
-        max-height: none;
-        object-fit: contain;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        display: block !important;
     }
     .viewer__gallery--single {
-        display: block;
-        height: auto;
-        min-height: 0;
+        display: flex !important;
+        flex-direction: column;
+        height: auto !important;
+        min-height: 0 !important;
     }
 
     .viewer__bottom {
