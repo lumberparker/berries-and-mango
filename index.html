@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+    <!-- Language detection: send non-Hispanic/Lusophone visitors to /en/
+         unless they've already chosen a language manually. Runs before render. -->
+    <script>
+    (function(){try{
+        if(localStorage.getItem('bm-lang')==='es') return;
+        var langs=(navigator.languages||[navigator.language||'es']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
+        var hispanic=langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl'});
+        if(!hispanic) location.replace('/en/' + (location.hash||''));
+    }catch(e){}})();
+    </script>
+
     <!-- ============== PRIMARY SEO ============== -->
     <title>Berries &amp; Mango — Estudio de diseño gráfico en Yucatán, México | Branding nacional</title>
     <meta name="description" content="Estudio de diseño gráfico en Yucatán, México — atendemos a clientes en todo mundo: Oklahoma City, New York City, Greenville, Londrés, Madrid, Miami, Buenos, Aires, CDMX, Monterrey, Guadalajara, Mérida y más. Identidad visual, branding, diseño de empaque, ilustración y desarrollo web hechos a la medida.">
@@ -17,6 +28,7 @@
     <link rel="canonical" href="https://berriesandmango.com/">
     <link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/">
     <link rel="alternate" hreflang="es" href="https://berriesandmango.com/">
+    <link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/">
     <link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/">
 
     <!-- Geo targeting (Mérida, Yucatán, México) -->
@@ -201,6 +213,7 @@
                         <li class="header__nav-item"><a class="header__nav-link" href="#servicios">Servicios</a></li>
                         <li class="header__nav-item"><a class="header__nav-link" href="portfolio.html">Portfolio</a></li>
                         <li class="header__nav-item"><a class="header__nav-link" href="#encuentra">Encuéntranos</a></li>
+                        <li class="header__nav-item header__nav-item--lang"><a class="header__nav-link header__nav-link--lang" href="/en/" data-lang-switch="en" aria-label="Switch to English">EN</a></li>
                     </ul>
                 </nav>
 
@@ -625,6 +638,7 @@
                         <li><a class="footer__link" href="#servicios">Servicios</a></li>
                         <li><a class="footer__link" href="portfolio.html">Portfolio</a></li>
                         <li><a class="footer__link" href="#encuentra">Encuéntranos</a></li>
+                        <li><a class="footer__link" href="/en/" data-lang-switch="en">English</a></li>
                     </ul>
                 </div>
 
@@ -683,5 +697,6 @@
     <script src="scripts/encuentra.js" defer></script>
     <script src="scripts/motion.js" defer></script>
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/lang-switch.js" defer></script>
 </body>
 </html>

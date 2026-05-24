@@ -52,7 +52,12 @@
     let lightboxIdx  = -1;
 
     /* ---------- Load ---------- */
-    fetch('assets/jsons/projects.json')
+    // Pick the right JSON for the active language.
+    const isEnglish = (window.BM_LANG === 'en') || location.pathname.indexOf('/en/') === 0;
+    const projectsUrl = isEnglish
+        ? '/assets/jsons/projects.en.json'
+        : '/assets/jsons/projects.json';
+    fetch(projectsUrl)
         .then(res => res.json())
         .then(data => {
             projects = data.projects;

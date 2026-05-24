@@ -1,0 +1,214 @@
+{
+    "$schema-hint": "English version of projects.json. Same shape — IDs, images, behance URLs are shared. Descriptions, categories, tags and clients translated with the site's vibe.",
+    "projects": [
+        {
+            "id": "mellow",
+            "title": "Mellow",
+            "client": "Mellow — health consultancy",
+            "year": "2025",
+            "date": "2025",
+            "category": "Visual identity",
+            "tag": "Branding",
+            "description": "Branding and visual identity for a consultancy that connects healthcare professionals with technological, educational, and financial tools. The creative direction — \"The White-Coat Heroes\" — frames the pros as superheroes through vibrant color, futuristic architecture, and sci-fi elements to build an epic narrative of resilience and hope. Includes logotype, poster illustration, brand applications, and UI concepts.",
+            "showcaseImage": "assets/images/projects/mellow.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/216389433/Mellow",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mellow.jpg" }
+            ]
+        },
+        {
+            "id": "personal-brand",
+            "title": "Personal Brand Identity",
+            "client": "Brenda Chavez · Berries & Mango",
+            "year": "2019",
+            "date": "04/2019",
+            "category": "Visual identity",
+            "tag": "Branding",
+            "description": "Personal identity inspired by tiles: small pieces that, joined together, form a larger system. A metaphor for collaboration, craft, and cultural heritage — the throughline from hands-on making to the graphic design that defines my identity as a designer.",
+            "showcaseImage": "assets/images/projects/personal-brand.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/78894813/Personal-Brand-Indentity",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/personal-brand.jpg" }
+            ]
+        },
+        {
+            "id": "mexican-lottery",
+            "title": "Mexican Lottery Concept",
+            "client": "Collaboration with Unrandom Studio",
+            "year": "2024",
+            "date": "10/2024",
+            "category": "Illustration",
+            "tag": "Editorial",
+            "description": "Reinterpretation of the traditional Mexican lottery alongside Unrandom Studio, under the philosophy “we make it rain for you to bloom.” Cards are re-illustrated and verses rewritten around a single thread: rain. A three-way collaboration between artists in Mexico and Michigan celebrating Mexican heritage through art direction, illustration, and production.",
+            "showcaseImage": "assets/images/projects/mexican-lottery.png",
+            "behanceUrl": "https://www.behance.net/gallery/210133625/Mexican-Lottery-Concept",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mexican-lottery.png" }
+            ]
+        },
+        {
+            "id": "nantli",
+            "title": "Nantli Cacao Chocolate",
+            "client": "Nantli — artisanal chocolate",
+            "year": "2019",
+            "date": "03/2019",
+            "category": "Packaging",
+            "tag": "Packaging",
+            "description": "Branding and packaging for an artisanal chocolate brand with organic production methods and traditional techniques. Painterly marks, specialty materials, and an earthy hand-crafted palette build a warm, authentic character — a tribute to the Mexican and Central American roots of cacao.",
+            "showcaseImage": "assets/images/projects/nantli.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/77290741/Nantli-Cacao-Chocolate",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/nantli.jpg" }
+            ]
+        },
+        {
+            "id": "demetria",
+            "title": "Demetria",
+            "client": "Demetria — agricultural FinTech",
+            "year": "2023",
+            "date": "02/2023",
+            "category": "Visual identity",
+            "fit": "contain",
+            "tag": "Branding",
+            "description": "Brand identity for a Latin American FinTech that provides credit, factoring, and working capital to small and growing agricultural businesses. The visual system balances corporate sophistication with closeness — addressing the reality that many agricultural entrepreneurs risk land or assets when seeking funding. Includes logotype, animated logo, stationery, and templates.",
+            "showcaseImage": "assets/images/projects/demetria.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/164122463/Demetria",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/demetria.jpg" }
+            ]
+        },
+        {
+            "id": "toloks",
+            "title": "Toloks Mérida",
+            "client": "Toloks Basketball Academy",
+            "year": "2023",
+            "date": "11/2023",
+            "category": "Visual identity",
+            "tag": "Branding",
+            "description": "Identity for a basketball academy in Mérida, Yucatán. A tolok is a native Yucatecan iguana — the brand takes that local character to build a vibrant, bold system that competes with top-level teams without losing its sense of belonging. Includes patterns, illustrations, multiple logo versions, and a wordmark adaptable for both academy and commercial team.",
+            "showcaseImage": "assets/images/projects/toloks.png",
+            "behanceUrl": "https://www.behance.net/gallery/182810567/Toloks-Mrida",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/toloks.png" }
+            ]
+        },
+        {
+            "id": "tres-loros",
+            "title": "Tres Loros",
+            "client": "Tres Loros — marketing agency",
+            "year": "2023",
+            "date": "10/2023",
+            "category": "Visual identity",
+            "tag": "Branding",
+            "description": "Identity for a marketing agency in Mérida, Yucatán founded by three friends looking for immersive, made-to-measure services. The visual system swings between playful and professional, with three parrot characters representing each partner. Colorful logo, versatile visual system, and character design with personality.",
+            "showcaseImage": "assets/images/projects/tres-loros.png",
+            "behanceUrl": "https://www.behance.net/gallery/173463225/Tres-Loros",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tres-loros.png" }
+            ]
+        },
+        {
+            "id": "tiny-yogurt",
+            "title": "El yogurt de Tiny",
+            "client": "Tiny — home-made yogurt & granola",
+            "year": "2023",
+            "date": "01/2023",
+            "category": "Packaging",
+            "tag": "Packaging",
+            "description": "Branding for a home-based yogurt and granola business that uses local ingredients and delivers to your door. With no physical storefront, the packaging is the brand's main touchpoint. Warm, fun, sustainable visual system that gets the most out of limited resources without losing personality or sweetness.",
+            "showcaseImage": "assets/images/projects/tiny-yogurt.png",
+            "behanceUrl": "https://www.behance.net/gallery/160537077/El-yogurt-de-Tiny",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tiny-yogurt.png" }
+            ]
+        },
+        {
+            "id": "hesou",
+            "title": "Hesou Clinic",
+            "client": "Hesou — physiotherapy clinic",
+            "year": "2022",
+            "date": "2022",
+            "category": "Visual identity",
+            "tag": "Branding",
+            "description": "Identity for a physiotherapy clinic in Querétaro looking to transform patient diagnosis and care. Friendly typographic logo that signals ease of use, paired with a colorful, professional identity that breaks out of conventional medical language. The graphic symbol connects science, data, and human form.",
+            "showcaseImage": "assets/images/projects/hesou.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/128853651/Hesou-Clinic",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hesou.jpg" }
+            ]
+        },
+        {
+            "id": "logos-marks",
+            "title": "Logos & Marks No.1",
+            "client": "Various clients",
+            "year": "2020",
+            "date": "05/2020",
+            "category": "Icon design",
+            "tag": "Logofolio",
+            "description": "Logofolio — a collection of logotypes and brand marks built across different projects. A catalog of shapes, symbols, and gestures made in Adobe Illustrator, gathering the everyday practice of the craft of the logo.",
+            "showcaseImage": "assets/images/projects/logos-marks.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/96596645/Logos-and-marks-No1",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/logos-marks.jpg" }
+            ]
+        },
+        {
+            "id": "alarm-juice",
+            "title": "Alarm Juice & Co.",
+            "client": "Alarm Juice — natural beverages (Moscow)",
+            "year": "2018",
+            "date": "11/2018",
+            "category": "Packaging",
+            "tag": "Packaging",
+            "description": "Package design for a Moscow-based juice brand focused on natural ingredients and energy drinks. Four flavors plus a carrier design. The process involved research and typography exploration to land on a final piece that's conceptual and visually engaging on the shelf.",
+            "showcaseImage": "assets/images/projects/alarm-juice.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/72608573/Alarm-Juice-Co",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/alarm-juice.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-lineup.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-citric-riot.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-berry-punch.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-red-pom.jpg" }
+            ]
+        },
+        {
+            "id": "hera",
+            "title": "Hera — Eau de Toilette",
+            "client": "Hera (portfolio project)",
+            "year": "2018",
+            "date": "2018",
+            "category": "Packaging",
+            "tag": "Packaging",
+            "description": "Product and packaging design proposal for a women's fragrance. The bottle aims to feel feminine, mature, and powerful — drawing on Greece, the ocean, and women's empowerment. The fragrance itself — essence of orchids and apricots — represents purity, delicacy, wisdom, and nature, designed to “unleash your inner goddess.”",
+            "showcaseImage": "assets/images/projects/hera.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/70888885/Hera-Eau-de-Toilette",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hera.jpg" }
+            ]
+        }
+    ]
+}

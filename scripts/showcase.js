@@ -22,7 +22,9 @@
         return a;
     };
 
-    fetch('assets/jsons/projects.json')
+    const isEnglish = (window.BM_LANG === 'en') || location.pathname.indexOf('/en/') === 0;
+    const projectsUrl = isEnglish ? '/assets/jsons/projects.en.json' : '/assets/jsons/projects.json';
+    fetch(projectsUrl)
         .then(res => {
             if (!res.ok) throw new Error('Cannot load projects.json');
             return res.json();
@@ -34,7 +36,7 @@
 
             grid.innerHTML = featured.map(p => `
                 <li class="showcase__item ${p.size === 'lg' ? 'showcase__item--lg' : ''}">
-                    <a class="showcase__link" href="portfolio.html#${encodeURIComponent(p.id)}" aria-label="${p.title} — ${p.category}">
+                    <a class="showcase__link" href="${isEnglish ? '/en/portfolio.html' : '/portfolio.html'}#${encodeURIComponent(p.id)}" aria-label="${p.title} — ${p.category}">
                         <div class="showcase__media">
                             <img src="${(p.showcaseImage || p.thumb)}" alt="${p.title}" loading="lazy">
                         </div>
