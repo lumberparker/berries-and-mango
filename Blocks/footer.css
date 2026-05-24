@@ -137,6 +137,20 @@
 
 .footer__link:hover { color: var(--color-mango); opacity: 1; }
 
+/* Social links — text + brand icon in a row */
+.footer__link--social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: block;
+}
+
 .footer__bottom {
     max-width: var(--container);
     margin: 0 auto;

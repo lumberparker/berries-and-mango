@@ -287,10 +287,11 @@
     transform: translateY(0);
 }
 
-.menu__social a {
+.menu__social a,
+.social-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 10px;
     padding: 12px 22px;
     border-radius: 999px;
     background: rgba(250, 249, 245, 0.06);
@@ -307,7 +308,16 @@
                 transform var(--dur-fast) var(--ease);
 }
 
-.menu__social a:hover {
+.social-link__icon,
+.menu__social svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.menu__social a:hover,
+.social-link:hover {
     color: var(--color-ink);
     background: var(--color-mango);
     box-shadow: inset 0 0 0 1px var(--color-mango),
