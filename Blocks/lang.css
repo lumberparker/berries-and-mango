@@ -98,6 +98,18 @@
     transition: color 280ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
                 transform 220ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
     opacity: 0.78;
+    white-space: nowrap;
+}
+
+/* Japanese label renders 日本語 — Latin mono looks off for kanji,
+   so use a clean Japanese sans-serif and drop uppercase/tracking. */
+.lang__opt--ja {
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    padding: 8px 14px;
 }
 
 .lang__opt.is-active {

@@ -192,18 +192,27 @@
 
 /* ---------- Japanese footer hero — wordmark stacked on Japanese subline ---------- */
 .footer__hero--ja {
+   display: flex;
     align-items: flex-start;
     gap: var(--space-2);
 }
 
 .footer__logo-sub {
-    width: clamp(180px, 30vw, 380px);
-    height: auto;
-    display: block;
-    margin-top: -4px;
-    opacity: 0.95;
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.08em;
+    align-items: center;
+    color: var(--color-mango);
+    margin-top: -25px;
+    
+    padding-bottom: 2px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    
 }
-
 @media (max-width: 700px) {
     .footer__logo-sub { width: clamp(160px, 50vw, 280px); }
 }
