@@ -8,6 +8,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/"/>
   </url>
   <url>
@@ -15,9 +16,22 @@
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/"/>
+  </url>
+  <url>
+    <loc>https://berriesandmango.com/jp/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/"/>
   </url>
   <url>
     <loc>https://berriesandmango.com/portfolio.html</loc>
@@ -27,16 +41,30 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html"/>
   </url>
   <url>
     <loc>https://berriesandmango.com/en/portfolio.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html"/>
+    <priority>0.855</priority>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://berriesandmango.com/jp/portfolio.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.855</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html"/>
   </url>
   <url>
     <loc>https://berriesandmango.com/portfolio.html#mellow</loc>
@@ -46,6 +74,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#mellow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#mellow"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#mellow"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#mellow"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#mellow"/>
   </url>
   <url>
@@ -56,6 +85,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#personal-brand"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#personal-brand"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#personal-brand"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#personal-brand"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#personal-brand"/>
   </url>
   <url>
@@ -66,6 +96,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#mexican-lottery"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#mexican-lottery"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#mexican-lottery"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#mexican-lottery"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#mexican-lottery"/>
   </url>
   <url>
@@ -76,6 +107,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#nantli"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#nantli"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#nantli"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#nantli"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#nantli"/>
   </url>
   <url>
@@ -86,6 +118,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#demetria"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#demetria"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#demetria"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#demetria"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#demetria"/>
   </url>
   <url>
@@ -96,6 +129,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#toloks"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#toloks"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#toloks"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#toloks"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#toloks"/>
   </url>
   <url>
@@ -106,6 +140,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#tres-loros"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#tres-loros"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#tres-loros"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#tres-loros"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#tres-loros"/>
   </url>
   <url>
@@ -116,6 +151,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#tiny-yogurt"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#tiny-yogurt"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#tiny-yogurt"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#tiny-yogurt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#tiny-yogurt"/>
   </url>
   <url>
@@ -126,6 +162,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#hesou"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#hesou"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#hesou"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#hesou"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#hesou"/>
   </url>
   <url>
@@ -136,6 +173,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#logos-marks"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#logos-marks"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#logos-marks"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#logos-marks"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#logos-marks"/>
   </url>
   <url>
@@ -146,6 +184,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#alarm-juice"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#alarm-juice"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#alarm-juice"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#alarm-juice"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#alarm-juice"/>
   </url>
   <url>
@@ -156,6 +195,7 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/portfolio.html#hera"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://berriesandmango.com/portfolio.html#hera"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/portfolio.html#hera"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/portfolio.html#hera"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/portfolio.html#hera"/>
   </url>
 </urlset>

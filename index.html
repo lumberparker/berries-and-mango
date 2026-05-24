@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Language detection: send non-Hispanic/Lusophone visitors to /en/
-         unless they've already chosen a language manually. Runs before render. -->
+    <!-- Language detection: ES default, route ja-* → /jp/, others → /en/.
+         Respects localStorage 'bm-lang' for manual choices. -->
     <script>
     (function(){try{
         if(localStorage.getItem('bm-lang')==='es') return;
         var langs=(navigator.languages||[navigator.language||'es']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        var hispanic=langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl'});
-        if(!hispanic) location.replace('/en/' + (location.hash||''));
+        if(langs.some(function(l){return l==='ja';})) { location.replace('/jp/' + (location.hash||'')); return; }
+        if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) return;
+        location.replace('/en/' + (location.hash||''));
     }catch(e){}})();
     </script>
 
@@ -29,6 +30,7 @@
     <link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/">
     <link rel="alternate" hreflang="es" href="https://berriesandmango.com/">
     <link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/">
+    <link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/">
     <link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/">
 
     <!-- Geo targeting (Mérida, Yucatán, México) -->
@@ -214,9 +216,10 @@
                         <li class="header__nav-item"><a class="header__nav-link" href="portfolio.html">Portfolio</a></li>
                         <li class="header__nav-item"><a class="header__nav-link" href="#encuentra">Encuéntranos</a></li>
                         <li class="header__nav-item header__nav-item--lang">
-                            <div class="lang" data-active="es" role="group" aria-label="Cambiar idioma">
+                            <div class="lang" style="--lang-count: 3; --lang-pos: 0;" data-active="es" role="group" aria-label="Cambiar idioma">
                                 <a class="lang__opt is-active" href="/" data-lang-switch="es" aria-current="true">ES</a>
                                 <a class="lang__opt" href="/en/" data-lang-switch="en" aria-label="Switch to English">EN</a>
+                                <a class="lang__opt" href="/jp/" data-lang-switch="ja" aria-label="日本語に切替">JP</a>
                             </div>
                         </li>
                     </ul>
@@ -632,6 +635,7 @@
                         <li><a class="footer__link" href="portfolio.html">Portfolio</a></li>
                         <li><a class="footer__link" href="#encuentra">Encuéntranos</a></li>
                         <li><a class="footer__link" href="/en/" data-lang-switch="en">English</a></li>
+                        <li><a class="footer__link" href="/jp/" data-lang-switch="ja">日本語</a></li>
                     </ul>
                 </div>
 

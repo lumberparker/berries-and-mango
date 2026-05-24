@@ -53,9 +53,13 @@
 
     /* ---------- Load ---------- */
     // Pick the right JSON for the active language.
-    const isEnglish = (window.BM_LANG === 'en') || location.pathname.indexOf('/en/') === 0;
-    const projectsUrl = isEnglish
-        ? '/assets/jsons/projects.en.json'
+    const lang = window.BM_LANG
+        || (location.pathname.indexOf('/jp/') === 0 ? 'ja'
+            : location.pathname.indexOf('/en/') === 0 ? 'en' : 'es');
+    const isEnglish = lang === 'en';
+    const isJapanese = lang === 'ja';
+    const projectsUrl = isJapanese ? '/assets/jsons/projects.ja.json'
+        : isEnglish ? '/assets/jsons/projects.en.json'
         : '/assets/jsons/projects.json';
 
     // Project JSON uses relative asset paths (`assets/...`). When the page
@@ -78,7 +82,10 @@
         })
         .catch(err => {
             console.error('[portfolio]', err);
-            grid.innerHTML = '<li class="portfolio__error">No se pudo cargar el portafolio.</li>';
+            const errMsg = isJapanese ? 'ポートフォリオを読み込めませんでした。'
+                : isEnglish ? "Couldn't load the portfolio."
+                : 'No se pudo cargar el portafolio.';
+            grid.innerHTML = `<li class="portfolio__error">${errMsg}</li>`;
         });
 
     /* ---------- JSON-LD: per-project CreativeWork list for Google ---------- */
@@ -86,10 +93,14 @@
         const node = document.getElementById('projects-ld');
         if (!node) return;
         const origin = 'https://berriesandmango.com';
+        const pageRoot = isJapanese ? '/jp/portfolio.html' : isEnglish ? '/en/portfolio.html' : '/portfolio.html';
+        const listName = isJapanese ? 'ベリー＆マンゴー ポートフォリオ'
+            : isEnglish ? 'Berries & Mango Portfolio'
+            : 'Portafolio Berries & Mango';
         const ld = {
             '@context': 'https://schema.org',
             '@type': 'ItemList',
-            'name': 'Portafolio Berries & Mango',
+            'name': listName,
             'itemListOrder': 'https://schema.org/ItemListOrderAscending',
             'numberOfItems': list.length,
             'itemListElement': list.map((p, i) => ({
@@ -97,7 +108,7 @@
                 'position': i + 1,
                 'item': {
                     '@type': 'CreativeWork',
-                    '@id': `${origin}/portfolio.html#${p.id}`,
+                    '@id': `${origin}${pageRoot}#${p.id}`,
                     'name': p.title,
                     'headline': p.title,
                     'description': p.description || '',
@@ -105,14 +116,14 @@
                     'genre': p.category,
                     'keywords': p.tag,
                     'datePublished': p.date || p.year,
-                    'inLanguage': 'es-MX',
+                    'inLanguage': isJapanese ? 'ja' : isEnglish ? 'en' : 'es-MX',
                     'creator': {
                         '@type': 'Organization',
                         'name': 'Berries & Mango',
                         '@id': `${origin}/#organization`
                     },
                     'about': p.client ? { '@type': 'Brand', 'name': p.client } : undefined,
-                    'url': `${origin}/portfolio.html#${p.id}`,
+                    'url': `${origin}${pageRoot}#${p.id}`,
                     'sameAs': p.behanceUrl || undefined
                 }
             }))
@@ -405,7 +416,7 @@
         const total = activeMedia.length;
         const tag = m.type === 'video'
             ? `<video src="${abs(m.src)}" autoplay muted loop playsinline ${m.poster ? `poster="${abs(m.poster)}"` : ''}></video>`
-            : `<img src="${abs(m.src)}" alt="${isEnglish ? 'Image' : 'Imagen'} ${lightboxIdx + 1}">`;
+            : `<img src="${abs(m.src)}" alt="${isJapanese ? '画像' : isEnglish ? 'Image' : 'Imagen'} ${lightboxIdx + 1}">`;
         lightboxStage.innerHTML = tag;
 
         const media = lightboxStage.firstElementChild;

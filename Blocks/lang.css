@@ -1,20 +1,31 @@
 /* =========================================================
    Block: lang
-   Bilingual toggle pill. Two slots (ES / EN) with a sliding
-   color highlight on the active option.
+   Multilingual toggle pill with a sliding color highlight.
 
-   Markup:
-     <div class="lang" data-lang-switcher>
+   Markup (N options):
+     <div class="lang" style="--lang-count: 3; --lang-pos: 0"
+          data-active="es" role="group" aria-label="Language">
        <a class="lang__opt is-active" href="/"    data-lang-switch="es">ES</a>
        <a class="lang__opt"           href="/en/" data-lang-switch="en">EN</a>
+       <a class="lang__opt"           href="/jp/" data-lang-switch="ja">JP</a>
      </div>
+
+   --lang-count: total option count (defaults to 2)
+   --lang-pos:   0-based index of the active option (defaults to 0)
+
+   The mango thumb auto-sizes to 1 / count of the track and slides
+   to the active option's slot — works for 2, 3, 4… languages.
    ========================================================= */
 
 .lang {
+    --lang-count: 2;
+    --lang-pos: 0;
+    --lang-pad: 4px;
+
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 4px;
+    padding: var(--lang-pad);
     border-radius: 999px;
     background: rgba(250, 249, 245, 0.08);
     box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.18);
@@ -24,31 +35,28 @@
     overflow: hidden;
 }
 
-/* The sliding mango "thumb" — sits behind whichever option is active.
-   Position controlled by --lang-pos (set inline or by a JS hook). */
+/* The sliding mango thumb — width is 1/N of the track, position
+   is the active slot's index. */
 .lang::before {
     content: "";
     position: absolute;
-    top: 4px;
-    bottom: 4px;
-    width: calc(50% - 4px);
+    top: var(--lang-pad);
+    bottom: var(--lang-pad);
+    left: var(--lang-pad);
+    width: calc((100% - var(--lang-pad) * 2) / var(--lang-count));
     border-radius: 999px;
     background: var(--color-mango);
     box-shadow: 0 8px 22px -8px rgba(252, 173, 34, 0.65);
-    transform: translateX(var(--lang-pos, 0));
+    transform: translateX(calc(var(--lang-pos) * 100%));
     transition: transform 380ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
                 background 220ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
     z-index: 0;
 }
 
-/* When EN is active, slide the thumb to the right. */
-.lang[data-active="en"]::before { --lang-pos: 100%; }
-.lang[data-active="es"]::before { --lang-pos: 0; }
-
 .lang__opt {
     position: relative;
     z-index: 1;
-    flex: 1 0 auto;
+    flex: 1 1 0;
     min-width: 40px;
     padding: 6px 14px;
     border-radius: 999px;
@@ -72,14 +80,18 @@
     opacity: 1;
 }
 
-/* Light-themed pages — softer surface */
-.page--dark .lang {
-    background: rgba(250, 249, 245, 0.08);
-}
-
+/* Light-themed pages */
 .header--light .lang {
     background: rgba(10, 10, 10, 0.06);
     box-shadow: inset 0 0 0 1px rgba(10, 10, 10, 0.18);
 }
 .header--light .lang__opt { color: var(--color-ink); }
 .header--light .lang__opt.is-active { color: var(--color-cream); }
+
+/* Hover lean — thumb subtly drifts toward whichever option you're
+   pointing at, even when it's not active. Adds tactile feedback. */
+@media (hover: hover) {
+    .lang__opt:nth-child(1):hover ~ .lang__opt,
+    .lang:has(.lang__opt:nth-child(1):hover)::before { transform: translateX(calc(var(--lang-pos) * 100% - 4%)); }
+    .lang:has(.lang__opt:nth-child(2):hover)::before { transform: translateX(calc(var(--lang-pos) * 100% + (1 - var(--lang-pos)) * 4%)); }
+}

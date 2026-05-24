@@ -22,8 +22,16 @@
         return a;
     };
 
-    const isEnglish = (window.BM_LANG === 'en') || location.pathname.indexOf('/en/') === 0;
-    const projectsUrl = isEnglish ? '/assets/jsons/projects.en.json' : '/assets/jsons/projects.json';
+    const lang = window.BM_LANG
+        || (location.pathname.indexOf('/jp/') === 0 ? 'ja'
+            : location.pathname.indexOf('/en/') === 0 ? 'en' : 'es');
+    const isEnglish = lang === 'en';
+    const isJapanese = lang === 'ja';
+    const projectsUrl = isJapanese ? '/assets/jsons/projects.ja.json'
+        : isEnglish ? '/assets/jsons/projects.en.json'
+        : '/assets/jsons/projects.json';
+    const portfolioHref = isJapanese ? '/jp/portfolio.html'
+        : isEnglish ? '/en/portfolio.html' : '/portfolio.html';
     const abs = (s) => !s ? s : (s.startsWith('http') || s.startsWith('/') || s.startsWith('data:')) ? s : '/' + s;
     fetch(projectsUrl)
         .then(res => {
@@ -37,7 +45,7 @@
 
             grid.innerHTML = featured.map(p => `
                 <li class="showcase__item ${p.size === 'lg' ? 'showcase__item--lg' : ''}">
-                    <a class="showcase__link" href="${isEnglish ? '/en/portfolio.html' : '/portfolio.html'}#${encodeURIComponent(p.id)}" aria-label="${p.title} — ${p.category}">
+                    <a class="showcase__link" href="${portfolioHref}#${encodeURIComponent(p.id)}" aria-label="${p.title} — ${p.category}">
                         <div class="showcase__media">
                             <img src="${abs(p.showcaseImage || p.thumb)}" alt="${p.title}" loading="lazy">
                         </div>
@@ -57,6 +65,6 @@
         })
         .catch(err => {
             console.error('[showcase]', err);
-            grid.innerHTML = `<li class="showcase__error">${isEnglish ? "Couldn't load the portfolio." : 'No se pudo cargar el portafolio.'}</li>`;
+            grid.innerHTML = `<li class="showcase__error">${isJapanese ? 'ポートフォリオを読み込めませんでした。' : isEnglish ? "Couldn't load the portfolio." : 'No se pudo cargar el portafolio.'}</li>`;
         });
 })();

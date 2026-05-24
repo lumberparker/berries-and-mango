@@ -1,0 +1,214 @@
+{
+    "$schema-hint": "Japanese version of projects.json. IDs, images, behance URLs are shared. Descriptions translated to natural Japanese.",
+    "projects": [
+        {
+            "id": "mellow",
+            "title": "Mellow",
+            "client": "Mellow — ヘルスケア・コンサルティング",
+            "year": "2025",
+            "date": "2025",
+            "category": "ビジュアルアイデンティティ",
+            "tag": "ブランディング",
+            "description": "医療従事者にテクノロジー、教育、金融の各ツールをつなぐコンサルティング企業のためのブランディングとビジュアルアイデンティティ。クリエイティブディレクション「The White-Coat Heroes」では、医療のプロフェッショナルをヒーローとして描き、鮮やかな色、未来的な建築、SF的要素で「逆境のなかの希望と回復」のエピックな物語を構築。ロゴ、ポスターのイラスト、ブランドアプリケーション、UIコンセプトまで。",
+            "showcaseImage": "assets/images/projects/mellow.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/216389433/Mellow",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mellow.jpg" }
+            ]
+        },
+        {
+            "id": "personal-brand",
+            "title": "Personal Brand Identity",
+            "client": "Brenda Chavez · Berries & Mango",
+            "year": "2019",
+            "date": "04/2019",
+            "category": "ビジュアルアイデンティティ",
+            "tag": "ブランディング",
+            "description": "タイルにインスパイアされたパーソナル・アイデンティティ。小さな一枚一枚が組み合わさって大きなシステムになる——コラボレーション、職人技、文化的なルーツの隠喩。手作業から始まる原体験が、デザイナーとしてのアイデンティティをかたちづくっています。",
+            "showcaseImage": "assets/images/projects/personal-brand.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/78894813/Personal-Brand-Indentity",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/personal-brand.jpg" }
+            ]
+        },
+        {
+            "id": "mexican-lottery",
+            "title": "Mexican Lottery Concept",
+            "client": "Unrandom Studio とのコラボレーション",
+            "year": "2024",
+            "date": "10/2024",
+            "category": "イラストレーション",
+            "tag": "エディトリアル",
+            "description": "メキシコ伝統のロテリア（くじカード）を、Unrandom Studio とコラボで再解釈したプロジェクト。コンセプトは「we make it rain for you to bloom」。カードを描き直し、伝統的なフレーズを「雨」というテーマで再構成。メキシコと米国ミシガンのアーティストが、アートディレクション、イラスト、プロダクションで三位一体となってメキシコの文化を称えるコラボレーション。",
+            "showcaseImage": "assets/images/projects/mexican-lottery.png",
+            "behanceUrl": "https://www.behance.net/gallery/210133625/Mexican-Lottery-Concept",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/mexican-lottery.png" }
+            ]
+        },
+        {
+            "id": "nantli",
+            "title": "Nantli Cacao Chocolate",
+            "client": "Nantli — 職人のチョコレート",
+            "year": "2019",
+            "date": "03/2019",
+            "category": "パッケージデザイン",
+            "tag": "パッケージ",
+            "description": "オーガニックな製法と伝統的な技法でカカオを扱う職人チョコレート・ブランドのブランディングとパッケージ。絵画的なタッチ、特殊素材、土の色味の手作業の表現で、温かく真摯なキャラクターを構築。カカオのメキシコ／中央アメリカのルーツへの敬意を込めた一作。",
+            "showcaseImage": "assets/images/projects/nantli.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/77290741/Nantli-Cacao-Chocolate",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/nantli.jpg" }
+            ]
+        },
+        {
+            "id": "demetria",
+            "title": "Demetria",
+            "client": "Demetria — 農業フィンテック",
+            "year": "2023",
+            "date": "02/2023",
+            "category": "ビジュアルアイデンティティ",
+            "fit": "contain",
+            "tag": "ブランディング",
+            "description": "ラテンアメリカの農業ビジネスに信用、ファクタリング、運転資金を提供するフィンテック企業のためのブランドアイデンティティ。資金を求めるとき、土地や資産を失うリスクと向き合う農業の起業家たち——その現実に寄り添いながら、企業らしい洗練と、人としての近さのバランスを設計。ロゴ、アニメーション、文具、テンプレートまで一式。",
+            "showcaseImage": "assets/images/projects/demetria.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/164122463/Demetria",
+            "size": "lg",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/demetria.jpg" }
+            ]
+        },
+        {
+            "id": "toloks",
+            "title": "Toloks Mérida",
+            "client": "Toloks バスケットボールアカデミー",
+            "year": "2023",
+            "date": "11/2023",
+            "category": "ビジュアルアイデンティティ",
+            "tag": "ブランディング",
+            "description": "メキシコ・ユカタン州メリダのバスケットボールアカデミーのためのアイデンティティ。「トロック」はユカタン固有のイグアナのこと——地元のキャラクターを取り入れ、ハイレベルのチームと競いながら、所属感を失わない大胆で鮮やかなシステムを構築。パターン、イラスト、複数のロゴバージョン、アカデミーとコマーシャル両用のワードマークまで。",
+            "showcaseImage": "assets/images/projects/toloks.png",
+            "behanceUrl": "https://www.behance.net/gallery/182810567/Toloks-Mrida",
+            "size": "sm",
+            "showcase": true,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/toloks.png" }
+            ]
+        },
+        {
+            "id": "tres-loros",
+            "title": "Tres Loros",
+            "client": "Tres Loros — マーケティング・エージェンシー",
+            "year": "2023",
+            "date": "10/2023",
+            "category": "ビジュアルアイデンティティ",
+            "tag": "ブランディング",
+            "description": "ユカタン州メリダのマーケティング・エージェンシーのアイデンティティ。「自分たちにしかできないオーダーメイドのサービスを」という3人の友人によって創業されたエージェンシーのために、遊び心とプロフェッショナリズムを行き来するシステムを設計。3羽のオウムのキャラクターがそれぞれパートナーを表現します。",
+            "showcaseImage": "assets/images/projects/tres-loros.png",
+            "behanceUrl": "https://www.behance.net/gallery/173463225/Tres-Loros",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tres-loros.png" }
+            ]
+        },
+        {
+            "id": "tiny-yogurt",
+            "title": "El yogurt de Tiny",
+            "client": "Tiny — 手作りヨーグルト＆グラノーラ",
+            "year": "2023",
+            "date": "01/2023",
+            "category": "パッケージデザイン",
+            "tag": "パッケージ",
+            "description": "地元の素材を使い、自宅で仕込んで宅配する手作りヨーグルト＆グラノーラ事業のブランディング。店舗を持たないため、パッケージがブランドの主役。限られたリソースを最大限に活かしながら、温かさ、楽しさ、サステイナビリティ、そして人柄を失わないシステムを設計しました。",
+            "showcaseImage": "assets/images/projects/tiny-yogurt.png",
+            "behanceUrl": "https://www.behance.net/gallery/160537077/El-yogurt-de-Tiny",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/tiny-yogurt.png" }
+            ]
+        },
+        {
+            "id": "hesou",
+            "title": "Hesou Clinic",
+            "client": "Hesou — 理学療法クリニック",
+            "year": "2022",
+            "date": "2022",
+            "category": "ビジュアルアイデンティティ",
+            "tag": "ブランディング",
+            "description": "ケレタロの理学療法クリニックのアイデンティティ。患者の診断とケアを変えていくことを目指すクリニックのために、使いやすさを感じさせる親しみやすいタイポグラフィのロゴと、医療らしさの定型から外れた色彩豊かでプロフェッショナルなアイデンティティを設計。グラフィック・シンボルはサイエンス、データ、人体のかたちを結びつけます。",
+            "showcaseImage": "assets/images/projects/hesou.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/128853651/Hesou-Clinic",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hesou.jpg" }
+            ]
+        },
+        {
+            "id": "logos-marks",
+            "title": "Logos & Marks No.1",
+            "client": "複数クライアント",
+            "year": "2020",
+            "date": "05/2020",
+            "category": "アイコンデザイン",
+            "tag": "ロゴフォリオ",
+            "description": "ロゴフォリオ——さまざまなプロジェクトで制作したロゴとマークのコレクション。Adobe Illustrator で生まれた、かたち・シンボル・身振りのカタログ。ロゴという技を日々続けるなかから集まった一冊。",
+            "showcaseImage": "assets/images/projects/logos-marks.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/96596645/Logos-and-marks-No1",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/logos-marks.jpg" }
+            ]
+        },
+        {
+            "id": "alarm-juice",
+            "title": "Alarm Juice & Co.",
+            "client": "Alarm Juice — ナチュラルドリンク（モスクワ）",
+            "year": "2018",
+            "date": "11/2018",
+            "category": "パッケージデザイン",
+            "tag": "パッケージ",
+            "description": "天然素材とエナジードリンクに特化したモスクワのジュースブランドのパッケージデザイン。4つのフレーバーとキャリアデザイン。リサーチとタイポグラフィの探求を重ねて、棚で目を引く、コンセプチュアルで印象的な仕上がりに。",
+            "showcaseImage": "assets/images/projects/alarm-juice.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/72608573/Alarm-Juice-Co",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/alarm-juice.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-lineup.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-citric-riot.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-berry-punch.jpg" },
+                { "type": "image", "src": "assets/images/projects/alarm-juice-red-pom.jpg" }
+            ]
+        },
+        {
+            "id": "hera",
+            "title": "Hera — Eau de Toilette",
+            "client": "Hera（ポートフォリオ作品）",
+            "year": "2018",
+            "date": "2018",
+            "category": "パッケージデザイン",
+            "tag": "パッケージ",
+            "description": "女性向けフレグランスのプロダクト＆パッケージデザイン提案。ボトルは「女性らしく、成熟し、強さがある」を表現することを目指し、ギリシャ、海、女性のエンパワーメントからインスピレーションを得ています。フレグランスはオーキッドとアプリコットを基調に、「内なる女神を解き放つ」純粋・繊細・知恵・自然を表現。",
+            "showcaseImage": "assets/images/projects/hera.jpg",
+            "behanceUrl": "https://www.behance.net/gallery/70888885/Hera-Eau-de-Toilette",
+            "size": "sm",
+            "showcase": false,
+            "media": [
+                { "type": "image", "src": "assets/images/projects/hera.jpg" }
+            ]
+        }
+    ]
+}

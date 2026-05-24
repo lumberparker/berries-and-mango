@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Language detection: EN default here, route ja → /jp/, es/pt → / -->
+    <!-- Auto-route non-Japanese visitors away unless they chose JA manually. -->
     <script>
     (function(){try{
-        if(localStorage.getItem('bm-lang')==='en') return;
-        var langs=(navigator.languages||[navigator.language||'en']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        if(langs.some(function(l){return l==='ja';})) { location.replace('/jp/' + (location.hash||'')); return; }
-        if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) location.replace('/' + (location.hash||''));
+        if(localStorage.getItem('bm-lang')==='ja') return;
+        var langs=(navigator.languages||[navigator.language||'ja']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
+        if(langs.some(function(l){return l==='ja';})) return; // Japanese — stay
+        if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) {
+            location.replace('/' + (location.hash||''));
+        } else {
+            location.replace('/en/' + (location.hash||''));
+        }
     }catch(e){}})();
     </script>
 
     <!-- ============== PRIMARY SEO ============== -->
-    <title>Berries &amp; Mango — Graphic Design Studio from Yucatán, México</title>
-    <meta name="description" content="Berries &amp; Mango is a graphic design studio based in Yucatán, México — working with brands across the country and abroad. Visual identity, branding, packaging, illustration, and web design served with serious flavor.">
-    <meta name="keywords" content="graphic design studio Mexico, branding studio Yucatán, Mexican design studio, packaging design Mexico, visual identity studio, illustration studio, web design Mexico, brand strategy, Berries and Mango, Brenda Chavez">
+    <title>ベリー＆マンゴー — メキシコ・ユカタンのグラフィックデザインスタジオ</title>
+    <meta name="description" content="ベリー＆マンゴーはメキシコ・ユカタン州を拠点とするグラフィックデザインスタジオ。ブランディング、ビジュアルアイデンティティ、パッケージデザイン、イラストレーション、ウェブ制作まで、味わい深いブランドづくりをお届けします。">
+    <meta name="keywords" content="グラフィックデザインスタジオ メキシコ, ブランディング ユカタン, メキシコ デザイン, パッケージデザイン, ビジュアルアイデンティティ, イラストレーション, ウェブデザイン メキシコ, Berries and Mango, ベリーとマンゴー">
     <meta name="author" content="Berries &amp; Mango">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="googlebot" content="index, follow">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark light">
 
-    <link rel="canonical" href="https://berriesandmango.com/en/">
+    <link rel="canonical" href="https://berriesandmango.com/jp/">
+    <link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/">
     <link rel="alternate" hreflang="en" href="https://berriesandmango.com/en/">
     <link rel="alternate" hreflang="es-MX" href="https://berriesandmango.com/">
     <link rel="alternate" hreflang="es" href="https://berriesandmango.com/">
-    <link rel="alternate" hreflang="ja" href="https://berriesandmango.com/jp/">
     <link rel="alternate" hreflang="x-default" href="https://berriesandmango.com/">
 
     <meta name="geo.region" content="MX-YUC">
@@ -36,66 +39,52 @@
     <meta name="geo.position" content="20.9674;-89.5926">
     <meta name="ICBM" content="20.9674, -89.5926">
 
-    <!-- ============== OPEN GRAPH ============== -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Berries &amp; Mango">
-    <meta property="og:title" content="Berries &amp; Mango — Graphic Design Studio from Yucatán, México">
-    <meta property="og:description" content="Visual identity, branding, packaging, illustration, and web design. A graphic design studio from Yucatán, México, working with brands across the country and abroad.">
-    <meta property="og:url" content="https://berriesandmango.com/en/">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="ベリー＆マンゴー — メキシコ・ユカタンのグラフィックデザインスタジオ">
+    <meta property="og:description" content="ブランディング、ビジュアルアイデンティティ、パッケージ、イラストレーション、ウェブ。味わい深いブランドを、ユカタンから世界へ。">
+    <meta property="og:url" content="https://berriesandmango.com/jp/">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="es_MX">
     <meta property="og:image" content="https://berriesandmango.com/assets/images/hero-visual-mixology-clean.png">
     <meta property="og:image:width" content="2724">
     <meta property="og:image:height" content="1292">
-    <meta property="og:image:alt" content="Visual Mixology — Berries &amp; Mango design studio">
+    <meta property="og:image:alt" content="Visual Mixology — Berries &amp; Mango">
 
-    <!-- ============== TWITTER ============== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@berriesnmango">
     <meta name="twitter:creator" content="@berriesnmango">
-    <meta name="twitter:title" content="Berries &amp; Mango — Graphic Design Studio from Yucatán, México">
-    <meta name="twitter:description" content="Visual identity, branding, packaging, illustration, and web — served with serious flavor.">
+    <meta name="twitter:title" content="ベリー＆マンゴー — メキシコ・ユカタンのデザインスタジオ">
+    <meta name="twitter:description" content="味わい深いブランドづくり。ブランディング、パッケージ、イラスト、ウェブ。">
     <meta name="twitter:image" content="https://berriesandmango.com/assets/images/hero-visual-mixology-clean.png">
 
-    <!-- ============== ICONS / MANIFEST ============== -->
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192.png">
     <link rel="apple-touch-icon" href="/assets/images/favicon-192.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="apple-mobile-web-app-title" content="Berries &amp; Mango">
-    <meta name="application-name" content="Berries &amp; Mango">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-title" content="ベリー＆マンゴー">
 
-    <!-- ============== PERFORMANCE ============== -->
     <link rel="preload" as="image" href="/assets/images/hero-visual-mixology-clean.png" fetchpriority="high">
     <link rel="preload" as="style" href="/styles.css">
-
     <link rel="stylesheet" href="/styles.css">
 
-    <!-- ============== STRUCTURED DATA — Organization ============== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://berriesandmango.com/#organization",
       "name": "Berries & Mango",
-      "alternateName": ["Berries and Mango", "B&M"],
-      "url": "https://berriesandmango.com/en/",
+      "alternateName": ["ベリー＆マンゴー", "ベリーとマンゴー", "Berries and Mango"],
+      "url": "https://berriesandmango.com/jp/",
       "logo": { "@type": "ImageObject", "url": "https://berriesandmango.com/assets/images/logo-symbol.png", "width": 512, "height": 512 },
       "image": "https://berriesandmango.com/assets/images/hero-visual-mixology-clean.png",
-      "description": "Graphic design studio in Yucatán, México. Branding, visual identity, packaging, illustration, and web design for brands across Mexico and abroad.",
+      "description": "メキシコ・ユカタンを拠点とするグラフィックデザインスタジオ。ブランディング、ビジュアルアイデンティティ、パッケージ、イラスト、ウェブ。",
       "foundingDate": "2018",
       "founder": { "@type": "Person", "name": "Brenda Chavez" },
       "address": { "@type": "PostalAddress", "addressLocality": "Mérida", "addressRegion": "Yucatán", "addressCountry": "MX" },
-      "areaServed": [
-        { "@type": "Country", "name": "Mexico" },
-        { "@type": "Country", "name": "United States" },
-        { "@type": "Country", "name": "Spain" },
-        { "@type": "AdministrativeArea", "name": "Latin America" }
-      ],
-      "knowsLanguage": ["es", "en"],
+      "knowsLanguage": ["es", "en", "ja"],
       "email": "brenda@berriesandmango.com",
-      "sameAs": ["https://instagram.com/berriesnmango", "https://www.behance.net/berriesnmango"],
-      "contactPoint": [{ "@type": "ContactPoint", "contactType": "sales", "availableLanguage": ["Spanish", "English"], "url": "https://wa.me/529993946353" }]
+      "sameAs": ["https://instagram.com/berriesnmango", "https://www.behance.net/berriesnmango"]
     }
     </script>
 
@@ -103,51 +92,17 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": "https://berriesandmango.com/en/#website",
-      "url": "https://berriesandmango.com/en/",
-      "name": "Berries & Mango",
-      "description": "Graphic design studio in Yucatán, México — branding, visual identity, packaging, illustration and web design.",
-      "inLanguage": "en",
+      "@id": "https://berriesandmango.com/jp/#website",
+      "url": "https://berriesandmango.com/jp/",
+      "name": "ベリー＆マンゴー",
+      "description": "メキシコ・ユカタンのグラフィックデザインスタジオ。",
+      "inLanguage": "ja",
       "publisher": { "@id": "https://berriesandmango.com/#organization" }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://berriesandmango.com/en/#service",
-      "name": "Berries & Mango — Design Services",
-      "image": "https://berriesandmango.com/assets/images/hero-visual-mixology-clean.png",
-      "url": "https://berriesandmango.com/en/#services",
-      "telephone": "+52-999-394-6353",
-      "priceRange": "$$",
-      "address": { "@type": "PostalAddress", "addressLocality": "Mérida", "addressRegion": "Yucatán", "addressCountry": "MX" },
-      "geo": { "@type": "GeoCoordinates", "latitude": 20.9674, "longitude": -89.5926 },
-      "serviceArea": { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 23.6345, "longitude": -102.5528 }, "geoRadius": "2000000" },
-      "areaServed": [
-        { "@type": "Country", "name": "Mexico" },
-        { "@type": "Country", "name": "United States" },
-        { "@type": "Country", "name": "Spain" }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Studio menu",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Essential identity", "description": "Logo, palette, type, and a tight mini-guide for brands just getting started." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full brand", "description": "Strategy, visual system, voice, applications, and a complete brand guide." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rebrand", "description": "For existing brands ready for a new chapter — refreshed art, refined system, new guides." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Packaging design", "description": "Structural and graphic packaging for a whole product line." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Illustration & art direction", "description": "Editorial illustration, patterns, icons, and art direction with personality." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web design & development", "description": "Custom sites and landing pages — UI design, code, and launch — to extend the brand to the web." } }
-        ]
-      }
     }
     </script>
 </head>
 <body class="page">
 
-    <!-- ============== LOADER ============== -->
     <div class="loader" data-loader>
         <div class="loader__inner">
             <div class="loader__mark" data-color-mix="violet,mint,mango">B&amp;M</div>
@@ -158,35 +113,34 @@
 
     <div class="page__wrap">
 
-        <!-- ============== HEADER ============== -->
         <header class="header" data-header>
             <div class="header__inner">
-                <a class="header__logo" href="/en/" aria-label="Berries &amp; Mango — Home">
+                <a class="header__logo" href="/jp/" aria-label="ベリー＆マンゴー — ホーム">
                     <img class="header__logo-mark" src="/assets/images/logo.svg" alt="Berries &amp; Mango">
                 </a>
 
-                <nav class="header__nav" aria-label="Main navigation">
+                <nav class="header__nav" aria-label="メインナビゲーション">
                     <ul class="header__nav-list">
-                        <li class="header__nav-item"><a class="header__nav-link" href="#about">About</a></li>
-                        <li class="header__nav-item"><a class="header__nav-link" href="#services">Services</a></li>
-                        <li class="header__nav-item"><a class="header__nav-link" href="/en/portfolio.html">Portfolio</a></li>
-                        <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="#about">スタジオ</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="#services">サービス</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="/jp/portfolio.html">ポートフォリオ</a></li>
+                        <li class="header__nav-item"><a class="header__nav-link" href="#contact">お問い合わせ</a></li>
                         <li class="header__nav-item header__nav-item--lang">
-                            <div class="lang" style="--lang-count: 3; --lang-pos: 1;" data-active="en" role="group" aria-label="Switch language">
+                            <div class="lang" style="--lang-count: 3; --lang-pos: 2;" data-active="ja" role="group" aria-label="言語切替">
                                 <a class="lang__opt" href="/" data-lang-switch="es" aria-label="Cambiar a Español">ES</a>
-                                <a class="lang__opt is-active" href="/en/" data-lang-switch="en" aria-current="true">EN</a>
-                                <a class="lang__opt" href="/jp/" data-lang-switch="ja" aria-label="日本語に切替">JP</a>
+                                <a class="lang__opt" href="/en/" data-lang-switch="en" aria-label="Switch to English">EN</a>
+                                <a class="lang__opt is-active" href="/jp/" data-lang-switch="ja" aria-current="true">JP</a>
                             </div>
                         </li>
                     </ul>
                 </nav>
 
-                <a class="header__cta glow glow--mango" href="https://wa.me/529993946353?text=Hi%2C%20I'd%20love%20to%20learn%20more%20about%20Berries%20%26%20Mango's%20services." target="_blank" rel="noopener noreferrer" data-magnetic="0.25">
-                    <span>Say hi</span>
+                <a class="header__cta glow glow--mango" href="https://wa.me/529993946353?text=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E3%80%82%E3%83%99%E3%83%AA%E3%83%BC%E3%81%A8%E3%83%9E%E3%83%B3%E3%82%B4%E3%83%BC%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%A9%B3%E3%81%97%E3%81%8F%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82" target="_blank" rel="noopener noreferrer" data-magnetic="0.25">
+                    <span>お話しましょう</span>
                     <span aria-hidden="true">→</span>
                 </a>
 
-                <button class="header__burger glow glow--mango" type="button" aria-label="Open menu" data-burger>
+                <button class="header__burger glow glow--mango" type="button" aria-label="メニューを開く" data-burger>
                     <span class="header__burger-line"></span>
                     <span class="header__burger-line"></span>
                 </button>
@@ -195,7 +149,6 @@
 
         <main class="page__main" id="top">
 
-            <!-- ============== HERO ============== -->
             <section class="hero" id="hero">
                 <div class="hero__bg" aria-hidden="true">
                     <div class="hero__bg-blob hero__bg-blob--1"></div>
@@ -205,35 +158,36 @@
 
                 <div class="hero__inner">
                     <a class="hero__eyebrow hero__eyebrow--link glow glow--violet" style="--glow-delay:.15s"
-                       href="https://wa.me/529993946353?text=Hi%2C%20I'd%20love%20to%20book%20a%20call%20to%20chat%20about%20my%20project."
+                       href="https://wa.me/529993946353?text=%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%81%A7%E3%80%81%E3%81%8A%E9%9B%BB%E8%A9%B1%E3%81%AE%E3%81%8A%E6%99%82%E9%96%93%E3%82%92%E3%81%84%E3%81%9F%E3%81%A0%E3%81%91%E3%81%9F%E3%82%89%E5%B9%B8%E3%81%84%E3%81%A7%E3%81%99%E3%80%82"
                        target="_blank" rel="noopener noreferrer">
-                        Now booking 2026
+                        2026年 ご予約受付中
                     </a>
 
                     <div class="hero__art">
-                        <img class="hero__art-img" src="/assets/images/hero-visual-mixology-clean.png" alt="Visual Mixology — Berries &amp; Mango" width="2724" height="1292" fetchpriority="high" decoding="async">
+                        <img class="hero__art-img" src="/assets/images/hero-visual-mixology-clean.png" alt="Visual Mixology — ベリー＆マンゴー" width="2724" height="1292" fetchpriority="high" decoding="async">
                     </div>
 
                     <div class="hero__copy">
                         <h1 class="hero__heading" data-wave>
-                            <span class="hero__heading-line">Brands mixed</span>
-                            <span class="hero__heading-line hero__heading-line--mix" data-color-mix>lots of flavor</span>
+                            <span class="hero__heading-line">味わい深い</span>
+                            <span class="hero__heading-line hero__heading-line--mix" data-color-mix>ブランドを</span>
                         </h1>
 
                         <div class="hero__body">
                             <p class="hero__lede">
-                                Berries &amp; Mango is a <strong>graphic design studio from Yucatán, México</strong>
-                                working with brands across the country and beyond. Visual identity, branding,
-                                illustration, packaging, and web — a cocktail mixed just for you.
+                                ベリー＆マンゴーは、メキシコ・ユカタン州を拠点とする
+                                <strong>グラフィックデザインスタジオ</strong>です。
+                                ビジュアルアイデンティティ、ブランディング、イラスト、パッケージ、
+                                ウェブまで——あなたのためだけに丁寧に混ぜ合わせた一杯のカクテルを。
                             </p>
 
                             <div class="hero__actions">
-                                <a class="hero__cta hero__cta--primary glow glow--pink" style="--glow-delay:.4s" href="https://wa.me/529993946353?text=Hi%2C%20I'd%20like%20a%20quote%20for%20a%20design%20project." data-magnetic="0.3">
-                                    <span>Get a quote</span>
+                                <a class="hero__cta hero__cta--primary glow glow--pink" style="--glow-delay:.4s" href="https://wa.me/529993946353?text=%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%81%94%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%82%92%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82" data-magnetic="0.3">
+                                    <span>お見積もりを依頼</span>
                                     <span class="hero__cta-arrow" aria-hidden="true">→</span>
                                 </a>
-                                <a class="hero__cta hero__cta--ghost glow glow--mint" style="--glow-delay:.9s" href="/en/portfolio.html" data-magnetic="0.2">
-                                    <span>See portfolio</span>
+                                <a class="hero__cta hero__cta--ghost glow glow--mint" style="--glow-delay:.9s" href="/jp/portfolio.html" data-magnetic="0.2">
+                                    <span>作品を見る</span>
                                 </a>
                             </div>
                         </div>
@@ -241,56 +195,55 @@
                 </div>
             </section>
 
-            <!-- ============== MARQUEE ============== -->
-            <section class="marquee" aria-label="Services">
+            <section class="marquee" aria-label="サービス">
                 <div class="marquee__row">
                     <div class="marquee__track" data-marquee>
                         <div class="marquee__group">
-                            <span class="marquee__item" data-color-mix>Visual identity</span>
+                            <span class="marquee__item" data-color-mix>ビジュアルアイデンティティ</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Illustration</span>
+                            <span class="marquee__item" data-color-mix>イラストレーション</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Packaging design</span>
+                            <span class="marquee__item" data-color-mix>パッケージデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Web design</span>
+                            <span class="marquee__item" data-color-mix>ウェブデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Brand design</span>
+                            <span class="marquee__item" data-color-mix>ブランドデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Graphic design</span>
+                            <span class="marquee__item" data-color-mix>グラフィックデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Icon design</span>
+                            <span class="marquee__item" data-color-mix>アイコンデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Brands with flavor</span>
+                            <span class="marquee__item" data-color-mix>味のあるブランド</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Patterns</span>
+                            <span class="marquee__item" data-color-mix>パターン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Strategy</span>
+                            <span class="marquee__item" data-color-mix>ストラテジー</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item" data-color-mix>Brand guidelines</span>
+                            <span class="marquee__item" data-color-mix>ブランドガイドライン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
                         </div>
                         <div class="marquee__group" aria-hidden="true">
-                            <span class="marquee__item" data-color-mix>Visual identity</span>
+                            <span class="marquee__item" data-color-mix>ビジュアルアイデンティティ</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Illustration</span>
+                            <span class="marquee__item" data-color-mix>イラストレーション</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Packaging design</span>
+                            <span class="marquee__item" data-color-mix>パッケージデザイン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Web design</span>
+                            <span class="marquee__item" data-color-mix>ウェブデザイン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Brand design</span>
+                            <span class="marquee__item" data-color-mix>ブランドデザイン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Graphic design</span>
+                            <span class="marquee__item" data-color-mix>グラフィックデザイン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Icon design</span>
+                            <span class="marquee__item" data-color-mix>アイコンデザイン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Brands with flavor</span>
+                            <span class="marquee__item" data-color-mix>味のあるブランド</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Patterns</span>
+                            <span class="marquee__item" data-color-mix>パターン</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Strategy</span>
+                            <span class="marquee__item" data-color-mix>ストラテジー</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item" data-color-mix>Brand guidelines</span>
+                            <span class="marquee__item" data-color-mix>ブランドガイドライン</span>
                             <span class="marquee__dot"></span>
                         </div>
                     </div>
@@ -299,75 +252,73 @@
                 <div class="marquee__row marquee__row--reverse">
                     <div class="marquee__track">
                         <div class="marquee__group">
-                            <span class="marquee__item">Brand strategy</span>
+                            <span class="marquee__item">ブランド戦略</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Art direction</span>
+                            <span class="marquee__item">アートディレクション</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Artisanal packaging</span>
+                            <span class="marquee__item">手仕事のパッケージ</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Custom websites</span>
+                            <span class="marquee__item">オーダーメイドのウェブ</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Logo design</span>
+                            <span class="marquee__item">ロゴデザイン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
                             <span class="marquee__item">Visual Mixology</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Mexican design studio</span>
+                            <span class="marquee__item">メキシコのスタジオ</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Brand identity</span>
+                            <span class="marquee__item">ブランドアイデンティティ</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Visual system</span>
+                            <span class="marquee__item">ビジュアルシステム</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
-                            <span class="marquee__item">Made in Yucatán</span>
+                            <span class="marquee__item">メイド・イン・ユカタン</span>
                             <span class="marquee__dot" aria-hidden="true"></span>
                         </div>
                         <div class="marquee__group" aria-hidden="true">
-                            <span class="marquee__item">Brand strategy</span>
+                            <span class="marquee__item">ブランド戦略</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Art direction</span>
+                            <span class="marquee__item">アートディレクション</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Artisanal packaging</span>
+                            <span class="marquee__item">手仕事のパッケージ</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Custom websites</span>
+                            <span class="marquee__item">オーダーメイドのウェブ</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Logo design</span>
+                            <span class="marquee__item">ロゴデザイン</span>
                             <span class="marquee__dot"></span>
                             <span class="marquee__item">Visual Mixology</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Mexican design studio</span>
+                            <span class="marquee__item">メキシコのスタジオ</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Brand identity</span>
+                            <span class="marquee__item">ブランドアイデンティティ</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Visual system</span>
+                            <span class="marquee__item">ビジュアルシステム</span>
                             <span class="marquee__dot"></span>
-                            <span class="marquee__item">Made in Yucatán</span>
+                            <span class="marquee__item">メイド・イン・ユカタン</span>
                             <span class="marquee__dot"></span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ============== ABOUT ============== -->
             <section class="conoce" id="about">
                 <div class="conoce__inner">
-                    <p class="conoce__eyebrow">01 — Meet the studio</p>
+                    <p class="conoce__eyebrow">01 — スタジオについて</p>
                     <h2 class="conoce__heading">
-                        A <em>design cocktail</em> mixed<br>
-                        just for you.
+                        あなたのための<br>
+                        <em>デザインのカクテル</em>。
                     </h2>
                     <div class="conoce__body">
                         <p class="conoce__text">
-                            We're a small team with a big appetite: strategy, illustration, and brand
-                            design served with the right kick. Every project gets mixed by hand —
-                            no off-the-shelf recipes.
+                            少人数ですが、大きな食欲のチーム。ストラテジー、イラスト、
+                            ブランドデザインを、ちょうどよい味付けでお届けします。
+                            既製のレシピは使わず、ひとつひとつ手作業で丁寧に混ぜ合わせます。
                         </p>
                         <p class="conoce__text">
-                            We work with brands that want to tell a story with character and
-                            leave a great aftertaste.
+                            個性のある物語を伝えたいブランド、後味の良いブランドづくりに
+                            こだわるパートナーを、いつも歓迎しています。
                         </p>
                     </div>
                     <div class="conoce__media">
-                        <img class="conoce__symbol" src="/assets/images/logo-symbol.png" alt="Berries &amp; Mango symbol">
-
+                        <img class="conoce__symbol" src="/assets/images/logo-symbol.png" alt="ベリー＆マンゴー シンボル">
                         <div class="conoce__sticker conoce__sticker--berry" aria-hidden="true">
                             <img src="/assets/images/logo-symbol.png" alt="">
                         </div>
@@ -378,11 +329,10 @@
                 </div>
             </section>
 
-            <!-- ============== PROPIEDADES (Tasting notes) ============== -->
             <section class="propiedades" id="tasting-notes">
                 <div class="propiedades__inner">
-                    <p class="propiedades__eyebrow">02 — Tasting notes</p>
-                    <h2 class="propiedades__heading" data-color-mix>Our flavor profile</h2>
+                    <p class="propiedades__eyebrow">02 — テイスティングノート</p>
+                    <h2 class="propiedades__heading" data-color-mix>私たちの味わい</h2>
 
                     <ul class="propiedades__grid">
                         <li class="propiedades__item propiedades__item--mango">
@@ -390,9 +340,10 @@
                             <div class="propiedades__sticker" aria-hidden="true">
                                 <img src="/assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
                             </div>
-                            <h3 class="propiedades__item-title">Flavor</h3>
+                            <h3 class="propiedades__item-title">風味</h3>
                             <p class="propiedades__item-text">
-                                Every brand has its own tone. We distill it until it's unmistakable.
+                                ブランドにはそれぞれ独自のトーンがある。
+                                それを蒸留して、ひと目でわかる味にします。
                             </p>
                         </li>
                         <li class="propiedades__item propiedades__item--coral">
@@ -400,9 +351,10 @@
                             <div class="propiedades__sticker" aria-hidden="true">
                                 <img src="/assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
                             </div>
-                            <h3 class="propiedades__item-title">Freshness</h3>
+                            <h3 class="propiedades__item-title">新鮮さ</h3>
                             <p class="propiedades__item-text">
-                                New ideas, not recipes. We push past the obvious.
+                                定型ではなく、新しい発想を。
+                                ありきたりを越えていきます。
                             </p>
                         </li>
                         <li class="propiedades__item propiedades__item--violet">
@@ -410,9 +362,9 @@
                             <div class="propiedades__sticker" aria-hidden="true">
                                 <img src="/assets/images/logo-symbol.png" alt="" style="width:100%;height:100%">
                             </div>
-                            <h3 class="propiedades__item-title">Color</h3>
+                            <h3 class="propiedades__item-title">色</h3>
                             <p class="propiedades__item-text">
-                                Color is a main ingredient, not a garnish.
+                                色は飾りではなく、メインの素材として扱います。
                             </p>
                         </li>
                         <li class="propiedades__item propiedades__item--rust">
@@ -420,116 +372,115 @@
                             <div class="propiedades__sticker" aria-hidden="true">
                                 <img src="/assets/images/logo-symbol.png" alt="" style="width:100%;height:auto;transform:translateY(8px)">
                             </div>
-                            <h3 class="propiedades__item-title">Structure</h3>
+                            <h3 class="propiedades__item-title">構造</h3>
                             <p class="propiedades__item-text">
-                                Good design is good engineering: systems that hold up to real use.
+                                よいデザインはよい設計から。
+                                実運用に耐えるシステムを組みます。
                             </p>
                         </li>
                     </ul>
                 </div>
             </section>
 
-            <!-- ============== SERVICES ============== -->
             <section class="presentaciones" id="services">
                 <div class="presentaciones__inner">
-                    <p class="presentaciones__eyebrow">03 — Services</p>
-                    <h2 class="presentaciones__heading">The studio menu</h2>
+                    <p class="presentaciones__eyebrow">03 — サービス</p>
+                    <h2 class="presentaciones__heading">スタジオのメニュー</h2>
 
                     <ol class="presentaciones__list">
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">A</span>
-                            <h3 class="presentaciones__row-title">Essential identity</h3>
+                            <h3 class="presentaciones__row-title">エッセンシャル・アイデンティティ</h3>
                             <p class="presentaciones__row-desc">
-                                Logo, palette, type, and a tight mini-guide. For brands starting out with good flavor.
+                                ロゴ、カラーパレット、タイポグラフィ、簡易ガイドライン。スタートする
+                                ブランドに必要な土台一式。
                             </p>
-                            <span class="presentaciones__row-tag">2 — 4 weeks</span>
+                            <span class="presentaciones__row-tag">2 — 4 週間</span>
                         </li>
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">B</span>
-                            <h3 class="presentaciones__row-title">Full brand</h3>
+                            <h3 class="presentaciones__row-title">フルブランディング</h3>
                             <p class="presentaciones__row-desc">
-                                Strategy, visual system, voice, applications, and a complete brand guide — identity end to end.
+                                ストラテジー、ビジュアルシステム、ボイス、アプリケーション、
+                                ブランドマニュアル一式まで——一気通貫のアイデンティティ構築。
                             </p>
-                            <span class="presentaciones__row-tag">6 — 10 weeks</span>
+                            <span class="presentaciones__row-tag">6 — 10 週間</span>
                         </li>
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">C</span>
-                            <h3 class="presentaciones__row-title">Rebrand</h3>
+                            <h3 class="presentaciones__row-title">リブランディング</h3>
                             <p class="presentaciones__row-desc">
-                                For existing brands ready for a new chapter: refreshed art, refined visual system, and new guidelines.
+                                次の章を開きたい既存ブランドのために。アートワークの刷新、
+                                ビジュアルシステムの再構築、新しいガイドラインまで。
                             </p>
-                            <span class="presentaciones__row-tag">8 — 12 weeks</span>
+                            <span class="presentaciones__row-tag">8 — 12 週間</span>
                         </li>
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">D</span>
-                            <h3 class="presentaciones__row-title">Packaging design</h3>
+                            <h3 class="presentaciones__row-title">パッケージデザイン</h3>
                             <p class="presentaciones__row-desc">
-                                Packaging that looks rich on the shelf and feels right in your hand. Structural and graphic design for full lines.
+                                棚で映えて、手に取って心地よいパッケージ。
+                                構造設計とグラフィックを商品ライン全体で。
                             </p>
-                            <span class="presentaciones__row-tag">4 — 8 weeks</span>
+                            <span class="presentaciones__row-tag">4 — 8 週間</span>
                         </li>
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">E</span>
-                            <h3 class="presentaciones__row-title">Illustration &amp; art direction</h3>
+                            <h3 class="presentaciones__row-title">イラスト＆アートディレクション</h3>
                             <p class="presentaciones__row-desc">
-                                Editorial illustration, patterns, icons, and art direction with a personality you can taste.
+                                エディトリアル、パターン、アイコン、アートディレクション——
+                                個性のある世界観をつくります。
                             </p>
-                            <span class="presentaciones__row-tag">2 — 6 weeks</span>
+                            <span class="presentaciones__row-tag">2 — 6 週間</span>
                         </li>
                         <li class="presentaciones__row">
                             <span class="presentaciones__num">F</span>
-                            <h3 class="presentaciones__row-title">Web design &amp; development</h3>
+                            <h3 class="presentaciones__row-title">ウェブデザイン＆開発</h3>
                             <p class="presentaciones__row-desc">
-                                Custom sites and landing pages — UI design, code, and launch — to extend the brand to the web with rhythm and clarity.
+                                オーダーメイドのサイトとランディングページ。UIデザイン、
+                                コーディング、公開まで一貫して、ブランドをウェブへ拡張します。
                             </p>
-                            <span class="presentaciones__row-tag">4 — 8 weeks</span>
+                            <span class="presentaciones__row-tag">4 — 8 週間</span>
                         </li>
                     </ol>
                 </div>
             </section>
 
-            <!-- ============== SHOWCASE ============== -->
             <section class="showcase" id="showcase">
                 <div class="showcase__inner">
                     <header class="showcase__head">
-                        <p class="showcase__eyebrow">04 — Showcase</p>
-                        <h2 class="showcase__heading">Bartender's picks</h2>
-                        <a class="showcase__all glow glow--violet" style="--glow-delay:.2s" href="/en/portfolio.html" data-magnetic="0.2">See all →</a>
+                        <p class="showcase__eyebrow">04 — ショーケース</p>
+                        <h2 class="showcase__heading">バーテンダーのおすすめ</h2>
+                        <a class="showcase__all glow glow--violet" style="--glow-delay:.2s" href="/jp/portfolio.html" data-magnetic="0.2">すべて見る →</a>
                     </header>
-
-                    <ul class="showcase__grid" data-showcase>
-                        <!-- Populated by scripts/showcase.js -->
-                    </ul>
+                    <ul class="showcase__grid" data-showcase></ul>
                 </div>
             </section>
 
-            <!-- ============== CONTACT ============== -->
             <section class="encuentra" id="contact">
                 <div class="encuentra__inner">
-                    <p class="encuentra__eyebrow">05 — Find us</p>
+                    <p class="encuentra__eyebrow">05 — お問い合わせ</p>
                     <h2 class="encuentra__heading">
-                        Ready for a <em>taste</em>?
+                        まずは <em>一口</em>、いかがですか？
                     </h2>
 
                     <div class="encuentra__grid">
 
                         <a class="encuentra__whatsapp"
-                           href="https://wa.me/529993946353?text=Hi%2C%20I'd%20love%20to%20learn%20more%20about%20Berries%20%26%20Mango's%20services."
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           data-magnetic="0.12">
+                           href="https://wa.me/529993946353?text=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E3%80%82%E3%83%99%E3%83%AA%E3%83%BC%E3%81%A8%E3%83%9E%E3%83%B3%E3%82%B4%E3%83%BC%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%A9%B3%E3%81%97%E3%81%8F%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82"
+                           target="_blank" rel="noopener noreferrer" data-magnetic="0.12">
                             <div class="encuentra__whatsapp-icon" aria-hidden="true">
                                 <svg viewBox="0 0 32 32" fill="currentColor">
                                     <path d="M16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.74 4.93 2.14 7L3 29l6.4-2.08a13.1 13.1 0 0 0 6.62 1.78h.01c7.18 0 13.02-5.73 13.02-12.8C29.05 8.73 23.2 3 16.02 3Zm7.58 18.08c-.32.9-1.88 1.72-2.6 1.83-.67.1-1.52.14-2.46-.16-.57-.18-1.3-.42-2.24-.82-3.95-1.67-6.52-5.58-6.72-5.85-.2-.27-1.6-2.12-1.6-4.05 0-1.93 1-2.88 1.36-3.27.36-.39.8-.48 1.06-.48.27 0 .53 0 .77.01.25.01.58-.1.91.7.32.77 1.08 2.67 1.18 2.86.1.2.16.43.03.7-.13.27-.2.43-.4.66-.2.23-.42.52-.6.7-.2.2-.4.42-.17.82.23.39 1.03 1.67 2.2 2.7 1.5 1.32 2.77 1.73 3.16 1.93.4.2.63.16.87-.1.23-.27 1-1.16 1.27-1.56.27-.39.53-.33.9-.2.36.13 2.3 1.07 2.7 1.27.4.2.67.3.77.46.1.16.1.92-.22 1.82Z"/>
                                 </svg>
                             </div>
                             <div class="encuentra__whatsapp-body">
-                                <span class="encuentra__whatsapp-label">Let's chat on</span>
+                                <span class="encuentra__whatsapp-label">話そう</span>
                                 <span class="encuentra__whatsapp-brand">WhatsApp</span>
-                                <span class="encuentra__whatsapp-preview">Hi, I'd love to learn more about Berries &amp; Mango's services.</span>
+                                <span class="encuentra__whatsapp-preview">こんにちは。ベリーとマンゴーのサービスについて詳しく知りたいです。</span>
                             </div>
                             <span class="encuentra__whatsapp-cta glow" style="--glow:#39ff14; --glow-thickness:3px; --glow-delay:.5s">
-                                <span>Start chat</span>
+                                <span>チャットを開く</span>
                                 <span class="encuentra__whatsapp-cta-arrow" aria-hidden="true">→</span>
                             </span>
                             <div class="encuentra__whatsapp-sticker" aria-hidden="true">
@@ -539,11 +490,11 @@
 
                         <dl class="encuentra__list">
                             <div class="encuentra__list-row">
-                                <dt class="encuentra__list-key">Studio</dt>
-                                <dd class="encuentra__list-val">Yucatán, MEX</dd>
+                                <dt class="encuentra__list-key">スタジオ</dt>
+                                <dd class="encuentra__list-val">ユカタン州、メキシコ</dd>
                             </div>
                             <div class="encuentra__list-row">
-                                <dt class="encuentra__list-key">Email</dt>
+                                <dt class="encuentra__list-key">メール</dt>
                                 <dd class="encuentra__list-val">
                                     <a href="mailto:brenda@berriesandmango.com">brenda@berriesandmango.com</a>
                                 </dd>
@@ -555,8 +506,8 @@
                                 </dd>
                             </div>
                             <div class="encuentra__list-row">
-                                <dt class="encuentra__list-key">Hours</dt>
-                                <dd class="encuentra__list-val">Mon — Fri · 10:00 — 18:00</dd>
+                                <dt class="encuentra__list-key">営業時間</dt>
+                                <dd class="encuentra__list-val">月 — 金 · 10:00 — 18:00 (CST)</dd>
                             </div>
                         </dl>
 
@@ -566,34 +517,33 @@
 
         </main>
 
-        <!-- ============== FOOTER ============== -->
         <footer class="footer">
             <div class="footer__hero">
-                <img class="footer__logo" src="/assets/images/logo-wordmark.png" alt="Berries &amp; Mango">
-                <p class="footer__tagline">Brands mixed with serious flavor.</p>
+                <img class="footer__logo footer__logo--ja" src="/assets/images/logo-wordmark-ja.svg" alt="ベリー＆マンゴー">
+                <p class="footer__tagline">味わい深いブランドを。</p>
             </div>
 
             <div class="footer__inner">
                 <div class="footer__col footer__col--brand">
-                    <h4 class="footer__col-title">Studio</h4>
-                    <p class="footer__link">Berries &amp; Mango — a graphic design studio in Yucatán, México. Working with brands across the country and abroad.</p>
-                    <a class="footer__cta glow glow--coral" style="--glow-delay:.3s" href="https://wa.me/529993946353?text=Hi%2C%20I'd%20like%20a%20quote%20for%20a%20design%20project." data-magnetic="0.25">Get a quote →</a>
+                    <h4 class="footer__col-title">スタジオ</h4>
+                    <p class="footer__link">ベリー＆マンゴー — メキシコ・ユカタンを拠点とするグラフィックデザインスタジオ。国内外のブランドと一緒に仕事をしています。</p>
+                    <a class="footer__cta glow glow--coral" style="--glow-delay:.3s" href="https://wa.me/529993946353?text=%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%81%94%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%82%92%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82" data-magnetic="0.25">お見積もり →</a>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__col-title">Site</h4>
+                    <h4 class="footer__col-title">サイト</h4>
                     <ul class="footer__list">
-                        <li><a class="footer__link" href="#about">About</a></li>
-                        <li><a class="footer__link" href="#services">Services</a></li>
-                        <li><a class="footer__link" href="/en/portfolio.html">Portfolio</a></li>
-                        <li><a class="footer__link" href="#contact">Contact</a></li>
+                        <li><a class="footer__link" href="#about">スタジオ</a></li>
+                        <li><a class="footer__link" href="#services">サービス</a></li>
+                        <li><a class="footer__link" href="/jp/portfolio.html">ポートフォリオ</a></li>
+                        <li><a class="footer__link" href="#contact">お問い合わせ</a></li>
                         <li><a class="footer__link" href="/" data-lang-switch="es">Español</a></li>
-                        <li><a class="footer__link" href="/jp/" data-lang-switch="ja">日本語</a></li>
+                        <li><a class="footer__link" href="/en/" data-lang-switch="en">English</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__col-title">Social</h4>
+                    <h4 class="footer__col-title">ソーシャル</h4>
                     <ul class="footer__list">
                         <li>
                             <a class="footer__link footer__link--social" href="https://instagram.com/berriesnmango" target="_blank" rel="noopener" aria-label="Instagram">
@@ -611,33 +561,32 @@
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__col-title">Contact</h4>
+                    <h4 class="footer__col-title">コンタクト</h4>
                     <ul class="footer__list">
                         <li><a class="footer__link" href="mailto:brenda@berriesandmango.com">brenda@berriesandmango.com</a></li>
-                        <li><a class="footer__link" href="#contact">Quote request</a></li>
+                        <li><a class="footer__link" href="#contact">お見積もり</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer__bottom">
                 <span class="footer__copy">© <span data-year>2026</span> Berries &amp; Mango. All rights reserved.</span>
-                <a class="footer__top" href="#top"><span>Back to top</span> <span aria-hidden="true">↑</span></a>
+                <a class="footer__top" href="#top"><span>トップへ</span> <span aria-hidden="true">↑</span></a>
             </div>
         </footer>
 
     </div>
 
     <a class="whatsapp-float glow glow--green"
-       href="https://wa.me/529993946353?text=Hi%2C%20I'd%20love%20to%20learn%20more%20about%20Berries%20%26%20Mango's%20services."
+       href="https://wa.me/529993946353?text=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E3%80%82%E3%83%99%E3%83%AA%E3%83%BC%E3%81%A8%E3%83%9E%E3%83%B3%E3%82%B4%E3%83%BC%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%A9%B3%E3%81%97%E3%81%8F%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82"
        target="_blank" rel="noopener noreferrer"
-       aria-label="Chat on WhatsApp">
+       aria-label="WhatsAppで連絡">
         <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
             <path d="M16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.74 4.93 2.14 7L3 29l6.4-2.08a13.1 13.1 0 0 0 6.62 1.78h.01c7.18 0 13.02-5.73 13.02-12.8C29.05 8.73 23.2 3 16.02 3Zm7.58 18.08c-.32.9-1.88 1.72-2.6 1.83-.67.1-1.52.14-2.46-.16-.57-.18-1.3-.42-2.24-.82-3.95-1.67-6.52-5.58-6.72-5.85-.2-.27-1.6-2.12-1.6-4.05 0-1.93 1-2.88 1.36-3.27.36-.39.8-.48 1.06-.48.27 0 .53 0 .77.01.25.01.58-.1.91.7.32.77 1.08 2.67 1.18 2.86.1.2.16.43.03.7-.13.27-.2.43-.4.66-.2.23-.42.52-.6.7-.2.2-.4.42-.17.82.23.39 1.03 1.67 2.2 2.7 1.5 1.32 2.77 1.73 3.16 1.93.4.2.63.16.87-.1.23-.27 1-1.16 1.27-1.56.27-.39.53-.33.9-.2.36.13 2.3 1.07 2.7 1.27.4.2.67.3.77.46.1.16.1.92-.22 1.82Z"/>
         </svg>
     </a>
 
-    <!-- ============== SCRIPTS ============== -->
-    <script>window.BM_LANG = 'en';</script>
+    <script>window.BM_LANG = 'ja';</script>
     <script src="/scripts/colorize.js" defer></script>
     <script src="/scripts/loader.js" defer></script>
     <script src="/scripts/header.js" defer></script>
