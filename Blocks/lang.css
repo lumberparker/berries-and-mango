@@ -1,0 +1,85 @@
+/* =========================================================
+   Block: lang
+   Bilingual toggle pill. Two slots (ES / EN) with a sliding
+   color highlight on the active option.
+
+   Markup:
+     <div class="lang" data-lang-switcher>
+       <a class="lang__opt is-active" href="/"    data-lang-switch="es">ES</a>
+       <a class="lang__opt"           href="/en/" data-lang-switch="en">EN</a>
+     </div>
+   ========================================================= */
+
+.lang {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(250, 249, 245, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    isolation: isolate;
+    overflow: hidden;
+}
+
+/* The sliding mango "thumb" — sits behind whichever option is active.
+   Position controlled by --lang-pos (set inline or by a JS hook). */
+.lang::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    width: calc(50% - 4px);
+    border-radius: 999px;
+    background: var(--color-mango);
+    box-shadow: 0 8px 22px -8px rgba(252, 173, 34, 0.65);
+    transform: translateX(var(--lang-pos, 0));
+    transition: transform 380ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+                background 220ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+    z-index: 0;
+}
+
+/* When EN is active, slide the thumb to the right. */
+.lang[data-active="en"]::before { --lang-pos: 100%; }
+.lang[data-active="es"]::before { --lang-pos: 0; }
+
+.lang__opt {
+    position: relative;
+    z-index: 1;
+    flex: 1 0 auto;
+    min-width: 40px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-cream);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: color 240ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.lang__opt.is-active {
+    color: var(--color-ink);
+}
+
+.lang__opt:hover:not(.is-active) {
+    color: var(--color-mango);
+    opacity: 1;
+}
+
+/* Light-themed pages — softer surface */
+.page--dark .lang {
+    background: rgba(250, 249, 245, 0.08);
+}
+
+.header--light .lang {
+    background: rgba(10, 10, 10, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(10, 10, 10, 0.18);
+}
+.header--light .lang__opt { color: var(--color-ink); }
+.header--light .lang__opt.is-active { color: var(--color-cream); }

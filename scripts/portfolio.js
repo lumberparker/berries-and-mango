@@ -57,6 +57,15 @@
     const projectsUrl = isEnglish
         ? '/assets/jsons/projects.en.json'
         : '/assets/jsons/projects.json';
+
+    // Project JSON uses relative asset paths (`assets/...`). When the page
+    // lives at `/en/portfolio.html`, those resolve to `/en/assets/...` and 404.
+    // Normalize to root-absolute so paths work from any page depth.
+    const abs = (src) => {
+        if (!src) return src;
+        if (src.startsWith('http') || src.startsWith('/') || src.startsWith('data:')) return src;
+        return '/' + src;
+    };
     fetch(projectsUrl)
         .then(res => res.json())
         .then(data => {
@@ -92,7 +101,7 @@
                     'name': p.title,
                     'headline': p.title,
                     'description': p.description || '',
-                    'image': p.showcaseImage ? `${origin}/${p.showcaseImage}` : undefined,
+                    'image': p.showcaseImage ? `${origin}${abs(p.showcaseImage)}` : undefined,
                     'genre': p.category,
                     'keywords': p.tag,
                     'datePublished': p.date || p.year,
@@ -224,9 +233,9 @@
     function cellMedia(p) {
         const first = (p.media && p.media[0]) || { type: 'image', src: (p.showcaseImage || p.thumb) };
         if (first.type === 'video') {
-            return `<video src="${first.src}" muted loop playsinline preload="metadata" poster="${first.poster || (p.showcaseImage || p.thumb) || ''}"></video>`;
+            return `<video src="${abs(first.src)}" muted loop playsinline preload="metadata" poster="${abs(first.poster || (p.showcaseImage || p.thumb)) || ''}"></video>`;
         }
-        return `<img src="${(p.showcaseImage || p.thumb) || first.src}" alt="${p.title}" loading="lazy">`;
+        return `<img src="${abs((p.showcaseImage || p.thumb) || first.src)}" alt="${p.title}" loading="lazy">`;
     }
 
     /* ---------- Filters ---------- */
@@ -316,8 +325,8 @@
         if (single) {
             const m = activeMedia[0];
             const inner = m.type === 'video'
-                ? `<video src="${m.src}" autoplay muted loop playsinline ${m.poster ? `poster="${m.poster}"` : ''}></video>`
-                : `<img src="${m.src}" alt="${p.title}" loading="eager" decoding="async">`;
+                ? `<video src="${abs(m.src)}" autoplay muted loop playsinline ${m.poster ? `poster="${abs(m.poster)}"` : ''}></video>`
+                : `<img src="${abs(m.src)}" alt="${p.title}" loading="eager" decoding="async">`;
             galleryEl.innerHTML = `
                 <button type="button" class="viewer__gallery-item viewer__gallery-item--single"
                         data-gallery-open="0"
@@ -330,8 +339,8 @@
             galleryEl.innerHTML = activeMedia.map((m, i) => {
                 const wide = i === 0 ? 'viewer__gallery-item--wide' : '';
                 const inner = m.type === 'video'
-                    ? `<video src="${m.src}" muted loop playsinline preload="metadata" ${m.poster ? `poster="${m.poster}"` : ''}></video>`
-                    : `<img src="${m.src}" alt="${p.title} — ${i + 1}" loading="eager" decoding="async">`;
+                    ? `<video src="${abs(m.src)}" muted loop playsinline preload="metadata" ${m.poster ? `poster="${abs(m.poster)}"` : ''}></video>`
+                    : `<img src="${abs(m.src)}" alt="${p.title} — ${i + 1}" loading="eager" decoding="async">`;
                 return `
                     <button type="button" class="viewer__gallery-item ${wide}"
                             data-gallery-open="${i}"
@@ -355,9 +364,9 @@
         }
         const prev = visible[(activeIndex - 1 + n) % n];
         const next = visible[(activeIndex + 1) % n];
-        prevThumb.src = prev.showcaseImage || prev.thumb;
-        nextThumb.src = next.showcaseImage || next.thumb;
-        if (nextThumbBl) nextThumbBl.src = next.showcaseImage || next.thumb;
+        prevThumb.src = abs(prev.showcaseImage || prev.thumb);
+        nextThumb.src = abs(next.showcaseImage || next.thumb);
+        if (nextThumbBl) nextThumbBl.src = abs(next.showcaseImage || next.thumb);
         prevProjBtn.style.visibility = '';
         nextProjBtn.style.visibility = '';
         nextBtn.style.visibility = '';
@@ -395,8 +404,8 @@
         const m = activeMedia[lightboxIdx];
         const total = activeMedia.length;
         const tag = m.type === 'video'
-            ? `<video src="${m.src}" autoplay muted loop playsinline ${m.poster ? `poster="${m.poster}"` : ''}></video>`
-            : `<img src="${m.src}" alt="Imagen ${lightboxIdx + 1}">`;
+            ? `<video src="${abs(m.src)}" autoplay muted loop playsinline ${m.poster ? `poster="${abs(m.poster)}"` : ''}></video>`
+            : `<img src="${abs(m.src)}" alt="${isEnglish ? 'Image' : 'Imagen'} ${lightboxIdx + 1}">`;
         lightboxStage.innerHTML = tag;
 
         const media = lightboxStage.firstElementChild;
