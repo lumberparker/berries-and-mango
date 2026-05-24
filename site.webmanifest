@@ -1,0 +1,17 @@
+{
+  "name": "Berries & Mango — Estudio de diseño",
+  "short_name": "B&M",
+  "description": "Estudio de diseño mexicano en Yucatán: branding, empaque, ilustración y web.",
+  "lang": "es-MX",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "categories": ["design", "business", "branding"],
+  "icons": [
+    { "src": "/assets/images/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/images/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" }
+  ]
+}

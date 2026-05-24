@@ -59,12 +59,52 @@
             visible = projects;
             renderGrid(visible);
             buildFilters(projects);
+            injectProjectsLD(projects);
             handleHash();
         })
         .catch(err => {
             console.error('[portfolio]', err);
             grid.innerHTML = '<li class="portfolio__error">No se pudo cargar el portafolio.</li>';
         });
+
+    /* ---------- JSON-LD: per-project CreativeWork list for Google ---------- */
+    function injectProjectsLD(list) {
+        const node = document.getElementById('projects-ld');
+        if (!node) return;
+        const origin = 'https://berriesandmango.com';
+        const ld = {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            'name': 'Portafolio Berries & Mango',
+            'itemListOrder': 'https://schema.org/ItemListOrderAscending',
+            'numberOfItems': list.length,
+            'itemListElement': list.map((p, i) => ({
+                '@type': 'ListItem',
+                'position': i + 1,
+                'item': {
+                    '@type': 'CreativeWork',
+                    '@id': `${origin}/portfolio.html#${p.id}`,
+                    'name': p.title,
+                    'headline': p.title,
+                    'description': p.description || '',
+                    'image': p.showcaseImage ? `${origin}/${p.showcaseImage}` : undefined,
+                    'genre': p.category,
+                    'keywords': p.tag,
+                    'datePublished': p.date || p.year,
+                    'inLanguage': 'es-MX',
+                    'creator': {
+                        '@type': 'Organization',
+                        'name': 'Berries & Mango',
+                        '@id': `${origin}/#organization`
+                    },
+                    'about': p.client ? { '@type': 'Brand', 'name': p.client } : undefined,
+                    'url': `${origin}/portfolio.html#${p.id}`,
+                    'sameAs': p.behanceUrl || undefined
+                }
+            }))
+        };
+        node.textContent = JSON.stringify(ld);
+    }
 
     /* ---------- Grid render ---------- */
     function renderGrid(list) {

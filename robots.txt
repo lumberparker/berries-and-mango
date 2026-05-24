@@ -1,0 +1,13 @@
+# Berries & Mango — crawler rules
+User-agent: *
+Allow: /
+
+# Disallow nothing — full site is public
+Disallow:
+
+# Sitemap
+Sitemap: https://berriesandmango.com/sitemap.xml
+
+# Be kind to the assets folder (still allowed, just hint)
+User-agent: Googlebot-Image
+Allow: /assets/images/
