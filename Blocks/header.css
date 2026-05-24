@@ -391,3 +391,26 @@
     opacity: 1;
     color: var(--color-mango);
 }
+
+/* ---------- Japanese variant: brand mark + ベリーとマンゴー subline ---------- */
+.header__logo--ja {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.header__logo-sub {
+    font-family: 'Hiragino Mincho ProN','Hiragino Mincho Pro','Yu Mincho','YuMincho','Noto Serif JP','Times New Roman',serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--color-mango);
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .header__logo-sub { font-size: 11px; }
+}

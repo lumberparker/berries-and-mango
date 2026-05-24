@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Auto-route non-Japanese visitors away unless they chose JA manually. -->
+    <!-- Auto-route non-Japanese visitors away unless they chose JA manually.
+         A visitor counts as Japanese if their language is ja OR their
+         timezone is Asia/Tokyo (covers travelers/residents in Japan whose
+         browser isn't set to Japanese). -->
     <script>
     (function(){try{
         if(localStorage.getItem('bm-lang')==='ja') return;
         var langs=(navigator.languages||[navigator.language||'ja']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        if(langs.some(function(l){return l==='ja';})) return; // Japanese — stay
+        var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+        if(tz === 'Asia/Tokyo' || langs.some(function(l){return l==='ja';})) return; // stay
         if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) {
             location.replace('/' + (location.hash||''));
         } else {
@@ -115,8 +119,9 @@
 
         <header class="header" data-header>
             <div class="header__inner">
-                <a class="header__logo" href="/jp/" aria-label="ベリー＆マンゴー — ホーム">
+                <a class="header__logo header__logo--ja" href="/jp/" aria-label="ベリー＆マンゴー — ホーム">
                     <img class="header__logo-mark" src="/assets/images/logo.svg" alt="Berries &amp; Mango">
+                    <span class="header__logo-sub" aria-hidden="true">ベリーとマンゴー</span>
                 </a>
 
                 <nav class="header__nav" aria-label="メインナビゲーション">
@@ -518,8 +523,9 @@
         </main>
 
         <footer class="footer">
-            <div class="footer__hero">
-                <img class="footer__logo footer__logo--ja" src="/assets/images/logo-wordmark-ja.svg" alt="ベリー＆マンゴー">
+            <div class="footer__hero footer__hero--ja">
+                <img class="footer__logo" src="/assets/images/logo-wordmark.png" alt="Berries &amp; Mango">
+                <img class="footer__logo-sub" src="/assets/images/logo-wordmark-ja.svg" alt="ベリーとマンゴー">
                 <p class="footer__tagline">味わい深いブランドを。</p>
             </div>
 

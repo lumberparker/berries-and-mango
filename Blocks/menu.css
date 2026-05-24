@@ -378,3 +378,34 @@
     .menu__overlay::before,
     .menu__overlay::after { animation: none; }
 }
+
+/* ---------- Japanese brand pill — Berries & Mango with ベリーとマンゴー under ---------- */
+.menu__brand--ja {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 2px 6px;
+    line-height: 1;
+}
+
+.menu__brand-en {
+    display: block;
+    font-size: 17px;
+}
+
+.menu__brand-ja {
+    display: block;
+    font-family: 'Hiragino Mincho ProN','Hiragino Mincho Pro','Yu Mincho','YuMincho','Noto Serif JP','Times New Roman',serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--color-mango);
+    opacity: 0.95;
+    margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .menu__brand-en { font-size: 15px; }
+    .menu__brand-ja { font-size: 9px; }
+}

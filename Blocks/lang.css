@@ -1,42 +1,55 @@
 /* =========================================================
    Block: lang
-   Multilingual toggle pill with a sliding color highlight.
+   Multilingual toggle pill with a sliding, color-morphing thumb.
 
    Markup (N options):
-     <div class="lang" style="--lang-count: 3; --lang-pos: 0"
+     <div class="lang"
+          style="--lang-count: 3; --lang-pos: 0;"
           data-active="es" role="group" aria-label="Language">
        <a class="lang__opt is-active" href="/"    data-lang-switch="es">ES</a>
        <a class="lang__opt"           href="/en/" data-lang-switch="en">EN</a>
        <a class="lang__opt"           href="/jp/" data-lang-switch="ja">JP</a>
      </div>
 
-   --lang-count: total option count (defaults to 2)
-   --lang-pos:   0-based index of the active option (defaults to 0)
-
-   The mango thumb auto-sizes to 1 / count of the track and slides
-   to the active option's slot — works for 2, 3, 4… languages.
+   --lang-count : total option count (defaults to 2)
+   --lang-pos   : zero-based index of the active option (defaults to 0)
+   data-active  : drives the thumb color (mango/violet/pink for ES/EN/JP)
    ========================================================= */
 
 .lang {
     --lang-count: 2;
     --lang-pos: 0;
     --lang-pad: 4px;
+    --lang-thumb-color: var(--color-mango);
+    --lang-glow-color: rgba(252, 173, 34, 0.55);
 
     position: relative;
     display: inline-flex;
     align-items: center;
     padding: var(--lang-pad);
     border-radius: 999px;
-    background: rgba(250, 249, 245, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(250, 249, 245, 0.07);
+    box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.14);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
     isolation: isolate;
     overflow: hidden;
+    transition: box-shadow 320ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* The sliding mango thumb — width is 1/N of the track, position
-   is the active slot's index. */
+.lang:hover {
+    box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.25);
+}
+
+/* Per-language thumb color — the active option determines which brand
+   color the thumb morphs to. */
+.lang[data-active="es"] { --lang-thumb-color: var(--color-mango); --lang-glow-color: rgba(252, 173, 34, 0.55); }
+.lang[data-active="en"] { --lang-thumb-color: var(--color-violet); --lang-glow-color: rgba(103, 118, 255, 0.55); }
+.lang[data-active="ja"] { --lang-thumb-color: var(--color-pink);   --lang-glow-color: rgba(236, 46, 124, 0.55); }
+
+/* The sliding thumb — width is 1/N of the track, slides to the active
+   slot, morphs color via the parent's --lang-thumb-color, and breathes
+   a soft glow underneath. */
 .lang::before {
     content: "";
     position: absolute;
@@ -45,53 +58,83 @@
     left: var(--lang-pad);
     width: calc((100% - var(--lang-pad) * 2) / var(--lang-count));
     border-radius: 999px;
-    background: var(--color-mango);
-    box-shadow: 0 8px 22px -8px rgba(252, 173, 34, 0.65);
+    background: var(--lang-thumb-color);
+    box-shadow: 0 6px 18px -4px var(--lang-glow-color),
+                0 0 0 0 var(--lang-glow-color);
     transform: translateX(calc(var(--lang-pos) * 100%));
-    transition: transform 380ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
-                background 220ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+    transition: transform 520ms cubic-bezier(0.34, 1.4, 0.64, 1),
+                background 420ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+                box-shadow 420ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
     z-index: 0;
+    animation: lang-breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes lang-breathe {
+    0%, 100% {
+        box-shadow: 0 6px 18px -4px var(--lang-glow-color),
+                    0 0 0 0 var(--lang-glow-color);
+    }
+    50% {
+        box-shadow: 0 10px 28px -6px var(--lang-glow-color),
+                    0 0 22px -2px var(--lang-glow-color);
+    }
 }
 
 .lang__opt {
     position: relative;
     z-index: 1;
     flex: 1 1 0;
-    min-width: 40px;
-    padding: 6px 14px;
+    min-width: 44px;
+    padding: 8px 16px;
     border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-cream);
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    transition: color 240ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+    transition: color 280ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+                transform 220ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+    opacity: 0.78;
 }
 
 .lang__opt.is-active {
     color: var(--color-ink);
+    opacity: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
+/* Hover on an inactive option: it brightens, lifts slightly, and the
+   thumb leans toward it as a tease. */
 .lang__opt:hover:not(.is-active) {
-    color: var(--color-mango);
     opacity: 1;
+    color: var(--lang-thumb-color);
+    transform: translateY(-1px);
+}
+
+@media (hover: hover) {
+    .lang:has(.lang__opt:nth-child(1):hover:not(.is-active))::before {
+        transform: translateX(calc(var(--lang-pos) * 100% - 6%));
+    }
+    .lang:has(.lang__opt:nth-child(2):hover:not(.is-active))::before {
+        transform: translateX(calc(var(--lang-pos) * 100% + (1 - var(--lang-pos)) * 3%));
+    }
+    .lang:has(.lang__opt:nth-child(3):hover:not(.is-active))::before {
+        transform: translateX(calc(var(--lang-pos) * 100% + 6%));
+    }
 }
 
 /* Light-themed pages */
 .header--light .lang {
-    background: rgba(10, 10, 10, 0.06);
-    box-shadow: inset 0 0 0 1px rgba(10, 10, 10, 0.18);
+    background: rgba(10, 10, 10, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(10, 10, 10, 0.14);
 }
 .header--light .lang__opt { color: var(--color-ink); }
-.header--light .lang__opt.is-active { color: var(--color-cream); }
+.header--light .lang__opt.is-active { color: var(--color-cream); text-shadow: none; }
 
-/* Hover lean — thumb subtly drifts toward whichever option you're
-   pointing at, even when it's not active. Adds tactile feedback. */
-@media (hover: hover) {
-    .lang__opt:nth-child(1):hover ~ .lang__opt,
-    .lang:has(.lang__opt:nth-child(1):hover)::before { transform: translateX(calc(var(--lang-pos) * 100% - 4%)); }
-    .lang:has(.lang__opt:nth-child(2):hover)::before { transform: translateX(calc(var(--lang-pos) * 100% + (1 - var(--lang-pos)) * 4%)); }
+/* Reduced motion: still slide, but no breath */
+@media (prefers-reduced-motion: reduce) {
+    .lang::before { animation: none; }
 }

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Language detection: ES default, ja → /jp/, others → /en/ -->
+    <!-- Language detection: ES default, ja (or Asia/Tokyo) → /jp/, others → /en/ -->
     <script>
     (function(){try{
         if(localStorage.getItem('bm-lang')==='es') return;
         var langs=(navigator.languages||[navigator.language||'es']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        if(langs.some(function(l){return l==='ja';})) { location.replace('/jp/portfolio.html' + (location.hash||'')); return; }
+        var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+        var inJapan = tz === 'Asia/Tokyo' || langs.some(function(l){return l==='ja';});
+        if(inJapan) { location.replace('/jp/portfolio.html' + (location.hash||'')); return; }
         if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) return;
         location.replace('/en/portfolio.html' + (location.hash||''));
     }catch(e){}})();

@@ -8,7 +8,8 @@
     (function(){try{
         if(localStorage.getItem('bm-lang')==='ja') return;
         var langs=(navigator.languages||[navigator.language||'ja']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        if(langs.some(function(l){return l==='ja';})) return;
+        var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+        if(tz === 'Asia/Tokyo' || langs.some(function(l){return l==='ja';})) return;
         if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) {
             location.replace('/portfolio.html' + (location.hash||''));
         } else {
@@ -73,8 +74,9 @@
     <div class="page__wrap">
 
         <nav class="menu" data-menu aria-label="メインナビゲーション">
-            <a class="menu__brand" href="/jp/" aria-label="ベリー＆マンゴー — ホーム">
-                Berries <em>&amp;</em> Mango
+            <a class="menu__brand menu__brand--ja" href="/jp/" aria-label="ベリー＆マンゴー — ホーム">
+                <span class="menu__brand-en">Berries <em>&amp;</em> Mango</span>
+                <span class="menu__brand-ja">ベリーとマンゴー</span>
             </a>
             <button class="menu__toggle glow glow--mango" type="button" data-menu-toggle aria-label="メニューを開く" aria-expanded="false">
                 <span class="menu__toggle-icon" aria-hidden="true"></span>
@@ -125,8 +127,9 @@
         </main>
 
         <footer class="footer">
-            <div class="footer__hero">
-                <img class="footer__logo footer__logo--ja" src="/assets/images/logo-wordmark-ja.svg" alt="ベリー＆マンゴー">
+            <div class="footer__hero footer__hero--ja">
+                <img class="footer__logo" src="/assets/images/logo-wordmark.png" alt="Berries &amp; Mango">
+                <img class="footer__logo-sub" src="/assets/images/logo-wordmark-ja.svg" alt="ベリーとマンゴー">
                 <p class="footer__tagline">味わい深いブランドを。</p>
             </div>
 

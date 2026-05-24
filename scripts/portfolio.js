@@ -250,16 +250,20 @@
     }
 
     /* ---------- Filters ---------- */
+    const ALL_LABEL = isJapanese ? 'すべて' : isEnglish ? 'All' : 'Todos';
+    const ALL_KEY   = '__ALL__';
+
     function buildFilters(list) {
         if (!filters) return;
-        const cats = ['Todos', ...new Set(list.map(p => p.category))];
+        const cats = [ALL_KEY, ...new Set(list.map(p => p.category))];
         const glowColors = ['mango', 'pink', 'violet', 'mint', 'coral', 'skyblue', 'yolk', 'green'];
         filters.innerHTML = cats.map((c, i) => {
             const color = glowColors[i % glowColors.length];
             const delay = (i * 0.18).toFixed(2);
+            const label = c === ALL_KEY ? ALL_LABEL : c;
             return `
                 <button class="portfolio__filter glow glow--${color} ${i === 0 ? 'is-active' : ''}"
-                        type="button" data-filter="${c}" style="--glow-delay:${delay}s">${c}</button>
+                        type="button" data-filter="${c}" style="--glow-delay:${delay}s">${label}</button>
             `;
         }).join('');
 
@@ -269,7 +273,7 @@
             filters.querySelectorAll('.portfolio__filter').forEach(b => b.classList.remove('is-active'));
             btn.classList.add('is-active');
             const cat = btn.dataset.filter;
-            visible = cat === 'Todos' ? projects : projects.filter(p => p.category === cat);
+            visible = cat === ALL_KEY ? projects : projects.filter(p => p.category === cat);
             renderGrid(visible);
         });
     }

@@ -8,7 +8,9 @@
     (function(){try{
         if(localStorage.getItem('bm-lang')==='en') return;
         var langs=(navigator.languages||[navigator.language||'en']).map(function(l){return (l||'').slice(0,2).toLowerCase()});
-        if(langs.some(function(l){return l==='ja';})) { location.replace('/jp/portfolio.html' + (location.hash||'')); return; }
+        var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+        var inJapan = tz === 'Asia/Tokyo' || langs.some(function(l){return l==='ja';});
+        if(inJapan) { location.replace('/jp/portfolio.html' + (location.hash||'')); return; }
         if(langs.some(function(l){return l==='es'||l==='pt'||l==='ca'||l==='gl';})) location.replace('/portfolio.html' + (location.hash||''));
     }catch(e){}})();
     </script>
