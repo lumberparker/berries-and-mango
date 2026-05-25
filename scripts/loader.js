@@ -1,28 +1,27 @@
 /* =========================================================
-   loader.js — fake progress + bar fill + fade out.
+   loader.js — fast splash, hide as soon as the page is interactive.
 
-   The loader is `pointer-events: none` from CSS, so taps already
-   pass through it. We still try to dismiss as fast as possible so
-   it's visually out of the way. Triggers in this order:
-     1. window.load if it's already fired
-     2. window.load event
-     3. DOMContentLoaded + 400ms (covers slow image loads)
-     4. 3.5s safety timeout
+   Strategy:
+     - Loader is pointer-events:none in CSS, so it never blocks taps.
+     - Fire .is-hidden the instant the DOM is parsed (rAF after
+       DOMContentLoaded or immediately if we're already past it).
+     - Backups: window.load, +400ms safety, +2500ms hard ceiling.
    ========================================================= */
 (function () {
     const loader = document.querySelector('[data-loader]');
+    if (!loader) return;
+
     const progress = document.querySelector('[data-loader-progress]');
     const bar = document.querySelector('[data-loader-bar]');
-    if (!loader) return;
 
     let value = 0;
     let ticking = true;
     const tick = setInterval(() => {
         if (!ticking) return;
-        value = Math.min(value + Math.random() * 14, 92);
+        value = Math.min(value + Math.random() * 24, 96);
         if (progress) progress.textContent = `${Math.floor(value)}%`;
         if (bar) bar.style.width = `${value}%`;
-    }, 90);
+    }, 70);
 
     let dismissed = false;
     const dismiss = () => {
@@ -32,23 +31,21 @@
         clearInterval(tick);
         if (progress) progress.textContent = '100%';
         if (bar) bar.style.width = '100%';
-        // Brief beat so users see "100%" before fade, then hide
-        setTimeout(() => loader.classList.add('is-hidden'), 180);
+        // Immediately start the fade. CSS handles the 280ms opacity
+        // transition; once that's done visibility flips to hidden.
+        requestAnimationFrame(() => loader.classList.add('is-hidden'));
     };
 
-    if (document.readyState === 'complete') {
-        dismiss();
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        // DOM is already parsed — dismiss next frame
+        requestAnimationFrame(dismiss);
     } else {
-        window.addEventListener('load', dismiss, { once: true });
-        // If DOM is ready but assets are slow, dismiss anyway after 400ms
-        if (document.readyState === 'interactive') {
-            setTimeout(dismiss, 400);
-        } else {
-            document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(dismiss, 400);
-            }, { once: true });
-        }
-        // Final safety net
-        setTimeout(dismiss, 3500);
+        document.addEventListener('DOMContentLoaded', () => {
+            requestAnimationFrame(dismiss);
+        }, { once: true });
     }
+
+    // Safety nets — never let the loader linger
+    window.addEventListener('load', dismiss, { once: true });
+    setTimeout(dismiss, 2500);
 })();
