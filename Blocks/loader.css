@@ -12,6 +12,10 @@
     background: var(--color-ink);
     color: var(--color-cream);
     overflow: hidden;
+    /* Never block taps — the loader is purely decorative. Taps that
+       happen during the fade-in/out pass through to the UI underneath
+       so input is always responsive. */
+    pointer-events: none;
     transition: opacity var(--dur-slow) var(--ease),
                 visibility 0s linear var(--dur-slow);
 }
