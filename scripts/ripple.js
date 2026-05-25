@@ -1,43 +1,37 @@
 /* =========================================================
    ripple.js — liquid mango ripple from the tap point.
 
-   Fires on touch (mobile / tablet) only. Spawns a radial mango
-   gradient at the tap coordinates inside any interactive host
-   (links, buttons, magnetic CTAs, lang options). Scales out and
-   fades with a liquid easing curve.
+   Listens to BOTH touchstart (most reliable on iOS Safari) and
+   pointerdown for touch pointers (covers everything else). Spawns
+   a radial mango gradient at the tap coordinates inside the
+   nearest interactive host. Short, fast easing so the animation
+   is visible even on navigating links before the page changes.
    ========================================================= */
 (function () {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
-    const SELECTOR = 'a, button, [data-magnetic], .lang__opt, .portfolio__cell, .showcase__link';
-    const RIPPLE_DURATION = 720;
+    const SELECTOR = 'a, button, [data-magnetic], .lang__opt, .portfolio__cell, .showcase__link, .viewer__gallery-item';
+    const DURATION = 480;
 
-    document.addEventListener('pointerdown', (e) => {
-        // Touch-only — keep desktop pristine
-        if (e.pointerType !== 'touch') return;
+    // Dedupe: touchstart and pointerdown both fire on iOS for the same tap.
+    let lastTap = 0;
 
-        const host = e.target.closest(SELECTOR);
+    function spawn(clientX, clientY, target) {
+        const host = (target && target.closest) ? target.closest(SELECTOR) : null;
         if (!host) return;
 
-        // Avoid stacking ripples on rapid taps
-        if (host._rippling) return;
-        host._rippling = true;
-        setTimeout(() => { host._rippling = false; }, RIPPLE_DURATION);
-
         const rect = host.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        // Ripple diameter — big enough to cover the whole element from anywhere
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        // Ripple diameter — large enough to cover the host from any tap point.
         const dx = Math.max(x, rect.width - x);
         const dy = Math.max(y, rect.height - y);
         const radius = Math.sqrt(dx * dx + dy * dy);
-        const size = radius * 2;
+        const size = Math.max(radius * 2, 60);
 
-        // Ensure the host can position the absolute ripple
-        const hostStyle = getComputedStyle(host);
-        if (hostStyle.position === 'static') {
-            host.style.position = 'relative';
-        }
+        const hostPos = getComputedStyle(host).position;
+        if (hostPos === 'static') host.style.position = 'relative';
 
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
@@ -48,9 +42,27 @@
 
         host.appendChild(ripple);
 
-        // Clean up after the animation
+        // Force a paint so the animation actually fires before navigation.
+        // Reading offsetWidth synchronously flushes layout.
+        // eslint-disable-next-line no-unused-expressions
+        ripple.offsetWidth;
+
         setTimeout(() => {
             if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
-        }, RIPPLE_DURATION + 40);
+        }, DURATION + 40);
+    }
+
+    document.addEventListener('touchstart', (e) => {
+        const t = e.touches && e.touches[0];
+        if (!t) return;
+        lastTap = Date.now();
+        spawn(t.clientX, t.clientY, e.target);
+    }, { passive: true });
+
+    document.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'touch') return;
+        // Within 350ms of a touchstart? Already handled.
+        if (Date.now() - lastTap < 350) return;
+        spawn(e.clientX, e.clientY, e.target);
     }, { passive: true });
 })();

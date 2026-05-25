@@ -49,7 +49,8 @@
 
 /* The sliding thumb — width is 1/N of the track, slides to the active
    slot, morphs color via the parent's --lang-thumb-color, and breathes
-   a soft glow underneath. */
+   a soft glow underneath. Must NOT catch taps — pointer-events:none
+   so iOS Safari can never route a tap to it instead of the option. */
 .lang::before {
     content: "";
     position: absolute;
@@ -66,6 +67,7 @@
                 background 420ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
                 box-shadow 420ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
     z-index: 0;
+    pointer-events: none;
     animation: lang-breathe 3.6s ease-in-out infinite;
 }
 
