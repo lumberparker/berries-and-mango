@@ -39,9 +39,17 @@
     max-width: var(--container);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-5);
+}
+
+.header__lang {
+    display: inline-flex;
+    align-items: center;
+    /* Above the open mobile menu so it stays interactive */
+    position: relative;
+    z-index: 100;
 }
 
 /* Logo */
@@ -186,15 +194,40 @@
         z-index: 100;
     }
 
+    /* Three-cell grid on mobile: logo | switcher | burger */
     .header__inner {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr auto auto;
+        gap: var(--space-3);
+    }
+
+    .header__lang {
+        justify-self: end;
+    }
+
+    /* Compact switcher on mobile so it fits next to the burger */
+    .header__lang .lang {
+        padding: 3px;
+    }
+    .header__lang .lang__opt {
+        padding: 6px 10px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        min-width: 32px;
+    }
+    .header__lang .lang__opt--ja {
+        font-size: 11px;
+        padding: 6px 8px;
+        letter-spacing: 0.04em;
     }
 
     .header__logo-mark {
         width: 110px;
     }
 
-    /* Keep logo + burger visible above the open menu */
+    /* Keep logo + switcher + burger visible above the open menu */
+    .header.is-menu-open .header__lang {
+        z-index: 100;
+    }
     .header.is-menu-open {
         z-index: 100;
         /* Critical: backdrop-filter / filter on .header creates a containing

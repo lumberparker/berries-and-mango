@@ -173,15 +173,16 @@
                         <li class="header__nav-item"><a class="header__nav-link" href="#services">Services</a></li>
                         <li class="header__nav-item"><a class="header__nav-link" href="/en/portfolio.html">Portfolio</a></li>
                         <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
-                        <li class="header__nav-item header__nav-item--lang">
-                            <div class="lang" style="--lang-count: 3; --lang-pos: 1;" data-active="en" role="group" aria-label="Switch language">
-                                <a class="lang__opt" href="/" data-lang-switch="es" aria-label="Cambiar a Español">ES</a>
-                                <a class="lang__opt is-active" href="/en/" data-lang-switch="en" aria-current="true">EN</a>
-                                <a class="lang__opt lang__opt--ja" href="/jp/" data-lang-switch="ja" aria-label="日本に切替">日本</a>
-                            </div>
-                        </li>
                     </ul>
                 </nav>
+
+                <div class="header__lang" data-lang-slot>
+                    <div class="lang" style="--lang-count: 3; --lang-pos: 1;" data-active="en" role="group" aria-label="Switch language">
+                        <a class="lang__opt" href="/" data-lang-switch="es" aria-label="Cambiar a Español">ES</a>
+                        <a class="lang__opt is-active" href="/en/" data-lang-switch="en" aria-current="true">EN</a>
+                        <a class="lang__opt lang__opt--ja" href="/jp/" data-lang-switch="ja" aria-label="日本語に切替">日本語</a>
+                    </div>
+                </div>
 
                 <a class="header__cta glow glow--mango" href="https://wa.me/529993946353?text=Hi%2C%20I'd%20love%20to%20learn%20more%20about%20Berries%20%26%20Mango's%20services." target="_blank" rel="noopener noreferrer" data-magnetic="0.25">
                     <span>Say hi</span>

@@ -1,31 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="ベリーとマンゴー">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="ベリーとマンゴー">
     <title>ベリーとマンゴー</title>
-    <!-- Soft mango drop shadow for depth -->
     <defs>
         <filter id="bm-ja-glow" x="-10%" y="-30%" width="120%" height="160%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
         </filter>
     </defs>
 
-    <!-- Subtle glow underlay -->
-    <text x="360" y="148"
+    <!-- Soft glow underlay -->
+    <text x="360" y="140"
           text-anchor="middle"
-          font-family="'Hiragino Mincho ProN','Hiragino Mincho Pro','Yu Mincho','YuMincho','Noto Serif JP','Times New Roman',serif"
-          font-style="italic"
-          font-weight="600"
-          font-size="148"
-          letter-spacing="-2"
+          font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Yu Gothic','Meiryo','Noto Sans JP','Roboto',sans-serif"
+          font-weight="700"
+          font-size="128"
+          letter-spacing="2"
           fill="#fcad22"
-          opacity="0.35"
+          opacity="0.32"
           filter="url(#bm-ja-glow)">ベリーとマンゴー</text>
 
     <!-- Crisp wordmark on top -->
-    <text x="360" y="148"
+    <text x="360" y="140"
           text-anchor="middle"
-          font-family="'Hiragino Mincho ProN','Hiragino Mincho Pro','Yu Mincho','YuMincho','Noto Serif JP','Times New Roman',serif"
-          font-style="italic"
+          font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Yu Gothic','Meiryo','Noto Sans JP','Roboto',sans-serif"
           font-weight="700"
-          font-size="148"
-          letter-spacing="-2"
+          font-size="128"
+          letter-spacing="2"
           fill="#fcad22">ベリーとマンゴー</text>
 </svg>

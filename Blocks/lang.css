@@ -146,6 +146,36 @@
 .header--light .lang__opt { color: var(--color-ink); }
 .header--light .lang__opt.is-active { color: var(--color-cream); text-shadow: none; }
 
+/* ---------- Floating top-right placement (portfolio pages) ---------- */
+.lang-float {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 91;
+    pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+    .lang-float {
+        top: 12px;
+        right: 12px;
+    }
+    .lang-float .lang {
+        padding: 3px;
+    }
+    .lang-float .lang__opt {
+        padding: 6px 10px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        min-width: 30px;
+    }
+    .lang-float .lang__opt--ja {
+        font-size: 11px;
+        padding: 6px 8px;
+        letter-spacing: 0.04em;
+    }
+}
+
 /* Reduced motion: still slide, but no breath */
 @media (prefers-reduced-motion: reduce) {
     .lang::before { animation: none; }
