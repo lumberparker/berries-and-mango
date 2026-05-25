@@ -360,3 +360,11 @@ button,
     white-space: nowrap;
     border: 0;
 }
+
+/* ---------- Touch tuning ---------- */
+/* Kill the legacy 300ms tap delay on iOS and prevent double-tap zoom
+   from eating the first tap on interactive elements. */
+a, button, [data-magnetic], .lang__opt {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}

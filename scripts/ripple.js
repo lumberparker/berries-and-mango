@@ -1,11 +1,10 @@
 /* =========================================================
    ripple.js — liquid mango ripple from the tap point.
 
-   Listens to BOTH touchstart (most reliable on iOS Safari) and
-   pointerdown for touch pointers (covers everything else). Spawns
-   a radial mango gradient at the tap coordinates inside the
-   nearest interactive host. Short, fast easing so the animation
-   is visible even on navigating links before the page changes.
+   IMPORTANT: ripples are rendered into a fixed body-level overlay,
+   NEVER appended to the tapped element. On iOS Safari, mutating an
+   interactive element's DOM during a tap can cancel the click/tap.
+   The overlay sidesteps that entirely.
    ========================================================= */
 (function () {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
@@ -13,45 +12,42 @@
     const SELECTOR = 'a, button, [data-magnetic], .lang__opt, .portfolio__cell, .showcase__link, .viewer__gallery-item';
     const DURATION = 480;
 
-    // Dedupe: touchstart and pointerdown both fire on iOS for the same tap.
+    // Single portal where every ripple lives. pointer-events:none so
+    // it never interferes with taps. Sits above everything visually.
+    let overlay = null;
+    function ensureOverlay() {
+        if (overlay) return overlay;
+        overlay = document.createElement('div');
+        overlay.className = 'ripple-overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+
     let lastTap = 0;
 
     function spawn(clientX, clientY, target) {
-        const host = (target && target.closest) ? target.closest(SELECTOR) : null;
-        if (!host) return;
+        // Only fire if the tap actually landed on something interactive.
+        if (!target || !target.closest || !target.closest(SELECTOR)) return;
 
-        const rect = host.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-
-        // Ripple diameter — large enough to cover the host from any tap point.
-        const dx = Math.max(x, rect.width - x);
-        const dy = Math.max(y, rect.height - y);
-        const radius = Math.sqrt(dx * dx + dy * dy);
-        const size = Math.max(radius * 2, 60);
-
-        const hostPos = getComputedStyle(host).position;
-        if (hostPos === 'static') host.style.position = 'relative';
-
+        const o = ensureOverlay();
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
+        // Size scales with viewport — bigger phone, bigger splash
+        const size = Math.max(window.innerWidth, window.innerHeight) * 0.55;
         ripple.style.width = size + 'px';
         ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
+        ripple.style.left = clientX + 'px';
+        ripple.style.top = clientY + 'px';
 
-        host.appendChild(ripple);
-
-        // Force a paint so the animation actually fires before navigation.
-        // Reading offsetWidth synchronously flushes layout.
-        // eslint-disable-next-line no-unused-expressions
-        ripple.offsetWidth;
+        o.appendChild(ripple);
 
         setTimeout(() => {
             if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
         }, DURATION + 40);
     }
 
+    // touchstart is the most reliable on iOS Safari
     document.addEventListener('touchstart', (e) => {
         const t = e.touches && e.touches[0];
         if (!t) return;
@@ -59,10 +55,10 @@
         spawn(t.clientX, t.clientY, e.target);
     }, { passive: true });
 
+    // pointerdown as a fallback for browsers without TouchEvent
     document.addEventListener('pointerdown', (e) => {
         if (e.pointerType !== 'touch') return;
-        // Within 350ms of a touchstart? Already handled.
-        if (Date.now() - lastTap < 350) return;
+        if (Date.now() - lastTap < 350) return;  // already handled
         spawn(e.clientX, e.clientY, e.target);
     }, { passive: true });
 })();
