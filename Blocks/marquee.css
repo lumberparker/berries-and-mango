@@ -50,8 +50,21 @@
     animation-duration: 48s;
 }
 
-.marquee:hover .marquee__track {
+/* Pause both tracks on hover (desktop), focus (keyboard), or when
+   .is-paused is set by JS (tab hidden / reduced-motion). Smooth
+   transition on transform so resume feels natural instead of a jump. */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track,
+.marquee.is-paused .marquee__track {
     animation-play-state: paused;
+}
+
+.marquee__track {
+    transition: filter var(--dur-slow) var(--ease);
+}
+
+.marquee:hover .marquee__track {
+    filter: saturate(1.2);
 }
 
 .marquee__group {
