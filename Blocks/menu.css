@@ -237,6 +237,8 @@
 .menu.is-open ~ .menu__overlay .menu__list li:nth-child(4) .menu__link { transition-delay: 320ms; }
 .menu__overlay.is-open .menu__list li:nth-child(5) .menu__link,
 .menu.is-open ~ .menu__overlay .menu__list li:nth-child(5) .menu__link { transition-delay: 400ms; }
+.menu__overlay.is-open .menu__list li:nth-child(6) .menu__link,
+.menu.is-open ~ .menu__overlay .menu__list li:nth-child(6) .menu__link { transition-delay: 480ms; }
 
 /* Per-link accent on hover — cycles through the palette */
 .menu__list li:nth-child(1) .menu__link:hover { color: var(--color-mango); }
@@ -244,6 +246,7 @@
 .menu__list li:nth-child(3) .menu__link:hover { color: var(--color-mint); }
 .menu__list li:nth-child(4) .menu__link:hover { color: var(--color-coral); }
 .menu__list li:nth-child(5) .menu__link:hover { color: var(--color-skyblue); }
+.menu__list li:nth-child(6) .menu__link:hover { color: var(--color-mint); }
 
 .menu__link:hover {
     letter-spacing: -0.005em;
