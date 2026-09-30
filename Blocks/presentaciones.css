@@ -127,7 +127,8 @@
 
 /* ---------- Web row → banner to web.berriesandmango.com ----------
    Desktop: hovering the row slides in a banner (the row is clickable).
-   Touch: first tap opens the banner (.is-open), tapping it follows the link. */
+   Wide touch screens: first tap opens the banner (.is-open).
+   Phones / narrow screens (≤900px): always visible below the row. */
 .presentaciones__row--web {
     cursor: pointer;
 }
@@ -209,14 +210,16 @@
 }
 
 /* Touch tablets (no hover) above 900px: opened by tap */
-.presentaciones__row--web.is-open .presentaciones__web {
-    opacity: 1;
-    transform: translate(0, -50%);
-}
+@media (min-width: 901px) {
+    .presentaciones__row--web.is-open .presentaciones__web {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
 
-.presentaciones__row--web.is-open .presentaciones__row-desc,
-.presentaciones__row--web.is-open .presentaciones__row-tag {
-    opacity: 0;
+    .presentaciones__row--web.is-open .presentaciones__row-desc,
+    .presentaciones__row--web.is-open .presentaciones__row-tag {
+        opacity: 0;
+    }
 }
 
 @media (hover: hover) and (min-width: 901px) {
@@ -257,37 +260,17 @@
             ".   web";
     }
 
+    /* Mobile / narrow screens: the banner is always visible below the row */
     .presentaciones__web {
         grid-area: web;
         position: relative;
         top: auto;
         right: auto;
         width: 100%;
-        display: none;
+        display: flex;
         margin-top: var(--space-3);
         opacity: 1;
         transform: none;
-    }
-
-    .presentaciones__row--web.is-open .presentaciones__web {
-        display: flex;
-        transform: none;
-        animation: web-banner-in 500ms var(--ease) both;
-    }
-
-    /* Narrow window with a mouse: reveal below the row on hover */
-    @media (hover: hover) {
-        .presentaciones__row--web:hover .presentaciones__web,
-        .presentaciones__web:focus-visible {
-            display: flex;
-            transform: none;
-            animation: web-banner-in 500ms var(--ease) both;
-        }
-    }
-
-    .presentaciones__row--web.is-open .presentaciones__row-desc,
-    .presentaciones__row--web.is-open .presentaciones__row-tag {
-        opacity: 1;
     }
 
     .presentaciones__web-thumb {
@@ -297,9 +280,4 @@
     .presentaciones__web-url {
         font-size: 17px;
     }
-}
-
-@keyframes web-banner-in {
-    from { opacity: 0; transform: translateY(-8px); }
-    to   { opacity: 1; transform: none; }
 }
