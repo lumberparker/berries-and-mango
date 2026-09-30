@@ -87,6 +87,19 @@
     color: inherit;
     position: relative;
     padding: 6px 0;
+    white-space: nowrap;
+}
+
+/* Narrow desktops: five nav items (incl. Desarrollo Web) need a tighter fit */
+@media (min-width: 901px) and (max-width: 1100px) {
+    .header__nav-list {
+        gap: var(--space-4);
+    }
+
+    .header__nav-link {
+        font-size: 11px;
+        letter-spacing: 0.06em;
+    }
 }
 
 .header__nav-link::after {
