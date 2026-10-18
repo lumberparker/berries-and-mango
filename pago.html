@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago — Berries &amp; Mango</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+    <link rel="stylesheet" href="Fonts/fonts.css">
+
+    <style>
+        :root {
+            --color-cream:  #faf9f5;
+            --color-ink:    #0a0a0a;
+            --color-mango:  #fcad22;
+            --color-pink:   #ec2e7c;
+            --color-violet: #6776ff;
+            --color-mint:   #6ed6a8;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            min-height: 100%;
+            background: var(--color-ink);
+            color: var(--color-cream);
+            font-family: 'Satoshi', 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Background blob ── */
+        .bg-blob {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-blob::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 70vmax;
+            height: 70vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-violet) 0%, transparent 65%);
+            opacity: 0.18;
+            animation: blob 14s ease-in-out infinite alternate;
+        }
+        .bg-blob::after {
+            content: "";
+            position: absolute;
+            bottom: -25%;
+            left: -15%;
+            width: 55vmax;
+            height: 55vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-mango) 0%, transparent 65%);
+            opacity: 0.14;
+            animation: blob 18s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes blob {
+            0%   { transform: translate(0,0) scale(1); }
+            33%  { transform: translate(40px,-60px) scale(1.08); }
+            66%  { transform: translate(-30px,40px) scale(0.94); }
+            100% { transform: translate(20px,20px) scale(1.04); }
+        }
+
+        /* ── Layout ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 48px 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 28px;
+            padding: 48px 40px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            animation: card-in 600ms var(--ease) both;
+        }
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Logo ── */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .logo-wrap img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+        .logo-name {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--color-cream);
+            line-height: 1;
+        }
+        .logo-name em {
+            color: var(--color-mango);
+            font-style: italic;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.10);
+            margin: 28px 0;
+        }
+
+        /* ── Label ── */
+        .label {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(250,249,245,0.45);
+            font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+            margin-bottom: 6px;
+        }
+
+        /* ── Client info ── */
+        .info-row {
+            margin-bottom: 20px;
+        }
+        .info-value {
+            font-size: 17px;
+            color: var(--color-cream);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* ── Amount ── */
+        .amount-block {
+            background: rgba(252, 173, 34, 0.08);
+            border: 1px solid rgba(252,173,34,0.25);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 28px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .amount-currency {
+            font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+            font-size: 18px;
+            color: var(--color-mango);
+            opacity: 0.7;
+        }
+        .amount-value {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-mango);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .amount-currency-label {
+            font-size: 14px;
+            color: rgba(252,173,34,0.6);
+            font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+            letter-spacing: 0.08em;
+        }
+
+        /* ── CTA button ── */
+        .pay-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 28px;
+            background: var(--color-mango);
+            color: var(--color-ink);
+            border: none;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 200ms var(--ease),
+                        box-shadow 200ms var(--ease),
+                        background 200ms var(--ease);
+            box-shadow: 0 12px 32px -8px rgba(252,173,34,0.45);
+            margin-top: 32px;
+        }
+        .pay-btn:hover {
+            background: #ffc03d;
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -10px rgba(252,173,34,0.6);
+        }
+        .pay-btn:active {
+            transform: translateY(0);
+        }
+        .pay-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ── Stripe badge ── */
+        .stripe-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(250,249,245,0.35);
+            font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+            letter-spacing: 0.06em;
+        }
+        .stripe-note svg {
+            width: 36px;
+            height: 15px;
+            opacity: 0.4;
+        }
+
+        /* ── Error state ── */
+        .error-state {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .error-state .error-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .error-state p {
+            color: rgba(250,249,245,0.5);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .card-footer {
+            margin-top: 36px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(250,249,245,0.25);
+            line-height: 1.6;
+        }
+        .card-footer a {
+            color: rgba(250,249,245,0.4);
+            text-decoration: none;
+        }
+        .card-footer a:hover { color: var(--color-cream); }
+
+        @media (max-width: 520px) {
+            .card { padding: 36px 24px; border-radius: 22px; }
+            .amount-value { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-blob"></div>
+
+<main class="page">
+    <div class="card">
+
+        <!-- Logo -->
+        <div class="logo-wrap">
+            <img src="assets/images/logo-symbol.png" alt="Berries &amp; Mango">
+            <span class="logo-name">Berries <em>&</em> Mango</span>
+        </div>
+
+        <div id="content">
+            <!-- Filled by JS -->
+        </div>
+
+        <div class="card-footer">
+            ¿Dudas? Escríbenos a
+            <a href="mailto:hola@berriesandmango.com">hola@berriesandmango.com</a>
+        </div>
+    </div>
+</main>
+
+<script>
+(function () {
+    function escHtml(str) {
+        return String(str)
+            .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function safeStripeLink(str) {
+        return /^https:\/\/(buy|checkout|link)\.stripe\.com\//.test(String(str)) ? str : '#';
+    }
+
+    const params   = new URLSearchParams(location.search);
+    const cliente  = params.get('cliente')  || '';
+    const concepto = params.get('concepto') || '';
+    const monto    = params.get('monto')    || '';
+    const link     = params.get('link')     || '';
+    const moneda   = params.get('moneda')   || 'MXN';
+    const el       = document.getElementById('content');
+
+    if (!link) {
+        el.innerHTML = `
+            <div class="error-state">
+                <div class="error-icon">🔗</div>
+                <p>Este link de pago no está configurado.<br>
+                   Contacta a Berries &amp; Mango para recibir tu link correcto.</p>
+            </div>`;
+        return;
+    }
+
+    const fmt = monto
+        ? Number(monto).toLocaleString('es-MX', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+        : '—';
+
+    el.innerHTML = `
+        ${concepto ? `<div class="info-row"><div class="label">Concepto</div><div class="info-value">${escHtml(concepto)}</div></div>` : ''}
+        ${cliente  ? `<div class="info-row"><div class="label">Cliente</div><div class="info-value">${escHtml(cliente)}</div></div>` : ''}
+        ${(concepto || cliente) ? '<div class="divider"></div>' : ''}
+
+        <div class="label">Total a pagar</div>
+        <div class="amount-block">
+            <span class="amount-currency">$</span>
+            <span class="amount-value">${escHtml(fmt)}</span>
+            <span class="amount-currency-label">${escHtml(moneda)}</span>
+        </div>
+
+        <a class="pay-btn" href="${safeStripeLink(link)}" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="1" y="4" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M5 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            Pagar ahora
+        </a>
+
+        <div class="stripe-note">
+            Pago seguro procesado por
+            <svg viewBox="0 0 60 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Stripe">
+                <path d="M5.45 9.62c0-.77.63-1.07 1.67-1.07 1.49 0 3.38.46 4.87 1.27V5.87A12.9 12.9 0 007.12 5C3.87 5 1.7 6.65 1.7 9.82c0 4.93 6.78 4.14 6.78 6.26 0 .91-.79 1.2-1.9 1.2-1.64 0-3.74-.67-5.39-1.58v3.99c1.83.79 3.69 1.12 5.39 1.12 3.33 0 5.63-1.61 5.63-4.83-.02-5.32-6.76-4.37-6.76-6.36zm14.47-7.09L16.55 3l-.08 13.55h3.7L20.25 3l-.33-.47zM24.54 7.9l-.24-1.52h-3.18l.01 14.26h3.71v-7.67c.88-1.14 2.36-0.93 2.82-.78V8.98c-.47-.17-2.2-.48-3.12-.08zm7.67-4.45l-3.67.77v2.96l3.67-.77V3.45zm-3.67 3.93h3.67v13.26h-3.67V7.38zm12.4-.6c-1.44 0-2.37.68-2.88 1.14l-.19-.9H34.6v17.77l3.7-.78V22.6c.53.38 1.31.93 2.6.93 2.62 0 5.01-2.09 5.01-6.73-.01-4.27-2.42-6.02-5.01-6.02zm-.88 9.25c-.87 0-1.38-.31-1.74-.69l-.01-5.44c.39-.43.92-.73 1.75-.73 1.34 0 2.26 1.5 2.26 3.42 0 1.97-.91 3.44-2.26 3.44zm13.04-9.25c-3.54 0-5.67 2.97-5.67 6.74 0 4.44 2.51 6.71 6.13 6.71 1.76 0 3.09-.4 4.09-1.06V17.3c-1 .5-2.14.77-3.59.77-1.42 0-2.68-.5-2.84-2.24h7.17c.02-.2.04-.98.04-1.38 0-3.63-1.82-6.67-5.33-6.67zm-2 5.29c.17-1.67 1.12-2.36 2.03-2.36.94 0 1.82.7 1.86 2.36h-3.89z" fill="currentColor"/>
+            </svg>
+        </div>
+    `;
+})();
+</script>
+
+</body>
+</html>
